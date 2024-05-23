@@ -1,7 +1,6 @@
 import { fontNoto, fontSans } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/cn";
-import "@/styles/globals.css";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
