@@ -1,6 +1,12 @@
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import "@/styles/globals.css";
+import dynamic from 'next/dynamic';
+import { draftMode } from 'next/headers';
+
+const LiveVisualEditing = dynamic(
+  () => import('@/sanity/loader/LiveVisualEditing'),
+)
 
 export default function RootLayout({
   children,
@@ -18,6 +24,7 @@ export default function RootLayout({
 
         </footer>
       </div>
+      {draftMode().isEnabled && <LiveVisualEditing />}
     </ThemeProvider>
 
   );
