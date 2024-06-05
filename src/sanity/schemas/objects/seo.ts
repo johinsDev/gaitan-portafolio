@@ -56,9 +56,12 @@ export default defineType({
     }),
     defineField({
       name: "image",
-      title: "Image",
+      title: "Open Graph Image",
       type: "image",
-      description: "Used for social media sharing.",
+      description: "Displayed on social cards and search engine results.",
+      options: {
+        hotspot: true,
+      },
     }),
   ],
   preview: {

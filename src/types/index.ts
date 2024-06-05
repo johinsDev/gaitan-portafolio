@@ -110,6 +110,6 @@ export interface ProjectPayload {
 export interface SettingsPayload {
   footer?: PortableTextBlock[];
   menuItems?: MenuItem[];
-  ogImage?: Image;
   title?: string;
+  seo?: Seo;
 }

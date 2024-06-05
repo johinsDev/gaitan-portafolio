@@ -16,11 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const { data: settings } = await loadSettings()
 
   return {
-    ..._generateMetadata({
-      description: undefined,
-      image: settings?.ogImage,
-      title: settings?.title,
-    }),
+    ..._generateMetadata(settings?.seo),
     title: {
       template: `%s | ${settings?.title}`,
       default: settings?.title || 'Personal website',

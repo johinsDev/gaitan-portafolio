@@ -89,7 +89,11 @@ export const settingsQuery = groq`
       "slug": slug.current,
       title
     },
-    ogImage,
     title,
+    seo{
+      description,
+      image,
+      title,
+    },
   }
 `;
