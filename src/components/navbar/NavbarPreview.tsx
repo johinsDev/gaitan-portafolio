@@ -1,9 +1,7 @@
 'use client'
 
-import { useQuery, useSettings } from '@/sanity/loader/useQuery'
+import { useSettings } from '@/sanity/loader/useQuery'
 
-import { homePageQuery } from '@/sanity/lib/queries'
-import { HomePagePayload } from '@/types'
 import NavbarLayout from './NavbarLayout'
 
 type Props = {
@@ -13,7 +11,5 @@ type Props = {
 export default function NavbarPreview(props: Props) {
   const { data } = useSettings(props.initial)
 
-  const { data: home } = useQuery<HomePagePayload>(homePageQuery, {})
-
-  return <NavbarLayout settings={data!} home={home} />
+  return <NavbarLayout settings={data!} />
 }

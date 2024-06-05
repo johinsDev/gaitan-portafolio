@@ -4,6 +4,11 @@ export const homePageQuery = groq`
   *[_type == "home"][0]{
     _id,
     overview,
+    seo{
+      description,
+      image,
+      title,
+    },
     hero{
       title,
       description,
@@ -53,6 +58,11 @@ export const pagesBySlugQuery = groq`
     overview,
     title,
     "slug": slug.current,
+    seo{
+      description,
+      image,
+      title,
+    },
   }
 `;
 
@@ -80,5 +90,6 @@ export const settingsQuery = groq`
       title
     },
     ogImage,
+    title,
   }
 `;

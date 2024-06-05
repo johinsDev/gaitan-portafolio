@@ -13,7 +13,7 @@ export default defineType({
     defineField({
       name: "image",
       title: "Image",
-      type: "image",
+      type: "customImage",
     }),
     defineField({
       name: "description",

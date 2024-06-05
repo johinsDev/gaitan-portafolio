@@ -5,24 +5,26 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/sheet";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/cn";
 import { resolveHref } from "@/sanity/lib/utils";
-import { HomePagePayload, MenuItem, SettingsPayload } from "@/types";
+import { MenuItem, SettingsPayload } from "@/types";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 type Props = {
   settings: SettingsPayload
-  home: HomePagePayload | null
 }
 
 const Navbar = (props: Props) => {
   const pathname = usePathname();
 
+  const [open, setOpen] = useState(false)
+
   const { settings } = props
 
   const menuItems = settings?.menuItems || ([] as MenuItem[])
 
-  return <Sheet>
+  return <Sheet open={open} onOpenChange={setOpen}>
     <nav className="h-24 bg-foreground text-background flex items-center justify-between px-8">
       <div className="flex items-center gap-4">
         <SheetTrigger asChild>
@@ -33,7 +35,7 @@ const Navbar = (props: Props) => {
         </SheetTrigger>
 
         <Link href="/">
-          <p className="font-bold text-xl xl:text-3xl">{props.home?.title ?? 'Juan Felipe Gaitán'}.</p>
+          <p className="font-bold text-xl xl:text-3xl">{settings?.title ?? 'Juan Felipe Gaitán'}.</p>
         </Link>
       </div>
 
@@ -52,6 +54,7 @@ const Navbar = (props: Props) => {
             >
               <Link
                 href={href}
+                onClick={() => setOpen(false)}
               >
                 {item.title}
               </Link>
@@ -83,7 +86,7 @@ const Navbar = (props: Props) => {
               <Link
                 key={href}
                 href={href}
-
+                onClick={() => setOpen(false)}
                 className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
               >
                 {item.title}

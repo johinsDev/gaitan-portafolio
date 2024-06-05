@@ -1,6 +1,9 @@
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
+import { _generateMetadata } from "@/sanity/lib/utils";
+import { loadSettings } from "@/sanity/loader/loadQuery";
 import "@/styles/globals.css";
+import { Metadata } from "next";
 import dynamic from 'next/dynamic';
 import { draftMode } from 'next/headers';
 import { Suspense } from "react";
@@ -8,6 +11,23 @@ import { Suspense } from "react";
 const LiveVisualEditing = dynamic(
   () => import('@/sanity/loader/LiveVisualEditing'),
 )
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { data: settings } = await loadSettings()
+
+  return {
+    ..._generateMetadata({
+      description: undefined,
+      image: settings?.ogImage,
+      title: settings?.title,
+    }),
+    title: {
+      template: `%s | ${settings?.title}`,
+      default: settings?.title || 'Personal website',
+    },
+  }
+}
+
 
 export default function RootLayout({
   children,

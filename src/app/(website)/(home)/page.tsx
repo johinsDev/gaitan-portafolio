@@ -2,15 +2,22 @@ import { Button } from "@/components/button";
 import { CallToActionSection } from "@/components/call-to-action-section";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/carousel";
 import { Hero } from "@/components/hero";
+import { _generateMetadata } from "@/sanity/lib/utils";
 import { loadHomePage } from "@/sanity/loader/loadQuery";
 import cn from "clsx";
+import { Metadata } from "next";
 import Image from "next/image";
 import { Suspense } from "react";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { data: homePage } = await loadHomePage()
+
+  return _generateMetadata(homePage.seo)
+}
 
 export default async function Home() {
   const home = await loadHomePage();
 
-  console.log(home.data.sections);
   return (
     <div className="flex flex-col gap-4">
       <Suspense>

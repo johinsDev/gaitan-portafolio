@@ -10,6 +10,16 @@ export enum SectionsList {
   CTA_SECTION = "ctaSection",
 }
 
+export interface Seo {
+  description?: PortableTextBlock[];
+  image?: Image;
+  title?: string;
+}
+
+export interface CustomImage {
+  alt?: string;
+  image?: Image;
+}
 export interface Cta {
   externalLink?: string;
   link?: {
@@ -30,7 +40,7 @@ export interface CtaSection {
 
 export interface Hero {
   description?: string;
-  image?: Image;
+  image?: CustomImage;
   title?: string;
   cta?: Cta;
 }
@@ -67,19 +77,19 @@ export type Sections = CtaSection;
 
 export interface HomePagePayload {
   footer?: PortableTextBlock[];
-  overview?: PortableTextBlock[];
   showcaseProjects?: ShowcaseProject[];
   title?: string;
   hero?: Hero;
   sections?: Sections[];
+  seo?: Seo;
 }
 
 export interface PagePayload {
   body?: PortableTextBlock[];
   name?: string;
-  overview?: PortableTextBlock[];
   title?: string;
   slug?: string;
+  seo?: Seo;
 }
 
 export interface ProjectPayload {
@@ -101,4 +111,5 @@ export interface SettingsPayload {
   footer?: PortableTextBlock[];
   menuItems?: MenuItem[];
   ogImage?: Image;
+  title?: string;
 }

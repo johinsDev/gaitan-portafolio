@@ -3,7 +3,10 @@ import type { Image } from "sanity";
 
 import { ButtonProps } from "@/components/button";
 import { dataset, projectId } from "@/sanity/lib/api";
-import { Sections, SectionsList } from "@/types";
+import { Sections, SectionsList, Seo } from "@/types";
+import capitalize from "just-capitalize";
+import flush from "just-flush";
+import { Metadata } from "next";
 
 const imageBuilder = createImageUrlBuilder({
   projectId: projectId || "",
@@ -55,4 +58,14 @@ export function getSection<T>(
   type: SectionsList
 ): T | null {
   return (sections.find((section) => section._type === type) as T) ?? null;
+}
+
+export function _generateMetadata(seo?: Seo): Metadata {
+  const ogImage = urlForOpenGraphImage(seo?.image);
+
+  return flush({
+    title: seo?.title ? capitalize(seo?.title) : undefined,
+    description: seo?.description,
+    image: ogImage ? { url: ogImage } : undefined,
+  });
 }

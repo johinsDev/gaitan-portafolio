@@ -1,10 +1,10 @@
-import type { Metadata, ResolvingMetadata } from 'next'
-import { toPlainText } from 'next-sanity'
+import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
 import { Page } from '@/components/pages/page/Page'
+import { _generateMetadata } from '@/sanity/lib/utils'
 import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
 import { loadPage } from '@/sanity/loader/loadQuery'
 const PagePreview = dynamic(() => import('@/components/pages/page/PagePreview'))
@@ -14,17 +14,11 @@ type Props = {
 }
 
 export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
+  { params }: Props): Promise<Metadata> {
   const { data: page } = await loadPage(params.slug)
 
-  return {
-    title: page?.title,
-    description: page?.overview
-      ? toPlainText(page.overview)
-      : (await parent).description,
-  }
+  console.log(page?.seo)
+  return _generateMetadata(page?.seo)
 }
 
 export function generateStaticParams() {
