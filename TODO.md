@@ -1,11 +1,21 @@
-remove next-ui
-button shad cn ui
-colors as variables
-listing detail
-navbar and navbar mobile
-mobile version
+footer
+testimonial section / document
+informative section -> imge, cta, position, descitpion
+stats section
+youtbe video section
+seo data -> load this metadata
+hero add description as portable text
+know more section images
+accordion section
 
-call to action container
-section component
-page component
-connect with sanity
+blog document
+resources document
+resources singleton
+list blog singleton
+course singleton
+about singleton
+property singleton
+profperty filter
+property document
+
+property ui

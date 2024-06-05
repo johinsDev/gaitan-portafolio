@@ -2,7 +2,6 @@ import Facebook from "@/components/blog/icons/facebook";
 import Linkedin from "@/components/blog/icons/linkedin";
 import Twitter from "@/components/blog/icons/twitter";
 import WhatsApp from "@/components/blog/icons/whatsapp";
-import { CallToAction } from "@/components/home/call-to-action";
 import Image from "next/image";
 
 export default function BlogDetail() {
@@ -38,7 +37,7 @@ export default function BlogDetail() {
 
       <section className="bg-gray-200 py-12 mt-24 w-full full-width">
         <div className="main_container">
-          <CallToAction />
+          {/* <CallToAction /> */}
         </div>
       </section>
     </div>

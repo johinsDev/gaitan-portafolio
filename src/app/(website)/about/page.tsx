@@ -1,5 +1,4 @@
 import { Carousel, CarouselContent, CarouselItem } from "@/components/carousel";
-import { CallToAction } from "@/components/home/call-to-action";
 import { YoutubeVideo } from "@/components/home/youtube-video";
 import Image from "next/image";
 
@@ -64,7 +63,7 @@ export default function AboutMe() {
             </CarouselContent>
           </Carousel>
 
-          <CallToAction className="mt-16" />
+          {/* <CallToAction className="mt-16" /> */}
         </div>
       </section>
     </div>

@@ -1,4 +1,3 @@
-import { CallToAction } from "@/components/home/call-to-action";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -28,7 +27,7 @@ export default function Blog() {
 
       <section className="bg-gray-200 py-12 mt-24 w-full full-width">
         <div className="main_container">
-          <CallToAction />
+          {/* <CallToAction /> */}
         </div>
       </section>
     </div>

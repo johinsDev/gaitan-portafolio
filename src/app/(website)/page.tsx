@@ -2,7 +2,6 @@ import { Button } from "@/components/button";
 import { CallToActionSection } from "@/components/call-to-action-section";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/carousel";
 import { Hero } from "@/components/hero";
-import { CallToAction } from "@/components/home/call-to-action";
 import { loadHomePage } from "@/sanity/loader/loadQuery";
 import cn from "clsx";
 import Image from "next/image";
@@ -115,7 +114,6 @@ export default async function Home() {
             </CarouselContent>
           </Carousel>
 
-          <CallToAction className="mt-16" />
         </div>
       </section >
     </div >
