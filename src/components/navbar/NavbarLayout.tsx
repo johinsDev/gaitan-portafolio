@@ -4,12 +4,23 @@ import { Button } from "@/components/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/sheet";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/cn";
+import { resolveHref } from "@/sanity/lib/utils";
+import { HomePagePayload, MenuItem, SettingsPayload } from "@/types";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export const Navbar = () => {
+type Props = {
+  settings: SettingsPayload
+  home: HomePagePayload | null
+}
+
+const Navbar = (props: Props) => {
   const pathname = usePathname();
+
+  const { settings } = props
+
+  const menuItems = settings?.menuItems || ([] as MenuItem[])
 
   return <Sheet>
     <nav className="h-24 bg-foreground text-background flex items-center justify-between px-8">
@@ -22,23 +33,27 @@ export const Navbar = () => {
         </SheetTrigger>
 
         <Link href="/">
-          <p className="font-bold text-xl xl:text-3xl">Juan Felipe Gaitán.</p>
+          <p className="font-bold text-xl xl:text-3xl">{props.home?.title ?? 'Juan Felipe Gaitán'}.</p>
         </Link>
       </div>
 
       <ul className="flex-1 lg:flex gap-8 justify-center ml-2 items-center h-full hidden">
-        {siteConfig.navItems.map((item) => {
-          const isActive = pathname === item.href;
+        {menuItems.map((item) => {
+          const href = resolveHref(item?._type, item?.slug)
+
+          if (!href) return null;
+
+          const isActive = pathname === href;
 
           return (
-            <li key={item.href} className={cn("font-noto text-lg font-medium border-transparent border-b pb-1 transition-all hover:border-input duration-750", {
+            <li key={href} className={cn("font-noto text-lg font-medium border-transparent border-b pb-1 transition-all hover:border-input duration-750", {
               "border-input": isActive,
             })}
             >
               <Link
-                href={item.href}
+                href={href}
               >
-                {item.label}
+                {item.title}
               </Link>
             </li>
           )
@@ -56,18 +71,25 @@ export const Navbar = () => {
 
     </nav>
 
-    <SheetContent side="left" className="sm:max-w-xs">
+    <SheetContent side="left" className="sm:max-w-xs" >
       <nav className="grid gap-6 text-lg font-medium">
         {
-          siteConfig.navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-            >
-              {item.label}
-            </Link>
-          ))
+          menuItems.map((item) => {
+            const href = resolveHref(item?._type, item?.slug)
+
+            if (!href) return null;
+
+            return (
+              <Link
+                key={href}
+                href={href}
+
+                className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+              >
+                {item.title}
+              </Link>
+            )
+          })
         }
 
         <Button
@@ -83,3 +105,5 @@ export const Navbar = () => {
     </SheetContent>
   </Sheet>
 };
+
+export default Navbar;

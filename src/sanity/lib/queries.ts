@@ -1,9 +1,24 @@
-import { groq } from 'next-sanity'
+import { groq } from "next-sanity";
 
 export const homePageQuery = groq`
   *[_type == "home"][0]{
     _id,
     overview,
+    hero{
+      title,
+      description,
+      cta{
+        externalLink,
+        link->{
+          _type,
+          "slug": slug.current,
+          title
+        },
+        title,
+        variant,
+      },
+      image,
+    },
     showcaseProjects[]->{
       _type,
       coverImage,
@@ -14,7 +29,7 @@ export const homePageQuery = groq`
     },
     title,
   }
-`
+`;
 
 export const pagesBySlugQuery = groq`
   *[_type == "page" && slug.current == $slug][0] {
@@ -24,7 +39,7 @@ export const pagesBySlugQuery = groq`
     title,
     "slug": slug.current,
   }
-`
+`;
 
 export const projectBySlugQuery = groq`
   *[_type == "project" && slug.current == $slug][0] {
@@ -39,7 +54,7 @@ export const projectBySlugQuery = groq`
     tags,
     title,
   }
-`
+`;
 
 export const settingsQuery = groq`
   *[_type == "settings"][0]{
@@ -51,4 +66,4 @@ export const settingsQuery = groq`
     },
     ogImage,
   }
-`
+`;

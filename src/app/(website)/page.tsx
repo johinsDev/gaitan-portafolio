@@ -1,30 +1,17 @@
 import { Button } from "@/components/button";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/carousel";
+import { Hero } from "@/components/hero";
 import { CallToAction } from "@/components/home/call-to-action";
 import cn from "clsx";
 import Image from "next/image";
+import { Suspense } from "react";
 
-export default function Home() {
+export default async function Home() {
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex items-center flex-col-reverse md:flex-row lg:gap-4">
-        <div className="w-full flex flex-col items-center md:w-7/12 md:items-start">
-          <h1 className="text-title font-bold leading-title text-center mt-10 md:text-left">
-            <div>¡No tienes que ser</div>
-            <div>un experto para invertir</div>
-            <div>en bienes raíces!</div>
-          </h1>
-
-          <Button className="w-40 mt-8">
-            Empezar!
-          </Button>
-        </div>
-
-        <div className="flex-shrink-0 w-full md:w-5/12 flex justify-end">
-          <Image src='/main.jpg' width={427} height={534} alt='Juan Gaitan' />
-        </div>
-      </div>
-
+      <Suspense>
+        <Hero />
+      </Suspense>
 
       <section className="py-12">
         <h2 className={cn("text-sub-title font-bold text-center font-noto")}>Lorem ipsumdolo sit amet</h2>

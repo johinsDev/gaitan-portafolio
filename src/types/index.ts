@@ -6,6 +6,24 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 
 import type { Image, PortableTextBlock } from "sanity";
 
+export interface Cta {
+  externalLink?: string;
+  link?: {
+    _type: string;
+    slug?: string;
+    title?: string;
+  };
+  title?: string;
+  variant?: string;
+}
+
+export interface Hero {
+  description?: string;
+  image?: Image;
+  title?: string;
+  cta?: Cta;
+}
+
 export interface MenuItem {
   _type: string;
   slug?: string;
@@ -39,6 +57,7 @@ export interface HomePagePayload {
   overview?: PortableTextBlock[];
   showcaseProjects?: ShowcaseProject[];
   title?: string;
+  hero?: Hero;
 }
 
 export interface PagePayload {
