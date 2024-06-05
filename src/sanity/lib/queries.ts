@@ -27,6 +27,21 @@ export const homePageQuery = groq`
       tags,
       title,
     },
+    sections[]{
+      _type,
+      title,
+      description,
+      cta{
+        externalLink,
+        link->{
+          _type,
+          "slug": slug.current,
+          title
+        },
+        title,
+        variant,
+      },
+    },
     title,
   }
 `;

@@ -1,8 +1,7 @@
-import { getVariantButton, resolveHref } from "@/sanity/lib/utils";
+import { resolveHref } from "@/sanity/lib/utils";
 import { Hero } from "@/types";
 import Image from "next/image";
-import Link from "next/link";
-import { Button } from "../button";
+import { Cta } from "../cta";
 
 type Props = {
   hero?: Hero
@@ -19,11 +18,7 @@ export function HeroLayout({ hero }: Props) {
 
       {
         !!hero?.cta && (
-          <Button className="w-40 mt-8" variant={getVariantButton(hero.cta.variant)} asChild>
-            <Link href={href}>
-              {hero.cta?.title}
-            </Link>
-          </Button>
+          <Cta className="w-40 mt-8" {...hero.cta} />
         )
       }
 

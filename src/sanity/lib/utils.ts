@@ -3,6 +3,7 @@ import type { Image } from "sanity";
 
 import { ButtonProps } from "@/components/button";
 import { dataset, projectId } from "@/sanity/lib/api";
+import { Sections, SectionsList } from "@/types";
 
 const imageBuilder = createImageUrlBuilder({
   projectId: projectId || "",
@@ -47,4 +48,11 @@ export function getVariantButton(
   }
 
   return variant as ButtonProps["variant"];
+}
+
+export function getSection<T>(
+  sections: Sections[],
+  type: SectionsList
+): T | null {
+  return (sections.find((section) => section._type === type) as T) ?? null;
 }

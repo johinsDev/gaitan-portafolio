@@ -6,6 +6,10 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 
 import type { Image, PortableTextBlock } from "sanity";
 
+export enum SectionsList {
+  CTA_SECTION = "ctaSection",
+}
+
 export interface Cta {
   externalLink?: string;
   link?: {
@@ -15,6 +19,13 @@ export interface Cta {
   };
   title?: string;
   variant?: string;
+}
+
+export interface CtaSection {
+  cta?: Cta;
+  description?: string;
+  title?: string;
+  _type: SectionsList.CTA_SECTION;
 }
 
 export interface Hero {
@@ -52,12 +63,15 @@ export interface ShowcaseProject {
 
 // Page payloads
 
+export type Sections = CtaSection;
+
 export interface HomePagePayload {
   footer?: PortableTextBlock[];
   overview?: PortableTextBlock[];
   showcaseProjects?: ShowcaseProject[];
   title?: string;
   hero?: Hero;
+  sections?: Sections[];
 }
 
 export interface PagePayload {

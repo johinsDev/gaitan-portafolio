@@ -15,6 +15,7 @@ import { pageStructure, singletonPlugin } from "@/sanity/plugins/settings";
 import page from "@/sanity/schemas/documents/page";
 import project from "@/sanity/schemas/documents/project";
 import cta from "@/sanity/schemas/objects/cta";
+import ctaSection from "@/sanity/schemas/objects/cta-section";
 import duration from "@/sanity/schemas/objects/duration";
 import hero from "@/sanity/schemas/objects/hero";
 import milestone from "@/sanity/schemas/objects/milestone";
@@ -46,6 +47,7 @@ export default defineConfig({
       timeline,
       cta,
       hero,
+      ctaSection,
     ],
   },
   plugins: [

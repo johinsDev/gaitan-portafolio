@@ -1,17 +1,34 @@
 import { Button } from "@/components/button";
+import { CallToActionSection } from "@/components/call-to-action-section";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/carousel";
 import { Hero } from "@/components/hero";
 import { CallToAction } from "@/components/home/call-to-action";
+import { loadHomePage } from "@/sanity/loader/loadQuery";
 import cn from "clsx";
 import Image from "next/image";
 import { Suspense } from "react";
 
 export default async function Home() {
+  const home = await loadHomePage();
+
+  console.log(home.data.sections);
   return (
     <div className="flex flex-col gap-4">
       <Suspense>
         <Hero />
       </Suspense>
+
+      <Suspense>
+        {home.data?.sections?.map((section, index) => {
+          switch (section._type) {
+            case "ctaSection":
+              return <CallToActionSection key={index} />;
+            default:
+              return null;
+          }
+        })}
+      </Suspense>
+
 
       <section className="py-12">
         <h2 className={cn("text-sub-title font-bold text-center font-noto")}>Lorem ipsumdolo sit amet</h2>

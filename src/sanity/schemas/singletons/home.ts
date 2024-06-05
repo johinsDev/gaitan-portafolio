@@ -63,6 +63,17 @@ export default defineType({
       title: "Hero section",
       type: "hero",
     }),
+    // define array of sections
+    defineField({
+      name: "sections",
+      title: "Sections",
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "ctaSection",
+        }),
+      ],
+    }),
     defineField({
       name: "showcaseProjects",
       title: "Showcase projects",
