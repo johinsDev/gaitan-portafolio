@@ -3,7 +3,6 @@ testimonial section / document
 informative section -> imge, cta, position, descitpion
 stats section
 youtbe video section
-seo data -> load this metadata
 hero add description as portable text
 know more section images
 accordion section
@@ -17,5 +16,6 @@ about singleton
 property singleton
 profperty filter
 property document
+improve page similar to home
 
 property ui

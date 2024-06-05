@@ -17,7 +17,6 @@ export async function generateMetadata(
   { params }: Props): Promise<Metadata> {
   const { data: page } = await loadPage(params.slug)
 
-  console.log(page?.seo)
   return _generateMetadata(page?.seo)
 }
 

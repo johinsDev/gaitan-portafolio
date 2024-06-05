@@ -9,19 +9,19 @@ export interface PageProps {
 
 export function Page({ data }: PageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { body, overview, title } = data ?? {}
+  const { body, seo, title } = data ?? {}
 
   return (
     <div>
       <div className="mb-14">
         {/* Header */}
-        <Header title={title} description={overview} />
+        <Header title={title} description={seo?.description} />
 
         {/* Body */}
         {body && (
           <CustomPortableText
             paragraphClasses="font-serif max-w-3xl text-gray-600 text-xl"
-            value={body}
+            value={body as any}
           />
         )}
       </div>

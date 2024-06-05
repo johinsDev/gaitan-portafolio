@@ -5,8 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "format": "npx prettier --write . --ignore-path .gitignore",
+    "lint": "next lint .",
+    "lint:fix": "npm run format && npm run lint -- --fix",
     "start": "next start",
-    "lint": "next lint"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@next/env": "^14.2.3",
@@ -36,10 +39,12 @@
     "sanity": "^3.42.1",
     "sanity-plugin-asset-source-unsplash": "^3.0.1",
     "server-only": "^0.0.1",
+    "styled-components": "^6.1",
     "tailwind-merge": "^2.3.0",
     "tailwind-variants": "^0.2.1",
     "tailwindcss-animate": "^1.0.7",
-    "vaul": "^0.9.1"
+    "vaul": "^0.9.1",
+    "vite-tsconfig-paths": "^4.3.2"
   },
   "devDependencies": {
     "@types/node": "^20",
