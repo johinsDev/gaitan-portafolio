@@ -7,6 +7,7 @@ import { Sections, SectionsList, Seo } from "@/types";
 import capitalize from "just-capitalize";
 import flush from "just-flush";
 import { Metadata } from "next";
+import { toPlainText } from "next-sanity";
 
 const imageBuilder = createImageUrlBuilder({
   projectId: projectId || "",
@@ -65,7 +66,7 @@ export function _generateMetadata(seo?: Seo): Metadata {
 
   return flush({
     title: seo?.title ? capitalize(seo?.title) : undefined,
-    description: seo?.description,
+    description: seo?.description ? toPlainText(seo?.description) : undefined,
     image: ogImage ? { url: ogImage } : undefined,
   });
 }
