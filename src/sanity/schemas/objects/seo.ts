@@ -13,7 +13,7 @@ export default defineType({
       description: "Used for the <title> tag and the personal website header.",
     }),
     defineField({
-      name: "overview",
+      name: "description",
       description:
         "Used both for the <meta> description tag for SEO, and the personal website subheader.",
       title: "Description",
