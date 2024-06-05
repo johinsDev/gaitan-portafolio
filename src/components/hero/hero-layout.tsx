@@ -30,7 +30,7 @@ export function HeroLayout({ hero }: Props) {
     </div>
 
     {!!imageUrl && <div className="flex-shrink-0 w-full md:w-5/12 flex justify-end">
-      <Image src={imageUrl} width={420} height={560} alt={'hero'} className="w-full object-cover aspect-[3/4] max-w-sm" />
+      <Image src={imageUrl} width={420} height={560} alt={'hero'} className="w-full object-cover aspect-[3/4] max-w-sm" priority />
     </div>}
   </div>
 
