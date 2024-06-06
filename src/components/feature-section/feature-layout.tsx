@@ -13,7 +13,7 @@ type Props = {
 export function FeatureSectionLayout({ data }: Props) {
   const image = data?.image?.image;
 
-  const imageUrl = image && urlForImage(image)?.fit("crop").url();
+  const imageUrl = image && urlForImage(image)?.width(444).height(250).url();
 
   const position = data?.position;
 
@@ -51,6 +51,7 @@ export function FeatureSectionLayout({ data }: Props) {
             blurDataURL={image.asset.metadata.lqip}
             placeholder="blur"
             className="object-cover object-top aspect-video"
+            sizes="(min-width: 1024px) 444px, 100vw"
           />
         </div>
       )}
