@@ -73,3 +73,6 @@ export function _generateMetadata(seo?: Seo): Metadata {
     image: ogImage ? { url: ogImage } : undefined,
   });
 }
+
+export const sleep = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));
