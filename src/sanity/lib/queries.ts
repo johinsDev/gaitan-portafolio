@@ -77,6 +77,13 @@ export const homePageQuery = groq`
           variant,
         },
       },
+      _type == "youtubeSection" => {
+        ...,
+        description,
+        title,
+        url,
+        videoTitle,
+      },
       _type == "featureSection" => {
         ...,
         content,

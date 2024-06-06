@@ -44,6 +44,9 @@ export default defineType({
         defineArrayMember({
           type: "testimonialSection",
         }),
+        defineArrayMember({
+          type: "youtubeSection",
+        }),
       ],
     }),
     defineField({

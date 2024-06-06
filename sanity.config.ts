@@ -27,6 +27,7 @@ import stat from "@/sanity/schemas/objects/stat";
 import stats from "@/sanity/schemas/objects/stats";
 import testimonialSection from "@/sanity/schemas/objects/testimonial-section";
 import timeline from "@/sanity/schemas/objects/timeline";
+import { youtubeSection } from "@/sanity/schemas/objects/youtube-section";
 import home from "@/sanity/schemas/singletons/home";
 import settings from "@/sanity/schemas/singletons/settings";
 
@@ -62,6 +63,7 @@ export default defineConfig({
       stats,
       feature,
       testimonialSection,
+      youtubeSection
     ],
   },
   plugins: [

@@ -11,6 +11,7 @@ export enum SectionsList {
   STATS_SECTION = "stats",
   FEATURE_SECTION = "featureSection",
   TESTIMONIAL_SECTION = "testimonialSection",
+  YOUTUBE_SECTION = "youtubeSection",
 }
 
 export interface Seo {
@@ -55,6 +56,15 @@ export interface TestimonialSection {
   title?: string;
   _type: SectionsList.TESTIMONIAL_SECTION;
   _key: string;
+}
+
+export interface YoutubeSection {
+  description?: PortableTextBlock[];
+  title?: string;
+  url: string;
+  _type: SectionsList.YOUTUBE_SECTION;
+  _key: string;
+  videoTitle?: string;
 }
 
 export interface FeatureSection {
@@ -116,7 +126,8 @@ export type Sections =
   | CtaSection
   | StatsSection
   | FeatureSection
-  | TestimonialSection;
+  | TestimonialSection
+  | YoutubeSection;
 
 export interface HomePagePayload {
   footer?: PortableTextBlock[];

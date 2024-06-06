@@ -4,6 +4,7 @@ import { Stats } from "@/components/stats-section";
 import { Testimonials } from "@/components/testimonials";
 import { loadHomePage } from "@/sanity/loader/loadQuery";
 import { SectionsList } from "@/types";
+import { YoutubeSection } from "./youtube-section";
 
 export async function Sections() {
   const home = await loadHomePage();
@@ -21,6 +22,8 @@ export async function Sections() {
           return <Feature key={section._key} _key={section._key} />;
         case SectionsList.TESTIMONIAL_SECTION:
           return <Testimonials key={section._key} _key={section._key} />;
+        case SectionsList.YOUTUBE_SECTION:
+          return <YoutubeSection key={section._key} _key={section._key} />;
         default:
           return null;
       }
