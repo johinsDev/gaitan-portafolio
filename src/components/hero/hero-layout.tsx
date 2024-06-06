@@ -1,4 +1,4 @@
-import { resolveHref, urlForImage } from "@/sanity/lib/utils";
+import { urlForImage } from "@/sanity/lib/utils";
 import { Hero } from "@/types";
 import Image from "next/image";
 import { Cta } from "../cta";
@@ -8,8 +8,6 @@ type Props = {
 }
 
 export function HeroLayout({ hero }: Props) {
-  const href = resolveHref(hero?.cta?.link?._type, hero?.cta?.link?.slug) || hero?.cta?.externalLink || "#"
-
   const image = hero?.image?.image
 
   const imageUrl =

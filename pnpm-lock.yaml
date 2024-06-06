@@ -65,6 +65,9 @@ dependencies:
   next-sanity:
     specifier: 9.1.0
     version: 9.1.0(@sanity/client@6.18.2)(@sanity/icons@2.11.8)(@sanity/types@3.42.1)(@sanity/ui@2.1.11)(next@14.2.3)(react@18.3.1)(sanity@3.42.1)(styled-components@6.1.11)
+  next-sanity-image:
+    specifier: ^6.1.1
+    version: 6.1.1(@sanity/client@6.18.2)(next@14.2.3)(react@18.3.1)
   next-themes:
     specifier: ^0.3.0
     version: 0.3.0(react-dom@18.3.1)(react@18.3.1)
@@ -6880,6 +6883,19 @@ packages:
   /natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
+
+  /next-sanity-image@6.1.1(@sanity/client@6.18.2)(next@14.2.3)(react@18.3.1):
+    resolution: {integrity: sha512-mLRiatJW3TZoD3VlUCci4lOxW9lKOl0bxDsYtk/JRqKZo25QJqPXNV7aoD+lmjEFf6RO2eW7uJ57QeI20mPhOA==}
+    peerDependencies:
+      '@sanity/client': ^5.0.0 || ^6.0.0
+      next: ^13.0.0 || ^14.0.0
+      react: ^18.0.0
+    dependencies:
+      '@sanity/client': 6.18.2
+      '@sanity/image-url': 1.0.2
+      next: 14.2.3(@babel/core@7.24.5)(react-dom@18.3.1)(react@18.3.1)
+      react: 18.3.1
+    dev: false
 
   /next-sanity@9.1.0(@sanity/client@6.18.2)(@sanity/icons@2.11.8)(@sanity/types@3.42.1)(@sanity/ui@2.1.11)(next@14.2.3)(react@18.3.1)(sanity@3.42.1)(styled-components@6.1.11):
     resolution: {integrity: sha512-3LVq0gerc1pzV8XIC0fyqYdTSBL3dMhAAUsG5YByKHW85qJFIjqwoPlsUb8ypSb7L5hfT7vg+zlUY9XDEkrzDQ==}

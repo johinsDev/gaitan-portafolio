@@ -34,7 +34,7 @@ export default defineType({
     prepare({ title, description }) {
       return {
         title: title || "No title",
-        subtitle: description || "No description",
+        subtitle: `Hero section: ${description || "No description"}`,
       };
     },
   },

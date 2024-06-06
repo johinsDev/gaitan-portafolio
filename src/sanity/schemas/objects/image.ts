@@ -9,6 +9,10 @@ export default defineType({
       name: "image",
       title: "Image",
       type: "image",
+      options: {
+        hotspot: true,
+        metadata: ["palette", "lqip"],
+      },
     }),
     defineField({
       name: "alt",

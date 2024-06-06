@@ -35,6 +35,12 @@ export default defineType({
         defineArrayMember({
           type: "ctaSection",
         }),
+        defineArrayMember({
+          type: "stats",
+        }),
+        defineArrayMember({
+          type: "featureSection",
+        }),
       ],
     }),
     defineField({

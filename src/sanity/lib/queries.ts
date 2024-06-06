@@ -33,9 +33,19 @@ export const homePageQuery = groq`
       title,
     },
     sections[]{
+      ...,
       _type,
       title,
       description,
+      content,
+      stats[]{
+        description,
+        icon,
+        title,
+        value,
+      },
+      image,
+      position,
       cta{
         externalLink,
         link->{

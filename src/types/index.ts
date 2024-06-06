@@ -8,6 +8,8 @@ import type { Image, PortableTextBlock } from "sanity";
 
 export enum SectionsList {
   CTA_SECTION = "ctaSection",
+  STATS_SECTION = "stats",
+  FEATURE_SECTION = "featureSection",
 }
 
 export interface Seo {
@@ -36,6 +38,32 @@ export interface CtaSection {
   description?: string;
   title?: string;
   _type: SectionsList.CTA_SECTION;
+  _key: string;
+}
+
+export interface Stat {
+  description?: string;
+  icon?: CustomImage;
+  title?: string;
+  value?: string;
+}
+
+export interface StatsSection {
+  stats?: Stat[];
+  title?: string;
+  _type: SectionsList.STATS_SECTION;
+  _key: string;
+}
+
+export type PositionImageList = "left" | "right";
+export interface FeatureSection {
+  content?: PortableTextBlock[];
+  image?: CustomImage;
+  position?: PositionImageList;
+  title?: string;
+  _type: SectionsList.FEATURE_SECTION;
+  cta?: Cta;
+  _key: string;
 }
 
 export interface Hero {
@@ -73,7 +101,7 @@ export interface ShowcaseProject {
 
 // Page payloads
 
-export type Sections = CtaSection;
+export type Sections = CtaSection | StatsSection | FeatureSection;
 
 export interface HomePagePayload {
   footer?: PortableTextBlock[];

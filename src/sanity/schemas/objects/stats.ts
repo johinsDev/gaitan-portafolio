@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "ctaSection",
-  title: "Call to action section",
+  name: "stats",
+  title: "Stats section",
   type: "object",
   fields: [
     defineField({
@@ -11,14 +11,10 @@ export default defineType({
       type: "string",
     }),
     defineField({
-      name: "description",
-      title: "Description",
-      type: "text",
-    }),
-    defineField({
-      name: "cta",
-      title: "Call to action",
-      type: "cta",
+      name: "stats",
+      title: "Stats",
+      type: "array",
+      of: [{ type: "stat" }],
     }),
   ],
   preview: {
@@ -28,7 +24,7 @@ export default defineType({
     prepare({ title }) {
       return {
         title: title || "No title",
-        subtitle: "Call to action section",
+        subtitle: "Stats section",
       };
     },
   },

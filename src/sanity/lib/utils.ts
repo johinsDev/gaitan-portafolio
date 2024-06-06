@@ -56,9 +56,12 @@ export function getVariantButton(
 
 export function getSection<T>(
   sections: Sections[],
-  type: SectionsList
+  type: SectionsList,
+  key: string
 ): T | null {
-  return (sections.find((section) => section._type === type) as T) ?? null;
+  return sections.find(
+    (section) => section._type === type && section._key === key
+  ) as T | null;
 }
 
 export function _generateMetadata(seo?: Seo): Metadata {

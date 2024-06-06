@@ -17,10 +17,13 @@ import project from "@/sanity/schemas/documents/project";
 import cta from "@/sanity/schemas/objects/cta";
 import ctaSection from "@/sanity/schemas/objects/cta-section";
 import duration from "@/sanity/schemas/objects/duration";
+import feature from "@/sanity/schemas/objects/feature";
 import hero from "@/sanity/schemas/objects/hero";
 import image from "@/sanity/schemas/objects/image";
 import milestone from "@/sanity/schemas/objects/milestone";
 import seo from "@/sanity/schemas/objects/seo";
+import stat from "@/sanity/schemas/objects/stat";
+import stats from "@/sanity/schemas/objects/stats";
 import timeline from "@/sanity/schemas/objects/timeline";
 import home from "@/sanity/schemas/singletons/home";
 import settings from "@/sanity/schemas/singletons/settings";
@@ -52,6 +55,9 @@ export default defineConfig({
       ctaSection,
       image,
       seo,
+      stat,
+      stats,
+      feature,
     ],
   },
   plugins: [

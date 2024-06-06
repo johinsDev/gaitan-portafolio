@@ -1,10 +1,17 @@
+// define stat object, fields value, title, description, and icon
+
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "ctaSection",
-  title: "Call to action section",
+  name: "stat",
+  title: "Stat",
   type: "object",
   fields: [
+    defineField({
+      name: "value",
+      title: "Value",
+      type: "string",
+    }),
     defineField({
       name: "title",
       title: "Title",
@@ -16,20 +23,9 @@ export default defineType({
       type: "text",
     }),
     defineField({
-      name: "cta",
-      title: "Call to action",
-      type: "cta",
+      name: "icon",
+      title: "Icon",
+      type: "customImage",
     }),
   ],
-  preview: {
-    select: {
-      title: "title",
-    },
-    prepare({ title }) {
-      return {
-        title: title || "No title",
-        subtitle: "Call to action section",
-      };
-    },
-  },
 });
