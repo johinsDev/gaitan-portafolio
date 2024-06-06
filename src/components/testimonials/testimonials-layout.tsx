@@ -43,6 +43,8 @@ export function TestimonialsLayout({ data }: Props) {
                           testimonial.name ??
                           "Testimonial Image"
                         }
+                        blurDataURL={image.asset.metadata.lqip}
+                        placeholder="blur"
                         className="rounded-full size-14 object-cover aspect-square flex-shrink-0"
                       />
                     )}

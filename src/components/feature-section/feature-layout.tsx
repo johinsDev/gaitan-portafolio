@@ -48,6 +48,8 @@ export function FeatureSectionLayout({ data }: Props) {
             width={444}
             height={300}
             alt={data?.image?.alt ?? ""}
+            blurDataURL={image.asset.metadata.lqip}
+            placeholder="blur"
             className="object-cover object-top aspect-video"
           />
         </div>

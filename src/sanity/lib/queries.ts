@@ -22,7 +22,15 @@ export const homePageQuery = groq`
         title,
         variant,
       },
-      image,
+      image{
+        ...,
+        image{
+          asset->{
+            ...,
+            "_ref": _id,
+          },
+        },
+      },
     },
     sections[]{
       ...,
@@ -32,7 +40,15 @@ export const homePageQuery = groq`
         ...,
         testimonials[]->{
           ...,
-          image,
+          image{
+            ...,
+            image{
+              asset->{
+                ...,
+                "_ref": _id,
+              },
+            },
+          },
           name,
           review,
           rating,
@@ -64,7 +80,15 @@ export const homePageQuery = groq`
       _type == "featureSection" => {
         ...,
         content,
-        image,
+        image{
+          ...,
+          image{
+            asset->{
+              ...,
+              "_ref": _id,
+            },
+          },
+        },
         position,
         cta{
           externalLink,

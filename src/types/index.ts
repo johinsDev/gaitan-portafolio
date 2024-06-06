@@ -4,7 +4,7 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
   size?: number;
 };
 
-import type { Image, PortableTextBlock } from "sanity";
+import type { Image, ImageAsset, PortableTextBlock } from "sanity";
 
 export enum SectionsList {
   CTA_SECTION = "ctaSection",
@@ -21,7 +21,9 @@ export interface Seo {
 
 export interface CustomImage {
   alt?: string;
-  image?: Image;
+  image?: Image & {
+    asset: ImageAsset;
+  };
 }
 export interface Cta {
   externalLink?: string;

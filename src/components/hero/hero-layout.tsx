@@ -32,6 +32,8 @@ export function HeroLayout({ hero }: Props) {
             alt={"hero"}
             className="w-full object-cover aspect-[3/4] max-w-sm"
             priority
+            blurDataURL={image.asset.metadata.lqip}
+            placeholder="blur"
           />
         </div>
       )}
