@@ -13,13 +13,11 @@ export default function RootLayout({
         className={cn(
           "min-h-screen bg-background font-sans antialiased flex flex-col",
           fontSans.variable,
-          fontNoto.variable
+          fontNoto.variable,
         )}
       >
         {children}
-
       </body>
-
     </html>
   );
 }

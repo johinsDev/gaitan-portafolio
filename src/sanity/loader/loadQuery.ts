@@ -66,7 +66,7 @@ export function loadSettings() {
   return loadQuery<SettingsPayload>(
     settingsQuery,
     {},
-    { next: { tags: ["settings", "home", "page", "project"] } }
+    { next: { tags: ["settings", "home", "page", "project"] } },
   );
 }
 
@@ -74,7 +74,7 @@ export function loadHomePage() {
   return loadQuery<HomePagePayload>(
     homePageQuery,
     {},
-    { next: { tags: ["home", "project"] } }
+    { next: { tags: ["home", "project"] } },
   );
 }
 
@@ -82,7 +82,7 @@ export function loadProject(slug: string) {
   return loadQuery<ProjectPayload | null>(
     projectBySlugQuery,
     { slug },
-    { next: { tags: [`project:${slug}`] } }
+    { next: { tags: [`project:${slug}`] } },
   );
 }
 
@@ -90,6 +90,6 @@ export function loadPage(slug: string) {
   return loadQuery<PagePayload | null>(
     pagesBySlugQuery,
     { slug },
-    { next: { tags: [`page:${slug}`] } }
+    { next: { tags: [`page:${slug}`] } },
   );
 }

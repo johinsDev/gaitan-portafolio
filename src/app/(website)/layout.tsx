@@ -4,26 +4,25 @@ import { _generateMetadata } from "@/sanity/lib/utils";
 import { loadSettings } from "@/sanity/loader/loadQuery";
 import "@/styles/globals.css";
 import { Metadata } from "next";
-import dynamic from 'next/dynamic';
-import { draftMode } from 'next/headers';
+import dynamic from "next/dynamic";
+import { draftMode } from "next/headers";
 import { Suspense } from "react";
 
 const LiveVisualEditing = dynamic(
-  () => import('@/sanity/loader/LiveVisualEditing'),
-)
+  () => import("@/sanity/loader/LiveVisualEditing"),
+);
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { data: settings } = await loadSettings()
+  const { data: settings } = await loadSettings();
 
   return {
     ..._generateMetadata(settings?.seo),
     title: {
       template: `%s | ${settings?.title}`,
-      default: settings?.title || 'Personal website',
+      default: settings?.title || "Personal website",
     },
-  }
+  };
 }
-
 
 export default function RootLayout({
   children,
@@ -36,15 +35,10 @@ export default function RootLayout({
         <Suspense>
           <Navbar />
         </Suspense>
-        <main className="main_container flex-grow pt-16">
-          {children}
-        </main>
-        <footer className="w-full flex items-center justify-center py-3 h-28 bg-foreground">
-
-        </footer>
+        <main className="main_container flex-grow pt-16">{children}</main>
+        <footer className="w-full flex items-center justify-center py-3 h-28 bg-foreground"></footer>
       </div>
       {draftMode().isEnabled && <LiveVisualEditing />}
     </ThemeProvider>
-
   );
 }

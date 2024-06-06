@@ -16,5 +16,5 @@ export const title = tv({
     truncate: {
       true: "truncate",
     },
-  }
-})
+  },
+});

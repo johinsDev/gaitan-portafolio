@@ -1,24 +1,32 @@
-'use client'
+"use client";
 
-import { useQuery } from '@/sanity/loader/useQuery'
+import { useQuery } from "@/sanity/loader/useQuery";
 
-import { homePageQuery } from '@/sanity/lib/queries'
-import { getSection } from '@/sanity/lib/utils'
-import { CtaSection, HomePagePayload, SectionsList } from '@/types'
-import { QueryResponseInitial } from '@sanity/react-loader'
-import { CallToActionSectionLayout } from './call-to-action-section-layout'
+import { homePageQuery } from "@/sanity/lib/queries";
+import { getSection } from "@/sanity/lib/utils";
+import { CtaSection, HomePagePayload, SectionsList } from "@/types";
+import { QueryResponseInitial } from "@sanity/react-loader";
+import { CallToActionSectionLayout } from "./call-to-action-section-layout";
 
 type Props = {
-  initial: QueryResponseInitial<HomePagePayload>
-  _key: string
-}
+  initial: QueryResponseInitial<HomePagePayload>;
+  _key: string;
+};
 
 export default function CallToActionSectionPreview(props: Props) {
-  const { data: home } = useQuery<HomePagePayload>(homePageQuery, {}, {
-    initial: props.initial,
-  })
+  const { data: home } = useQuery<HomePagePayload>(
+    homePageQuery,
+    {},
+    {
+      initial: props.initial,
+    },
+  );
 
-  const cta = getSection<CtaSection>(home?.sections ?? [], SectionsList.CTA_SECTION, props._key)
+  const cta = getSection<CtaSection>(
+    home?.sections ?? [],
+    SectionsList.CTA_SECTION,
+    props._key,
+  );
 
-  return <CallToActionSectionLayout data={cta} />
+  return <CallToActionSectionLayout data={cta} />;
 }

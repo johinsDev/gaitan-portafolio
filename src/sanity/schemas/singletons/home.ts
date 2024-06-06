@@ -41,6 +41,9 @@ export default defineType({
         defineArrayMember({
           type: "featureSection",
         }),
+        defineArrayMember({
+          type: "testimonialSection",
+        }),
       ],
     }),
     defineField({

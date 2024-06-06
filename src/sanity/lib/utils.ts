@@ -29,7 +29,7 @@ export function urlForOpenGraphImage(image: Image | undefined) {
 
 export function resolveHref(
   documentType?: string,
-  slug?: string
+  slug?: string,
 ): string | undefined {
   switch (documentType) {
     case "home":
@@ -45,7 +45,7 @@ export function resolveHref(
 }
 
 export function getVariantButton(
-  variant: string | null | undefined
+  variant: string | null | undefined,
 ): ButtonProps["variant"] {
   if (variant === "primary") {
     return "default";
@@ -57,10 +57,10 @@ export function getVariantButton(
 export function getSection<T>(
   sections: Sections[],
   type: SectionsList,
-  key: string
+  key: string,
 ): T | null {
   return sections.find(
-    (section) => section._type === type && section._key === key
+    (section) => section._type === type && section._key === key,
   ) as T | null;
 }
 

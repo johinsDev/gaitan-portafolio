@@ -14,6 +14,7 @@ import * as resolve from "@/sanity/plugins/resolve";
 import { pageStructure, singletonPlugin } from "@/sanity/plugins/settings";
 import page from "@/sanity/schemas/documents/page";
 import project from "@/sanity/schemas/documents/project";
+import testimonial from "@/sanity/schemas/documents/testimonial";
 import cta from "@/sanity/schemas/objects/cta";
 import ctaSection from "@/sanity/schemas/objects/cta-section";
 import duration from "@/sanity/schemas/objects/duration";
@@ -24,6 +25,7 @@ import milestone from "@/sanity/schemas/objects/milestone";
 import seo from "@/sanity/schemas/objects/seo";
 import stat from "@/sanity/schemas/objects/stat";
 import stats from "@/sanity/schemas/objects/stats";
+import testimonialSection from "@/sanity/schemas/objects/testimonial-section";
 import timeline from "@/sanity/schemas/objects/timeline";
 import home from "@/sanity/schemas/singletons/home";
 import settings from "@/sanity/schemas/singletons/settings";
@@ -44,6 +46,7 @@ export default defineConfig({
       home,
       settings,
       // Documents
+      testimonial,
       duration,
       page,
       project,
@@ -58,6 +61,7 @@ export default defineConfig({
       stat,
       stats,
       feature,
+      testimonialSection,
     ],
   },
   plugins: [

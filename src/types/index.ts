@@ -10,6 +10,7 @@ export enum SectionsList {
   CTA_SECTION = "ctaSection",
   STATS_SECTION = "stats",
   FEATURE_SECTION = "featureSection",
+  TESTIMONIAL_SECTION = "testimonialSection",
 }
 
 export interface Seo {
@@ -33,14 +34,6 @@ export interface Cta {
   variant?: string;
 }
 
-export interface CtaSection {
-  cta?: Cta;
-  description?: string;
-  title?: string;
-  _type: SectionsList.CTA_SECTION;
-  _key: string;
-}
-
 export interface Stat {
   description?: string;
   icon?: CustomImage;
@@ -55,7 +48,13 @@ export interface StatsSection {
   _key: string;
 }
 
-export type PositionImageList = "left" | "right";
+export interface TestimonialSection {
+  testimonials?: TestimonialPayload[];
+  title?: string;
+  _type: SectionsList.TESTIMONIAL_SECTION;
+  _key: string;
+}
+
 export interface FeatureSection {
   content?: PortableTextBlock[];
   image?: CustomImage;
@@ -65,6 +64,16 @@ export interface FeatureSection {
   cta?: Cta;
   _key: string;
 }
+
+export interface CtaSection {
+  cta?: Cta;
+  description?: string;
+  title?: string;
+  _type: SectionsList.CTA_SECTION;
+  _key: string;
+}
+
+export type PositionImageList = "left" | "right";
 
 export interface Hero {
   description?: string;
@@ -101,7 +110,11 @@ export interface ShowcaseProject {
 
 // Page payloads
 
-export type Sections = CtaSection | StatsSection | FeatureSection;
+export type Sections =
+  | CtaSection
+  | StatsSection
+  | FeatureSection
+  | TestimonialSection;
 
 export interface HomePagePayload {
   footer?: PortableTextBlock[];
@@ -140,4 +153,11 @@ export interface SettingsPayload {
   menuItems?: MenuItem[];
   title?: string;
   seo?: Seo;
+}
+
+export interface TestimonialPayload {
+  image?: CustomImage;
+  name?: string;
+  rating?: number;
+  review?: string;
 }

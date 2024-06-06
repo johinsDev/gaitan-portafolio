@@ -24,40 +24,60 @@ export const homePageQuery = groq`
       },
       image,
     },
-    showcaseProjects[]->{
-      _type,
-      coverImage,
-      overview,
-      "slug": slug.current,
-      tags,
-      title,
-    },
     sections[]{
       ...,
       _type,
       title,
-      description,
-      content,
-      stats[]{
-        description,
-        icon,
-        title,
-        value,
-      },
-      image,
-      position,
-      cta{
-        externalLink,
-        link->{
-          _type,
-          "slug": slug.current,
-          title
+      _type == "testimonialSection" => {
+        ...,
+        testimonials[]->{
+          ...,
+          image,
+          name,
+          review,
+          rating,
         },
-        title,
-        variant,
+      },
+      _type == "stats" => {
+        ...,
+        stats[]{
+          description,
+          icon,
+          title,
+          value,
+        },
+      },
+      _type == "ctaSection" => {
+        ...,
+        description,
+        cta{
+          externalLink,
+          link->{
+            _type,
+            "slug": slug.current,
+            title
+          },
+          title,
+          variant,
+        },
+      },
+      _type == "featureSection" => {
+        ...,
+        content,
+        image,
+        position,
+        cta{
+          externalLink,
+          link->{
+            _type,
+            "slug": slug.current,
+            title
+          },
+          title,
+          variant,
+        },
       },
     },
-    title,
   }
 `;
 
