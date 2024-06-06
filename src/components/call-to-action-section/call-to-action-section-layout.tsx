@@ -1,5 +1,6 @@
 import { CtaSection } from "@/types";
 import { Cta } from "../cta";
+import { CustomPortableText } from "../shared/CustomPortableText";
 
 type Props = {
   data: CtaSection | null;
@@ -19,7 +20,7 @@ export function CallToActionSectionLayout({ data }: Props) {
           </div>
 
           <div className="text-body1 leading-body1 w-full lg:w-3/4 text-center text-gray-600">
-            {data.description}
+            <CustomPortableText value={data.description as any} />
           </div>
 
           <Cta className="w-40" {...data.cta} />

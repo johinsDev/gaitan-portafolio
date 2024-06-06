@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 
 export default defineType({
   name: "hero",
@@ -16,9 +16,31 @@ export default defineType({
       type: "customImage",
     }),
     defineField({
-      name: "description",
+      name: "content",
       title: "Description",
-      type: "text",
+      type: "array",
+      of: [
+        // Paragraphs
+        defineArrayMember({
+          marks: {
+            annotations: [
+              {
+                name: "link",
+                type: "object",
+                title: "Link",
+                fields: [
+                  {
+                    name: "href",
+                    type: "url",
+                    title: "Url",
+                  },
+                ],
+              },
+            ],
+          },
+          type: "block",
+        }),
+      ],
     }),
     defineField({
       name: "cta",

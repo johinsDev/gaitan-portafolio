@@ -11,7 +11,7 @@ export const homePageQuery = groq`
     },
     hero{
       title,
-      description,
+      content,
       cta{
         externalLink,
         link->{

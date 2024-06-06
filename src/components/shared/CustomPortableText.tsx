@@ -16,6 +16,16 @@ export function CustomPortableText({
   value: PortableTextBlock[];
 }) {
   const components: PortableTextComponents = {
+    listItem: {
+      bullet: ({ children }) => {
+        return (
+          <li className={`flex items-center space-x-2 ml-4 ${paragraphClasses}`}>
+            <div className="size-1.5 bg-foreground rounded-full" />
+            <span>{children}</span>
+          </li>
+        )
+      }
+    },
     block: {
       normal: ({ children }) => {
         return <p className={paragraphClasses}>{children}</p>;

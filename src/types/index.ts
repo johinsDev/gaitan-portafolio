@@ -69,7 +69,7 @@ export interface FeatureSection {
 
 export interface CtaSection {
   cta?: Cta;
-  description?: string;
+  description?: PortableTextBlock[];
   title?: string;
   _type: SectionsList.CTA_SECTION;
   _key: string;
@@ -78,7 +78,7 @@ export interface CtaSection {
 export type PositionImageList = "left" | "right";
 
 export interface Hero {
-  description?: string;
+  content?: PortableTextBlock[];
   image?: CustomImage;
   title?: string;
   cta?: Cta;
