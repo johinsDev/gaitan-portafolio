@@ -26,12 +26,12 @@ const Navbar = (props: Props) => {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <nav className="h-24 bg-foreground text-background flex items-center justify-between px-8">
+      <nav className="h-24 bg-primary text-background flex items-center justify-between px-8">
         <div className="flex items-center gap-4">
           <SheetTrigger asChild>
             <Button
               size="icon"
-              variant="outline-inverted"
+              variant="outline"
               className="lg:hidden size-11"
             >
               <Menu className="h-6 w-6" />
@@ -72,7 +72,7 @@ const Navbar = (props: Props) => {
           })}
         </ul>
 
-        <Button asChild variant="outline-inverted" className="hidden lg:flex">
+        <Button asChild variant="outline" className="hidden lg:flex">
           <Link href={siteConfig.links.contact}>Contacto</Link>
         </Button>
       </nav>

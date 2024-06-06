@@ -16,7 +16,16 @@ export default defineType({
       type: "string",
       description: "The title of your site.",
     }),
-
+    // color theme
+    defineField({
+      name: "theme",
+      title: "Theme",
+      type: "color",
+      description: "The color theme of your site.",
+      options: {
+        disableAlpha: true,
+      },
+    }),
     defineField({
       name: "menuItems",
       title: "Menu Item list",

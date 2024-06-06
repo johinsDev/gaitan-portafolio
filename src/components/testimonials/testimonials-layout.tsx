@@ -12,7 +12,7 @@ export function TestimonialsLayout({ data }: Props) {
   if (!data) return null;
 
   return (
-    <section className="bg-gray-100 py-12 w-full full-width">
+    <section className="bg-accent py-12 w-full full-width">
       <div className="text-sub-title leading-sub-title font-bold text-center">
         {data?.title}
       </div>

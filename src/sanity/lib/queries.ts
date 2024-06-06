@@ -156,5 +156,6 @@ export const settingsQuery = groq`
       image,
       title,
     },
+    theme,
   }
 `;

@@ -30,6 +30,7 @@ import timeline from "@/sanity/schemas/objects/timeline";
 import { youtubeSection } from "@/sanity/schemas/objects/youtube-section";
 import home from "@/sanity/schemas/singletons/home";
 import settings from "@/sanity/schemas/singletons/settings";
+import { colorInput } from "@sanity/color-input";
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
@@ -63,10 +64,11 @@ export default defineConfig({
       stats,
       feature,
       testimonialSection,
-      youtubeSection
+      youtubeSection,
     ],
   },
   plugins: [
+    colorInput(),
     structureTool({
       structure: pageStructure([home, settings]),
     }),

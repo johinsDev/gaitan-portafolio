@@ -12,7 +12,7 @@ export function CallToActionSectionLayout({ data }: Props) {
   }
 
   return (
-    <section className="bg-gray-100 py-12 w-full full-width">
+    <section className="bg-accent py-12 w-full full-width">
       <div className="main_container">
         <div className="w-full rounded-2.5xl aspect-[16/4] py-12 bg-white flex flex-col gap-8 justify-center items-center">
           <div className="text-sub-title leading-sub-title font-bold text-center">
@@ -23,7 +23,7 @@ export function CallToActionSectionLayout({ data }: Props) {
             <CustomPortableText value={data.description as any} />
           </div>
 
-          <Cta className="w-40" {...data.cta} />
+          <Cta  {...data.cta} />
         </div>
       </div>
     </section>
