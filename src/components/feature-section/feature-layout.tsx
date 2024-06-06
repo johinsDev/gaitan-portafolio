@@ -46,7 +46,7 @@ export function FeatureSectionLayout({ data }: Props) {
           <Image
             src={imageUrl}
             width={444}
-            height={300}
+            height={250}
             alt={data?.image?.alt ?? ""}
             blurDataURL={image.asset.metadata.lqip}
             placeholder="blur"

@@ -20,11 +20,10 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col">
-      <Suspense>
-        <Hero />
-      </Suspense>
 
       <Suspense>
+        <Hero />
+
         {home.data?.sections?.map((section) => {
           switch (section._type) {
             case SectionsList.CTA_SECTION:
