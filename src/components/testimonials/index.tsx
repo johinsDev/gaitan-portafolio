@@ -11,10 +11,11 @@ const TestimonialsPreview = dynamic(() => import("./testimonials-preview"));
 type Props = {
   _key: string;
   load?: Singletons;
+  slug?: string;
 };
 
-export async function Testimonials({ _key: key, load }: Props) {
-  const data = await loadSingleton(load);
+export async function Testimonials({ _key: key, load, slug }: Props) {
+  const data = await loadSingleton(load, slug);
 
   const testimonials = getSection<TestimonialSection>(
     data.data.sections ?? [],
@@ -23,7 +24,9 @@ export async function Testimonials({ _key: key, load }: Props) {
   );
 
   if (draftMode().isEnabled) {
-    return <TestimonialsPreview initial={data} _key={key} load={load} />;
+    return (
+      <TestimonialsPreview initial={data} _key={key} load={load} slug={slug} />
+    );
   }
 
   return <TestimonialsLayout data={testimonials} />;

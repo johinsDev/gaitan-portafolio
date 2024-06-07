@@ -17,6 +17,7 @@ type Props = {
   initial: QueryResponseInitial<FullPagePayload>;
   _key: string;
   load?: Singletons;
+  slug?: string;
 };
 
 export default function StatsPreview(props: Props) {
@@ -24,9 +25,11 @@ export default function StatsPreview(props: Props) {
 
   const { data } = useQuery<FullPagePayload>(
     query,
-    {},
     {
-      initial: props.initial,
+      slug: props.slug,
+    },
+    {
+      initial: props.initial!,
     },
   );
 

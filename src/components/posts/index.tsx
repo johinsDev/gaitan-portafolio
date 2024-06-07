@@ -4,9 +4,7 @@ import { draftMode } from "next/headers";
 import { loadBlogPosts } from "@/sanity/loader/loadQuery";
 import { PostsLayout } from "./posts-layout";
 
-const PostsPreview = dynamic(
-  () => import("./posts-preview"),
-);
+const PostsPreview = dynamic(() => import("./posts-preview"));
 
 export async function PostsSection() {
   const data = await loadBlogPosts();

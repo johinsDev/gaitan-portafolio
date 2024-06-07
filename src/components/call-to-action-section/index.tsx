@@ -13,13 +13,14 @@ const CallToActionSectionPreview = dynamic(
 type Props = {
   _key: string;
   load?: Singletons;
+  slug?: string;
 };
 
-export async function CallToActionSection({ _key: key, load }: Props) {
-  const data = await loadSingleton(load);
+export async function CallToActionSection({ _key: key, load, slug }: Props) {
+  const data = await loadSingleton(load, slug);
 
   const cta = getSection<CtaSection>(
-    data?.data.sections ?? [],
+    data?.data?.sections ?? [],
     SectionsList.CTA_SECTION,
     key,
   );

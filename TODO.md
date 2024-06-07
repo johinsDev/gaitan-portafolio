@@ -1,4 +1,3 @@
-contacto navbar
 improve page similar to home
 
 property singleton / filters in frontend / property document

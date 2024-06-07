@@ -54,12 +54,6 @@ export default defineType({
               },
             ],
           },
-          styles: [],
-        }),
-        // Custom blocks
-        defineArrayMember({
-          name: "timeline",
-          type: "timeline",
         }),
         defineField({
           type: "image",
@@ -89,6 +83,40 @@ export default defineType({
                 "Alternative text for screenreaders. Falls back on caption if not set",
             }),
           ],
+        }),
+      ],
+    }),
+    defineField({
+      name: "hero",
+      title: "Hero section",
+      type: "hero",
+    }),
+    // define array of sections
+    defineField({
+      name: "sections",
+      title: "Sections",
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "ctaSection",
+        }),
+        defineArrayMember({
+          type: "stats",
+        }),
+        defineArrayMember({
+          type: "featureSection",
+        }),
+        defineArrayMember({
+          type: "testimonialSection",
+        }),
+        defineArrayMember({
+          type: "youtubeSection",
+        }),
+        defineArrayMember({
+          type: "accordion",
+        }),
+        defineArrayMember({
+          type: "know_more",
         }),
       ],
     }),

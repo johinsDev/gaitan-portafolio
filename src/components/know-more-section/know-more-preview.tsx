@@ -12,6 +12,7 @@ type Props = {
   initial: QueryResponseInitial<FullPagePayload>;
   _key: string;
   load?: Singletons;
+  slug?: string;
 };
 
 export default function KnowMorePreview(props: Props) {
@@ -19,11 +20,14 @@ export default function KnowMorePreview(props: Props) {
 
   const { data } = useQuery<FullPagePayload>(
     query,
-    {},
     {
-      initial: props.initial,
+      slug: props.slug,
+    },
+    {
+      initial: props.initial!,
     },
   );
+
   const accordion = getSection<KnowMore>(
     data?.sections ?? [],
     SectionsList.KNOW_MORE,

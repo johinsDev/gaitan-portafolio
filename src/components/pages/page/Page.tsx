@@ -1,6 +1,9 @@
+import { Hero } from "@/components/hero";
+import { HeroSkeleton } from "@/components/hero/hero-skeleton";
+import { Sections } from "@/components/sections";
 import { CustomPortableText } from "@/components/shared/CustomPortableText";
-import { Header } from "@/components/shared/Header";
 import type { PagePayload } from "@/types";
+import { Suspense } from "react";
 
 export interface PageProps {
   data: PagePayload | null;
@@ -14,7 +17,9 @@ export function Page({ data }: PageProps) {
     <div>
       <div className="mb-14">
         {/* Header */}
-        <Header title={title} description={seo?.description} />
+        <Suspense fallback={<HeroSkeleton />}>
+          <Hero />
+        </Suspense>
 
         {/* Body */}
         {body && (
@@ -25,6 +30,10 @@ export function Page({ data }: PageProps) {
         )}
       </div>
       <div className="absolute left-0 w-screen border-t" />
+
+      <Suspense>
+        <Sections />
+      </Suspense>
     </div>
   );
 }

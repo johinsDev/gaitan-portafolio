@@ -15,10 +15,11 @@ const FeaturePreview = dynamic(() => import("./accordion-preview"));
 type Props = {
   _key: string;
   load?: Singletons;
+  slug?: string;
 };
 
-export async function AccordionSection({ _key: key, load }: Props) {
-  const data = await loadSingleton(load);
+export async function AccordionSection({ _key: key, load, slug }: Props) {
+  const data = await loadSingleton(load, slug);
 
   const feature = getSection<TypeAccordionSection>(
     data.data.sections ?? [],
@@ -27,7 +28,7 @@ export async function AccordionSection({ _key: key, load }: Props) {
   );
 
   if (draftMode().isEnabled) {
-    return <FeaturePreview initial={data} _key={key} load={load} />;
+    return <FeaturePreview initial={data} _key={key} load={load} slug={slug} />;
   }
 
   return <AccordionSectionLayout data={feature} />;

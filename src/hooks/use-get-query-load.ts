@@ -3,6 +3,7 @@ import {
   blogPageQuery,
   coursePageQuery,
   homePageQuery,
+  pagesBySlugQuery,
   resourcesPageQuery,
 } from "@/sanity/lib/queries";
 import { Singletons } from "@/types";
@@ -19,6 +20,8 @@ export function useGetQueryLoad(load?: Singletons) {
       return resourcesPageQuery;
     case Singletons.BLOG:
       return blogPageQuery;
+    case Singletons.PAGE:
+      return pagesBySlugQuery;
     default:
       return homePageQuery;
   }

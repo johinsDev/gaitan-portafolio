@@ -9,14 +9,15 @@ const HeroPreview = dynamic(() => import("./hero-preview"));
 
 type HeroProps = {
   load?: Singletons;
+  slug?: string;
 };
 
-export async function Hero({ load = Singletons.HOME }: HeroProps) {
-  const data = await loadSingleton(load);
+export async function Hero({ load = Singletons.HOME, slug }: HeroProps) {
+  const data = await loadSingleton(load, slug);
 
   if (draftMode().isEnabled) {
     return <HeroPreview initial={data} load={load} />;
   }
 
-  return <HeroLayout hero={data?.data.hero} />;
+  return <HeroLayout hero={data?.data?.hero} />;
 }

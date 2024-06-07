@@ -10,10 +10,11 @@ import { YoutubeSection } from "./youtube-section";
 
 type SectionProps = {
   load?: Singletons;
+  slug?: string;
 };
 
-export async function Sections({ load = Singletons.HOME }: SectionProps) {
-  const data = await loadSingleton(load);
+export async function Sections({ load = Singletons.HOME, slug }: SectionProps) {
+  const data = await loadSingleton(load, slug);
 
   return (
     <>
@@ -25,13 +26,26 @@ export async function Sections({ load = Singletons.HOME }: SectionProps) {
                 _key={section._key}
                 key={section._key}
                 load={load}
+                slug={slug}
               />
             );
           case SectionsList.STATS_SECTION:
-            return <Stats key={section._key} _key={section._key} load={load} />;
+            return (
+              <Stats
+                key={section._key}
+                _key={section._key}
+                load={load}
+                slug={slug}
+              />
+            );
           case SectionsList.FEATURE_SECTION:
             return (
-              <Feature key={section._key} _key={section._key} load={load} />
+              <Feature
+                key={section._key}
+                _key={section._key}
+                load={load}
+                slug={slug}
+              />
             );
           case SectionsList.TESTIMONIAL_SECTION:
             return (
@@ -39,6 +53,7 @@ export async function Sections({ load = Singletons.HOME }: SectionProps) {
                 key={section._key}
                 _key={section._key}
                 load={load}
+                slug={slug}
               />
             );
           case SectionsList.YOUTUBE_SECTION:
@@ -47,6 +62,7 @@ export async function Sections({ load = Singletons.HOME }: SectionProps) {
                 key={section._key}
                 _key={section._key}
                 load={load}
+                slug={slug}
               />
             );
           case SectionsList.ACCORDION_SECTION:
@@ -55,6 +71,7 @@ export async function Sections({ load = Singletons.HOME }: SectionProps) {
                 key={section._key}
                 _key={section._key}
                 load={load}
+                slug={slug}
               />
             );
           case SectionsList.KNOW_MORE:
@@ -63,6 +80,7 @@ export async function Sections({ load = Singletons.HOME }: SectionProps) {
                 key={section._key}
                 _key={section._key}
                 load={load}
+                slug={slug}
               />
             );
           default:

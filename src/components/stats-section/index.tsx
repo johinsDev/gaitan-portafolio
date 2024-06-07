@@ -11,10 +11,11 @@ const StatsPreview = dynamic(() => import("./stats-preview"));
 type Props = {
   _key: string;
   load?: Singletons;
+  slug?: string;
 };
 
-export async function Stats({ _key: key, load }: Props) {
-  const data = await loadSingleton(load);
+export async function Stats({ _key: key, load, slug }: Props) {
+  const data = await loadSingleton(load, slug);
 
   const stats = getSection<StatsSection>(
     data.data.sections ?? [],
@@ -23,7 +24,7 @@ export async function Stats({ _key: key, load }: Props) {
   );
 
   if (draftMode().isEnabled) {
-    return <StatsPreview initial={data} _key={key} load={load} />;
+    return <StatsPreview initial={data} _key={key} load={load} slug={slug} />;
   }
 
   return <StatsLAyout data={stats} />;

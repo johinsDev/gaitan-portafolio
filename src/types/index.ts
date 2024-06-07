@@ -149,6 +149,7 @@ export enum Singletons {
   COURSE = "course",
   RESOURCES = "resources",
   BLOG = "blog",
+  PAGE = "page",
 }
 
 export interface HomePagePayload extends FullPagePayload {
@@ -167,12 +168,10 @@ export interface CoursePagePayload extends FullPagePayload {
   _type: Singletons.COURSE;
 }
 
-export interface PagePayload {
+export interface PagePayload extends FullPagePayload {
   body?: PortableTextBlock[];
   name?: string;
-  title?: string;
   slug?: string;
-  seo?: Seo;
 }
 
 export interface ProjectPayload {

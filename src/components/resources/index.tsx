@@ -4,9 +4,7 @@ import { draftMode } from "next/headers";
 import { loadResources } from "@/sanity/loader/loadQuery";
 import { ResourcesLayout } from "./resources-layout";
 
-const ResourcesPreview = dynamic(
-  () => import("./resources-preview"),
-);
+const ResourcesPreview = dynamic(() => import("./resources-preview"));
 
 export async function ResourcesSection() {
   const data = await loadResources();

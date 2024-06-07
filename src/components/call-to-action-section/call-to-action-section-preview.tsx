@@ -9,9 +9,10 @@ import { QueryResponseInitial } from "@sanity/react-loader";
 import { CallToActionSectionLayout } from "./call-to-action-section-layout";
 
 type Props = {
-  initial: QueryResponseInitial<FullPagePayload>;
+  initial?: QueryResponseInitial<FullPagePayload>;
   _key: string;
   load?: Singletons;
+  slug?: string;
 };
 
 export default function CallToActionSectionPreview(props: Props) {
@@ -19,9 +20,11 @@ export default function CallToActionSectionPreview(props: Props) {
 
   const { data } = useQuery<FullPagePayload>(
     query,
-    {},
     {
-      initial: props.initial,
+      slug: props.slug,
+    },
+    {
+      initial: props.initial!,
     },
   );
 

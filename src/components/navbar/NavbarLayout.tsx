@@ -24,7 +24,6 @@ const Navbar = (props: Props) => {
 
   const menuItems = settings?.menuItems || ([] as MenuItem[]);
 
-
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <nav className="h-24 bg-primary text-background flex items-center justify-between px-8">

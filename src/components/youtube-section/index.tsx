@@ -15,10 +15,11 @@ const YoutubeSectionPreview = dynamic(() => import("./youtube-preview"));
 type Props = {
   _key: string;
   load?: Singletons;
+  slug?: string;
 };
 
-export async function YoutubeSection({ _key: key, load }: Props) {
-  const data = await loadSingleton(load);
+export async function YoutubeSection({ _key: key, load, slug }: Props) {
+  const data = await loadSingleton(load, slug);
 
   const feature = getSection<YoutubeSectionPayload>(
     data.data.sections ?? [],
@@ -27,7 +28,14 @@ export async function YoutubeSection({ _key: key, load }: Props) {
   );
 
   if (draftMode().isEnabled) {
-    return <YoutubeSectionPreview initial={data} _key={key} load={load} />;
+    return (
+      <YoutubeSectionPreview
+        initial={data}
+        _key={key}
+        load={load}
+        slug={slug}
+      />
+    );
   }
 
   return <YoutubeSectionLayout data={feature} />;
