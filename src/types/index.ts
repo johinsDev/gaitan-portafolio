@@ -12,6 +12,7 @@ export enum SectionsList {
   FEATURE_SECTION = "featureSection",
   TESTIMONIAL_SECTION = "testimonialSection",
   YOUTUBE_SECTION = "youtubeSection",
+  ACCORDION_SECTION = "accordion",
 }
 
 export interface Seo {
@@ -127,7 +128,8 @@ export type Sections =
   | StatsSection
   | FeatureSection
   | TestimonialSection
-  | YoutubeSection;
+  | YoutubeSection
+  | AccordionSection;
 
 export interface HomePagePayload {
   footer?: PortableTextBlock[];
@@ -171,6 +173,18 @@ export interface SettingsPayload {
     _type: "color";
     hex: string;
   } | null;
+}
+
+export interface AccordionSection {
+  title?: string;
+  description?: PortableTextBlock[];
+  items?: {
+    title?: string;
+    description?: PortableTextBlock[];
+    _key: string;
+  }[];
+  _type: SectionsList.ACCORDION_SECTION;
+  _key: string;
 }
 
 export interface TestimonialPayload {

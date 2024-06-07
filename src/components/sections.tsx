@@ -4,6 +4,7 @@ import { Stats } from "@/components/stats-section";
 import { Testimonials } from "@/components/testimonials";
 import { loadHomePage } from "@/sanity/loader/loadQuery";
 import { SectionsList } from "@/types";
+import { AccordionSection } from "./accordion-section";
 import { YoutubeSection } from "./youtube-section";
 
 export async function Sections() {
@@ -24,6 +25,8 @@ export async function Sections() {
           return <Testimonials key={section._key} _key={section._key} />;
         case SectionsList.YOUTUBE_SECTION:
           return <YoutubeSection key={section._key} _key={section._key} />;
+        case SectionsList.ACCORDION_SECTION:
+          return <AccordionSection key={section._key} _key={section._key} />;
         default:
           return null;
       }

@@ -1,6 +1,3 @@
-theme values
-
-accordion section
 know more section images
 footer
 course singleton

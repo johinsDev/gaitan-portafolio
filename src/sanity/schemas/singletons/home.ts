@@ -47,6 +47,9 @@ export default defineType({
         defineArrayMember({
           type: "youtubeSection",
         }),
+        defineArrayMember({
+          type: "accordion",
+        }),
       ],
     }),
     defineField({

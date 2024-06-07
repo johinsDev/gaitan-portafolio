@@ -84,6 +84,15 @@ export const homePageQuery = groq`
         url,
         videoTitle,
       },
+      _type == "accordion" => {
+        ...,
+        title,
+        items[]{
+          ...,
+          description,
+          title,
+        },
+      },
       _type == "featureSection" => {
         ...,
         content,
