@@ -12,21 +12,21 @@ export default async function RootLayout({
 
   const theme = generateTheme({
     darkOptions: {
-      backgroundStyle: 'black',
-      color: '#BD0BFE',
-      isCardsAndBackgroundSameColor: false
+      backgroundStyle: "black",
+      color: "#BD0BFE",
+      isCardsAndBackgroundSameColor: false,
     },
     lightOptions: {
-      backgroundStyle: 'white',
-      color: settings.data.theme?.hex ?? '#000000',
-      isCardsAndBackgroundSameColor: false
-    }
+      backgroundStyle: "white",
+      color: settings.data.theme?.hex ?? "#000000",
+      isCardsAndBackgroundSameColor: false,
+    },
   });
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <head >
-        <style >
+      <head>
+        <style>
           {`
             :root {
               --background: ${theme.light["--background"]};

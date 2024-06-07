@@ -13,6 +13,7 @@ export enum SectionsList {
   TESTIMONIAL_SECTION = "testimonialSection",
   YOUTUBE_SECTION = "youtubeSection",
   ACCORDION_SECTION = "accordion",
+  KNOW_MORE = "know_more",
 }
 
 export interface Seo {
@@ -49,6 +50,15 @@ export interface StatsSection {
   stats?: Stat[];
   title?: string;
   _type: SectionsList.STATS_SECTION;
+  _key: string;
+}
+
+export interface KnowMore {
+  customPortableText?: PortableTextBlock[];
+  description?: PortableTextBlock[];
+  gallery?: Gallery;
+  title?: string;
+  _type: SectionsList.KNOW_MORE;
   _key: string;
 }
 
@@ -129,7 +139,8 @@ export type Sections =
   | FeatureSection
   | TestimonialSection
   | YoutubeSection
-  | AccordionSection;
+  | AccordionSection
+  | KnowMore;
 
 export interface HomePagePayload {
   footer?: PortableTextBlock[];
@@ -192,6 +203,17 @@ export interface TestimonialPayload {
   name?: string;
   rating?: number;
   review?: string;
+}
+
+type GalleryImage = CustomImage["image"] & {
+  alt?: string;
+};
+
+export type GalleryDisplay = "stacked" | "inline" | "carousel";
+export interface Gallery {
+  images: GalleryImage[];
+  display: GalleryDisplay;
+  zoom: boolean;
 }
 
 export type ColorVariables = {

@@ -93,6 +93,22 @@ export const homePageQuery = groq`
           title,
         },
       },
+      _type == "know_more" => {
+        ...,
+        customPortableText,
+        description,
+        gallery{
+          ...,
+          images[]{
+            ...,
+            asset->{
+              ...,
+              "_ref": _id,
+            },
+          },
+        },
+        title,
+      },
       _type == "featureSection" => {
         ...,
         content,

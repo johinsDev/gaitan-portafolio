@@ -8,7 +8,6 @@ export function HeroSkeleton() {
           <div className="h-10 md:h-16 w-1/2 md:w-1/3 bg-gray-200" />
         </div>
 
-
         <div className="w-40 mt-10 h-[50px] bg-gray-200" />
       </div>
 

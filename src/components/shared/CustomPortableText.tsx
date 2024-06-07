@@ -19,12 +19,14 @@ export function CustomPortableText({
     listItem: {
       bullet: ({ children }) => {
         return (
-          <li className={`flex items-center space-x-2 ml-4 ${paragraphClasses}`}>
+          <li
+            className={`flex items-center space-x-2 ml-4 ${paragraphClasses}`}
+          >
             <div className="size-1.5 bg-foreground rounded-full" />
             <span>{children}</span>
           </li>
-        )
-      }
+        );
+      },
     },
     block: {
       normal: ({ children }) => {

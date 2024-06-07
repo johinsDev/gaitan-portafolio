@@ -3,7 +3,10 @@ import { draftMode } from "next/headers";
 
 import { getSection } from "@/sanity/lib/utils";
 import { loadHomePage } from "@/sanity/loader/loadQuery";
-import { SectionsList, AccordionSection as TypeAccordionSection } from "@/types";
+import {
+  SectionsList,
+  AccordionSection as TypeAccordionSection,
+} from "@/types";
 import { AccordionSectionLayout } from "./accordion-layout";
 
 const FeaturePreview = dynamic(() => import("./accordion-preview"));

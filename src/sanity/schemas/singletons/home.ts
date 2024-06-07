@@ -50,6 +50,9 @@ export default defineType({
         defineArrayMember({
           type: "accordion",
         }),
+        defineArrayMember({
+          type: "know_more",
+        }),
       ],
     }),
     defineField({

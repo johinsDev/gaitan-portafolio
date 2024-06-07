@@ -29,11 +29,7 @@ const Navbar = (props: Props) => {
       <nav className="h-24 bg-primary text-background flex items-center justify-between px-8">
         <div className="flex items-center gap-4">
           <SheetTrigger asChild>
-            <Button
-              size="icon"
-              variant="outline"
-              className="lg:hidden size-11"
-            >
+            <Button size="icon" variant="outline" className="lg:hidden size-11">
               <Menu className="h-6 w-6" />
               <span className="sr-only">Toggle Menu</span>
             </Button>

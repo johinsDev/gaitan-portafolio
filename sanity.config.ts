@@ -20,8 +20,10 @@ import cta from "@/sanity/schemas/objects/cta";
 import ctaSection from "@/sanity/schemas/objects/cta-section";
 import duration from "@/sanity/schemas/objects/duration";
 import feature from "@/sanity/schemas/objects/feature";
+import gallery from "@/sanity/schemas/objects/gallery";
 import hero from "@/sanity/schemas/objects/hero";
 import image from "@/sanity/schemas/objects/image";
+import knowMore from "@/sanity/schemas/objects/know-more";
 import milestone from "@/sanity/schemas/objects/milestone";
 import seo from "@/sanity/schemas/objects/seo";
 import stat from "@/sanity/schemas/objects/stat";
@@ -67,6 +69,8 @@ export default defineConfig({
       testimonialSection,
       youtubeSection,
       accordion,
+      gallery,
+      knowMore,
     ],
   },
   plugins: [

@@ -3,7 +3,7 @@ import Color from "color";
 import convert from "color-convert";
 
 export function convertCssVarToHSLNumbers(
-  cssVar: string
+  cssVar: string,
 ): [number, number, number] {
   const [h, s, l] = cssVar.split(" "); // 0 0% 0%
   return [+h.replace("%", ""), +s.replace("%", ""), +l.replace("%", "")];

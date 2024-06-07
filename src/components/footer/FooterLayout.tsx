@@ -1,18 +1,18 @@
-import type { PortableTextBlock } from 'next-sanity'
+import type { PortableTextBlock } from "next-sanity";
 
-import { CustomPortableText } from '@/components//shared/CustomPortableText'
-import type { SettingsPayload } from '@/types'
-import Link from 'next/link'
+import { CustomPortableText } from "@/components//shared/CustomPortableText";
+import type { SettingsPayload } from "@/types";
+import Link from "next/link";
 
 interface FooterProps {
-  data: SettingsPayload
+  data: SettingsPayload;
 }
 export default function Footer(props: FooterProps) {
-  const { data } = props
+  const { data } = props;
 
-  const footer = data?.footer || ([] as PortableTextBlock[])
+  const footer = data?.footer || ([] as PortableTextBlock[]);
 
-  const menuItems = data?.menuItems || []
+  const menuItems = data?.menuItems || [];
 
   return (
     <footer className="flex items-center justify-between bg-primary bottom-0 w-full py-12 text-primary-foreground text-center md:py-20">
@@ -27,7 +27,7 @@ export default function Footer(props: FooterProps) {
           <ul className="flex items-center flex-col justify-center gap-4">
             {menuItems.map((item, index) => (
               <li key={index}>
-                <Link href={item.slug || '/'}>{item.title}</Link>
+                <Link href={item.slug || "/"}>{item.title}</Link>
               </li>
             ))}
           </ul>
@@ -41,5 +41,5 @@ export default function Footer(props: FooterProps) {
         )}
       </div>
     </footer>
-  )
+  );
 }

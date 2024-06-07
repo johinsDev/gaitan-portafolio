@@ -23,7 +23,7 @@ export function CallToActionSectionLayout({ data }: Props) {
             <CustomPortableText value={data.description as any} />
           </div>
 
-          <Cta  {...data.cta} />
+          <Cta {...data.cta} />
         </div>
       </div>
     </section>

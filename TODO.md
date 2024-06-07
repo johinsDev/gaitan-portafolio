@@ -1,5 +1,3 @@
-know more section images
-
 course singleton
 about singleton
 resources singleton
