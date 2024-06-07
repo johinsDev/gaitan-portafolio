@@ -1,3 +1,4 @@
+import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { _generateMetadata } from "@/sanity/lib/utils";
@@ -36,7 +37,9 @@ export default function RootLayout({
           <Navbar />
         </Suspense>
         <main className="main_container flex-grow pt-16">{children}</main>
-        <footer className="w-full flex items-center justify-center py-3 h-28 bg-foreground"></footer>
+        <Suspense>
+          <Footer />
+        </Suspense>
       </div>
       {draftMode().isEnabled && <LiveVisualEditing />}
     </ThemeProvider>

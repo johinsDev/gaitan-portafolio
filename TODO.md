@@ -1,5 +1,5 @@
 know more section images
-footer
+
 course singleton
 about singleton
 resources singleton
