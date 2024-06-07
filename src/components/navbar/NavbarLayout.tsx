@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/sheet";
-import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/cn";
 import { resolveHref } from "@/sanity/lib/utils";
 import { MenuItem, SettingsPayload } from "@/types";
@@ -10,6 +9,7 @@ import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { Cta } from "../cta";
 
 type Props = {
   settings: SettingsPayload;
@@ -23,6 +23,7 @@ const Navbar = (props: Props) => {
   const { settings } = props;
 
   const menuItems = settings?.menuItems || ([] as MenuItem[]);
+
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -68,9 +69,7 @@ const Navbar = (props: Props) => {
           })}
         </ul>
 
-        <Button asChild variant="outline" className="hidden lg:flex">
-          <Link href={siteConfig.links.contact}>Contacto</Link>
-        </Button>
+        <Cta className="hidden lg:flex" {...settings.contactCta} />
       </nav>
 
       <SheetContent side="left" className="sm:max-w-xs">
@@ -92,9 +91,7 @@ const Navbar = (props: Props) => {
             );
           })}
 
-          <Button asChild size="lg" variant="outline" className="lg:hidden">
-            <Link href={siteConfig.links.contact}>Contacto</Link>
-          </Button>
+          <Cta {...settings.contactCta} variant="primary" />
         </nav>
       </SheetContent>
     </Sheet>

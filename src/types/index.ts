@@ -200,6 +200,7 @@ export interface SettingsPayload {
     _type: "color";
     hex: string;
   } | null;
+  contactCta?: Cta;
 }
 
 export interface AccordionSection {

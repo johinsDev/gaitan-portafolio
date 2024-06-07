@@ -26,6 +26,13 @@ export default defineType({
         disableAlpha: true,
       },
     }),
+    // define contact cta
+    defineField({
+      name: "contactCta",
+      title: "Contact CTA",
+      description: "The text displayed on the contact CTA.",
+      type: "cta",
+    }),
     defineField({
       name: "menuItems",
       title: "Menu Item list",
