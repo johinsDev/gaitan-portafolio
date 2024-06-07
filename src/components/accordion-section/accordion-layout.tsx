@@ -15,8 +15,6 @@ type Props = {
 export function AccordionSectionLayout({ data }: Props) {
   if (!data) return null;
 
-  console.log(data);
-
   return (
     <section className="flex flex-col items-center justify-between gap-8 py-12">
       <div className="text-sub-title leading-sub-title font-bold text-center">

@@ -12,8 +12,6 @@ type Props = {
 export function KnowMoreSectionLayout({ data }: Props) {
   if (!data) return null;
 
-  console.log(data);
-
   return (
     <section className="bg-gray-200 py-12 mt-24 w-full full-width">
       <div className="text-sub-title leading-sub-title font-bold text-center">

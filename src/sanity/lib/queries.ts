@@ -147,6 +147,12 @@ export const aboutPageQuery = groq`
   }
 `;
 
+export const coursePageQuery = groq`
+  *[_type == "course"][0]{
+   ${DEFAULT_QUERY}
+  }
+`;
+
 export const pagesBySlugQuery = groq`
   *[_type == "page" && slug.current == $slug][0] {
     _id,

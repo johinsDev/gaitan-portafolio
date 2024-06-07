@@ -25,6 +25,9 @@ export default defineType({
         {
           type: "about",
         },
+        {
+          type: "course",
+        },
       ],
     }),
     defineField({

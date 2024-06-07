@@ -146,6 +146,7 @@ export enum Singletons {
   ABOUT = "about",
   HOME = "home",
   SETTINGS = "settings",
+  COURSE = "course",
 }
 
 export interface HomePagePayload extends FullPagePayload {
@@ -154,6 +155,10 @@ export interface HomePagePayload extends FullPagePayload {
 
 export interface AboutPagePayload extends FullPagePayload {
   _type: Singletons.ABOUT;
+}
+
+export interface CoursePagePayload extends FullPagePayload {
+  _type: Singletons.COURSE;
 }
 
 export interface PagePayload {

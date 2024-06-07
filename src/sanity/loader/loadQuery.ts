@@ -6,6 +6,7 @@ import { draftMode } from "next/headers";
 import { client } from "@/sanity/lib/client";
 import {
   aboutPageQuery,
+  coursePageQuery,
   homePageQuery,
   pagesBySlugQuery,
   projectBySlugQuery,
@@ -105,6 +106,14 @@ export function loadAboutPage() {
   );
 }
 
+export function loadCoursePage() {
+  return loadQuery<AboutPagePayload>(
+    coursePageQuery,
+    {},
+    { next: { tags: ["course", "page"] } },
+  );
+}
+
 export function loadSingleton(load?: Singletons) {
   if (load === Singletons.ABOUT) {
     return loadAboutPage();
@@ -112,6 +121,10 @@ export function loadSingleton(load?: Singletons) {
 
   if (load === Singletons.HOME) {
     return loadHomePage();
+  }
+
+  if (load === Singletons.COURSE) {
+    return loadCoursePage();
   }
 
   return loadHomePage();
