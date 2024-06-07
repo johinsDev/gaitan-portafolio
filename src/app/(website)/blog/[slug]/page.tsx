@@ -1,72 +1,59 @@
-import Facebook from "@/components/blog/icons/facebook";
-import Linkedin from "@/components/blog/icons/linkedin";
-import Twitter from "@/components/blog/icons/twitter";
-import WhatsApp from "@/components/blog/icons/whatsapp";
+
+import { CustomPortableText } from "@/components/shared/CustomPortableText";
+import { _generateMetadata, urlForImage } from "@/sanity/lib/utils";
+import { generateStaticSlugs } from "@/sanity/loader/generateStaticSlugs";
+import { loadBlog } from "@/sanity/loader/loadQuery";
+import { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 
-export default function BlogDetail() {
+const Share = dynamic(() => import("@/components/post/share").then((mod) => mod.Share), { ssr: false });
+
+type Props = {
+  params: { slug: string };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { data: page } = await loadBlog(params.slug);
+
+  return _generateMetadata({
+    description: page?.seo?.description ?? page?.content,
+    image: page?.seo?.image ?? page?.image?.image,
+    title: page?.seo?.title ?? page?.title,
+  });
+}
+
+export function generateStaticParams() {
+  return generateStaticSlugs("post");
+}
+
+
+export default async function BlogDetail({ params }: Props) {
+  const { data: blog } = await loadBlog(params.slug)
+
+  const image = blog?.image?.image && urlForImage(blog.image.image)?.width(1200).height(450).fit("crop").url()
+
   return (
     <div className="flex flex-col gap-4">
-      <Image
-        src="/real-estate.jpg"
+      {image && <Image
+        src={image}
         width={1200}
         height={450}
-        alt="Real Estate"
+        alt={blog?.image?.alt ?? "blog"}
+        placeholder="blur"
+        blurDataURL={blog?.image?.image?.asset.metadata.lqip}
         className="object-cover w-full aspect-square lg:aspect-[16/6] rounded-2xl"
-      />
+      />}
 
       <div className="text-sub-title leading-sub-title font-bold text-center mt-8">
-        Título de la entrada del blog (H1)
+        {blog?.title}
       </div>
 
-      <div className="flex items-center gap-2 mt-8">
-        <a
-          href="https://www.facebook.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Facebook width={24} height={24} className="text-[#0866FF]" />
-        </a>
-
-        <WhatsApp className="w-6 h-6 text-[#25D366]" />
-
-        <Linkedin width={24} height={24} className="text-[#0A66C2]" />
-
-        <Twitter width={24} height={24} className="text-[#1D9BF0]" />
-      </div>
+      <Share post={blog} />
 
       <div className="text-xl font-bold mt-12">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-        in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-        qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit
-        amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
+        <CustomPortableText value={blog?.content as any} />
       </div>
-
-      <section className="bg-gray-200 py-12 mt-24 w-full full-width">
-        <div className="main_container">{/* <CallToAction /> */}</div>
-      </section>
     </div>
   );
 }

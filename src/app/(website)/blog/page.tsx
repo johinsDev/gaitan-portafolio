@@ -1,42 +1,33 @@
-import Image from "next/image";
-import Link from "next/link";
+import { Hero } from "@/components/hero";
+import { HeroSkeleton } from "@/components/hero/hero-skeleton";
+import { PostsSection } from "@/components/posts";
+import { Sections } from "@/components/sections";
+import { _generateMetadata } from "@/sanity/lib/utils";
+import { loadBlogPage } from "@/sanity/loader/loadQuery";
+import { Singletons } from "@/types";
+import { Metadata } from "next";
+import { Suspense } from "react";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { data } = await loadBlogPage();
+
+  return _generateMetadata(data.seo);
+}
 
 export default function Blog() {
   return (
     <div className="flex flex-col gap-4">
-      <div className="text-sub-title leading-sub-title font-bold text-center">
-        Blog
-      </div>
+      <Suspense fallback={<HeroSkeleton />}>
+        <Hero load={Singletons.BLOG} />
+      </Suspense>
 
-      <section className="flex flex-col gap-8 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-          {new Array(18).fill(0).map((_, i) => (
-            <Link
-              href="/blog/1"
-              className="flex flex-col bg-white rounded-2xl overflow-hidden"
-              key={i}
-            >
-              <Image
-                src="/real-estate.jpg"
-                width={370}
-                height={240}
-                alt="Real Estate"
-                className="object-cover w-full aspect-video rounded-2xl"
-              />
+      <Suspense>
+        <PostsSection />
+      </Suspense>
 
-              <div className="p-6 py-2 flex flex-col items-center justify-center text-center">
-                <div className="font-bold text-3xl mt-6">
-                  Título de la entrada del blog
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-gray-200 py-12 mt-24 w-full full-width">
-        <div className="main_container">{/* <CallToAction /> */}</div>
-      </section>
+      <Suspense>
+        <Sections load={Singletons.BLOG} />
+      </Suspense>
     </div>
   );
 }

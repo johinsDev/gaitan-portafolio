@@ -51,6 +51,9 @@ export default defineType({
             {
               type: "resources",
             },
+            {
+              type: "blog",
+            },
           ],
         },
       ],

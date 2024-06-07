@@ -13,6 +13,7 @@ import { apiVersion, dataset, projectId, studioUrl } from "@/sanity/lib/api";
 import * as resolve from "@/sanity/plugins/resolve";
 import { pageStructure, singletonPlugin } from "@/sanity/plugins/settings";
 import page from "@/sanity/schemas/documents/page";
+import post from "@/sanity/schemas/documents/post";
 import project from "@/sanity/schemas/documents/project";
 import resource from "@/sanity/schemas/documents/resource";
 import testimonial from "@/sanity/schemas/documents/testimonial";
@@ -33,6 +34,7 @@ import testimonialSection from "@/sanity/schemas/objects/testimonial-section";
 import timeline from "@/sanity/schemas/objects/timeline";
 import youtubeSection from "@/sanity/schemas/objects/youtube-section";
 import about from "@/sanity/schemas/singletons/about";
+import blog from "@/sanity/schemas/singletons/blog";
 import course from "@/sanity/schemas/singletons/course";
 import home from "@/sanity/schemas/singletons/home";
 import resources from "@/sanity/schemas/singletons/resources";
@@ -57,12 +59,14 @@ export default defineConfig({
       about,
       course,
       resources,
+      blog,
       // Documents
       testimonial,
       duration,
       page,
       project,
       resource,
+      post,
       // Objects
       milestone,
       timeline,
@@ -84,7 +88,14 @@ export default defineConfig({
   plugins: [
     colorInput(),
     structureTool({
-      structure: pageStructure([home, about, course, resources, settings]),
+      structure: pageStructure([
+        home,
+        about,
+        course,
+        resources,
+        blog,
+        settings,
+      ]),
     }),
     presentationTool({
       resolve,
@@ -101,6 +112,7 @@ export default defineConfig({
       about.name,
       course.name,
       resources.name,
+      blog.name,
     ]),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),

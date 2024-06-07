@@ -6,9 +6,12 @@ import { draftMode } from "next/headers";
 import { client } from "@/sanity/lib/client";
 import {
   aboutPageQuery,
+  blogPageQuery,
   coursePageQuery,
   homePageQuery,
   pagesBySlugQuery,
+  postBySlug,
+  postsQuery,
   projectBySlugQuery,
   resourceBySlug,
   resourcesPageQuery,
@@ -18,10 +21,13 @@ import {
 import { token } from "@/sanity/lib/token";
 import {
   AboutPagePayload,
+  BlogPagePayload,
   HomePagePayload,
   PagePayload,
+  Post,
   ProjectPayload,
   Resource,
+  ResourcesPagePayload,
   SettingsPayload,
   Singletons,
 } from "@/types";
@@ -119,7 +125,7 @@ export function loadCoursePage() {
 }
 
 export function loadResourcePage() {
-  return loadQuery<AboutPagePayload>(
+  return loadQuery<ResourcesPagePayload>(
     resourcesPageQuery,
     {},
     { next: { tags: ["resources", "page"] } }
@@ -142,6 +148,30 @@ export function loadResource(slug: string) {
   );
 }
 
+export function loadBlogPage() {
+  return loadQuery<BlogPagePayload>(
+    blogPageQuery,
+    {},
+    { next: { tags: ["blog", "page"] } }
+  );
+}
+
+export function loadBlog(slug: string) {
+  return loadQuery<Post | null>(
+    postBySlug,
+    { slug },
+    { next: { tags: [`post:${slug}`] } }
+  );
+}
+
+export function loadBlogPosts() {
+  return loadQuery<Post[]>(
+    postsQuery,
+    {},
+    { next: { tags: ["blog", "posts"] } }
+  );
+}
+
 export function loadSingleton(load?: Singletons) {
   if (load === Singletons.ABOUT) {
     return loadAboutPage();
@@ -157,6 +187,10 @@ export function loadSingleton(load?: Singletons) {
 
   if (load === Singletons.RESOURCES) {
     return loadResourcePage();
+  }
+
+  if (load === Singletons.BLOG) {
+    return loadBlogPage();
   }
 
   return loadHomePage();

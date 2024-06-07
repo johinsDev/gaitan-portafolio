@@ -1,13 +1,13 @@
 // define testimonial schema document, name, review, rating, image
 
-import { DocumentIcon } from "@sanity/icons";
+import { User2 } from "lucide-react";
 import { defineField, defineType } from "sanity";
 
 export default defineType({
   name: "testimonial",
   title: "Testimonial",
   type: "document",
-  icon: DocumentIcon,
+  icon: User2,
   fields: [
     defineField({
       type: "string",

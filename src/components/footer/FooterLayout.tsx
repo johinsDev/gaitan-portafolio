@@ -24,7 +24,7 @@ export default function Footer(props: FooterProps) {
             </p>
           </Link>
 
-          <ul className="flex items-center flex-col justify-center gap-4">
+          <ul className="flex items-start flex-col justify-center gap-4">
             {menuItems.map((item, index) => (
               <li key={index}>
                 <Link href={item.slug || "/"}>{item.title}</Link>

@@ -1,11 +1,12 @@
-import { DocumentIcon, ImageIcon } from "@sanity/icons";
+import { ImageIcon } from "@sanity/icons";
+import { ChromeIcon } from "lucide-react";
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 export default defineType({
   type: "document",
   name: "page",
   title: "Page",
-  icon: DocumentIcon,
+  icon: ChromeIcon,
   fields: [
     defineField({
       type: "string",

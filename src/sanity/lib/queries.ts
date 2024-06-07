@@ -159,6 +159,12 @@ export const resourcesPageQuery = groq`
   }
 `;
 
+export const blogPageQuery = groq`
+  *[_type == "blog"][0]{
+   ${DEFAULT_QUERY}
+  }
+`;
+
 export const pagesBySlugQuery = groq`
   *[_type == "page" && slug.current == $slug][0] {
     _id,
@@ -233,6 +239,46 @@ export const resourceBySlug = groq`
     _id,
     seo,
     description,
+    image{
+      ...,
+      image{
+        asset->{
+          ...,
+          "_ref": _id,
+        },
+      },
+    },
+    title,
+    "slug": slug.current,
+  }
+`;
+
+export const postsQuery = groq`
+  *[_type == "post"]{
+    ...,
+    _id,
+    seo,
+    content,
+    image{
+      ...,
+      image{
+        asset->{
+          ...,
+          "_ref": _id,
+        },
+      },
+    },
+    title,
+    "slug": slug.current,
+  }
+`;
+
+export const postBySlug = groq`
+  *[_type == "post" && slug.current == $slug][0]{
+    ...,
+    _id,
+    seo,
+    content,
     image{
       ...,
       image{

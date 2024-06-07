@@ -1,5 +1,6 @@
 import {
   aboutPageQuery,
+  blogPageQuery,
   coursePageQuery,
   homePageQuery,
   resourcesPageQuery,
@@ -16,6 +17,8 @@ export function useGetQueryLoad(load?: Singletons) {
       return coursePageQuery;
     case Singletons.RESOURCES:
       return resourcesPageQuery;
+    case Singletons.BLOG:
+      return blogPageQuery;
     default:
       return homePageQuery;
   }

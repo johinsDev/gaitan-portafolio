@@ -148,6 +148,7 @@ export enum Singletons {
   SETTINGS = "settings",
   COURSE = "course",
   RESOURCES = "resources",
+  BLOG = "blog",
 }
 
 export interface HomePagePayload extends FullPagePayload {
@@ -271,3 +272,17 @@ export type Resource = {
   slug: string;
   seo?: Seo;
 };
+
+export type Post = {
+  _id: string;
+  title: string;
+  slug: string;
+  content: PortableTextBlock[];
+  image: CustomImage;
+  seo?: Seo;
+  _type: string;
+};
+
+export interface BlogPagePayload extends FullPagePayload {
+  _type: Singletons.BLOG;
+}
