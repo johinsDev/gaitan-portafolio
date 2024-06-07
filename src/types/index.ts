@@ -147,6 +147,7 @@ export enum Singletons {
   HOME = "home",
   SETTINGS = "settings",
   COURSE = "course",
+  RESOURCES = "resources",
 }
 
 export interface HomePagePayload extends FullPagePayload {
@@ -155,6 +156,10 @@ export interface HomePagePayload extends FullPagePayload {
 
 export interface AboutPagePayload extends FullPagePayload {
   _type: Singletons.ABOUT;
+}
+
+export interface ResourcesPagePayload extends FullPagePayload {
+  _type: Singletons.RESOURCES;
 }
 
 export interface CoursePagePayload extends FullPagePayload {
@@ -254,5 +259,15 @@ export type FullPagePayload = {
   title?: string;
   hero?: Hero;
   sections?: Sections[];
+  seo?: Seo;
+};
+
+export type Resource = {
+  _id: string;
+  description: PortableTextBlock[];
+  image: CustomImage;
+  title: string;
+  _type: string;
+  slug: string;
   seo?: Seo;
 };

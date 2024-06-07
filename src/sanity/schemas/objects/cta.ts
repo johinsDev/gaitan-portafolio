@@ -28,6 +28,9 @@ export default defineType({
         {
           type: "course",
         },
+        {
+          type: "resources",
+        },
       ],
     }),
     defineField({

@@ -153,6 +153,12 @@ export const coursePageQuery = groq`
   }
 `;
 
+export const resourcesPageQuery = groq`
+  *[_type == "resources"][0]{
+   ${DEFAULT_QUERY}
+  }
+`;
+
 export const pagesBySlugQuery = groq`
   *[_type == "page" && slug.current == $slug][0] {
     _id,
@@ -198,5 +204,45 @@ export const settingsQuery = groq`
       title,
     },
     theme,
+  }
+`;
+
+export const resourcesQuery = groq`
+  *[_type == "resource"]{
+    ...,
+    _id,
+    seo,
+    description,
+    image{
+      ...,
+      image{
+        asset->{
+          ...,
+          "_ref": _id,
+        },
+      },
+    },
+    title,
+    "slug": slug.current,
+  }
+`;
+
+export const resourceBySlug = groq`
+  *[_type == "resource" && slug.current == $slug][0]{
+    ...,
+    _id,
+    seo,
+    description,
+    image{
+      ...,
+      image{
+        asset->{
+          ...,
+          "_ref": _id,
+        },
+      },
+    },
+    title,
+    "slug": slug.current,
   }
 `;

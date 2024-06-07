@@ -1,10 +1,9 @@
-resources singleton
-list blog singleton
-property singleton / filters in frontend
-
-blog document
-resources document
-property document
+resources singleton / resource documenrt
+list blog singleton / blog shared functionalite
+contacto navbar
 improve page similar to home
 
+property singleton / filters in frontend / property document
+
 property ui
+resource ui

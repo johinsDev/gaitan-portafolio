@@ -10,6 +10,9 @@ import {
   homePageQuery,
   pagesBySlugQuery,
   projectBySlugQuery,
+  resourceBySlug,
+  resourcesPageQuery,
+  resourcesQuery,
   settingsQuery,
 } from "@/sanity/lib/queries";
 import { token } from "@/sanity/lib/token";
@@ -18,6 +21,7 @@ import {
   HomePagePayload,
   PagePayload,
   ProjectPayload,
+  Resource,
   SettingsPayload,
   Singletons,
 } from "@/types";
@@ -70,7 +74,7 @@ export function loadSettings() {
   return loadQuery<SettingsPayload>(
     settingsQuery,
     {},
-    { next: { tags: ["settings", "home", "page", "project"] } },
+    { next: { tags: ["settings", "home", "page", "project"] } }
   );
 }
 
@@ -78,7 +82,7 @@ export function loadHomePage() {
   return loadQuery<HomePagePayload>(
     homePageQuery,
     {},
-    { next: { tags: ["home", "project"] } },
+    { next: { tags: ["home", "project"] } }
   );
 }
 
@@ -86,7 +90,7 @@ export function loadProject(slug: string) {
   return loadQuery<ProjectPayload | null>(
     projectBySlugQuery,
     { slug },
-    { next: { tags: [`project:${slug}`] } },
+    { next: { tags: [`project:${slug}`] } }
   );
 }
 
@@ -94,7 +98,7 @@ export function loadPage(slug: string) {
   return loadQuery<PagePayload | null>(
     pagesBySlugQuery,
     { slug },
-    { next: { tags: [`page:${slug}`] } },
+    { next: { tags: [`page:${slug}`] } }
   );
 }
 
@@ -102,7 +106,7 @@ export function loadAboutPage() {
   return loadQuery<AboutPagePayload>(
     aboutPageQuery,
     {},
-    { next: { tags: ["about", "page"] } },
+    { next: { tags: ["about", "page"] } }
   );
 }
 
@@ -110,7 +114,31 @@ export function loadCoursePage() {
   return loadQuery<AboutPagePayload>(
     coursePageQuery,
     {},
-    { next: { tags: ["course", "page"] } },
+    { next: { tags: ["course", "page"] } }
+  );
+}
+
+export function loadResourcePage() {
+  return loadQuery<AboutPagePayload>(
+    resourcesPageQuery,
+    {},
+    { next: { tags: ["resources", "page"] } }
+  );
+}
+
+export function loadResources() {
+  return loadQuery<Resource[]>(
+    resourcesQuery,
+    {},
+    { next: { tags: ["resources", "documents"] } }
+  );
+}
+
+export function loadResource(slug: string) {
+  return loadQuery<Resource | null>(
+    resourceBySlug,
+    { slug },
+    { next: { tags: [`resource:${slug}`] } }
   );
 }
 
@@ -125,6 +153,10 @@ export function loadSingleton(load?: Singletons) {
 
   if (load === Singletons.COURSE) {
     return loadCoursePage();
+  }
+
+  if (load === Singletons.RESOURCES) {
+    return loadResourcePage();
   }
 
   return loadHomePage();

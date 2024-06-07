@@ -14,6 +14,7 @@ import * as resolve from "@/sanity/plugins/resolve";
 import { pageStructure, singletonPlugin } from "@/sanity/plugins/settings";
 import page from "@/sanity/schemas/documents/page";
 import project from "@/sanity/schemas/documents/project";
+import resource from "@/sanity/schemas/documents/resource";
 import testimonial from "@/sanity/schemas/documents/testimonial";
 import accordion from "@/sanity/schemas/objects/accordion";
 import cta from "@/sanity/schemas/objects/cta";
@@ -34,6 +35,7 @@ import youtubeSection from "@/sanity/schemas/objects/youtube-section";
 import about from "@/sanity/schemas/singletons/about";
 import course from "@/sanity/schemas/singletons/course";
 import home from "@/sanity/schemas/singletons/home";
+import resources from "@/sanity/schemas/singletons/resources";
 import settings from "@/sanity/schemas/singletons/settings";
 import { colorInput } from "@sanity/color-input";
 
@@ -53,12 +55,14 @@ export default defineConfig({
       home,
       settings,
       about,
+      course,
+      resources,
       // Documents
       testimonial,
       duration,
       page,
       project,
-      course,
+      resource,
       // Objects
       milestone,
       timeline,
@@ -80,7 +84,7 @@ export default defineConfig({
   plugins: [
     colorInput(),
     structureTool({
-      structure: pageStructure([home, about, course, settings]),
+      structure: pageStructure([home, about, course, resources, settings]),
     }),
     presentationTool({
       resolve,
@@ -91,7 +95,13 @@ export default defineConfig({
       },
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
-    singletonPlugin([home.name, settings.name, about.name, course.name]),
+    singletonPlugin([
+      home.name,
+      settings.name,
+      about.name,
+      course.name,
+      resources.name,
+    ]),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
     // Vision lets you query your content with GROQ in the studio

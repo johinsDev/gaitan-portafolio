@@ -1,4 +1,9 @@
-import { aboutPageQuery, homePageQuery } from "@/sanity/lib/queries";
+import {
+  aboutPageQuery,
+  coursePageQuery,
+  homePageQuery,
+  resourcesPageQuery,
+} from "@/sanity/lib/queries";
 import { Singletons } from "@/types";
 
 export function useGetQueryLoad(load?: Singletons) {
@@ -7,6 +12,10 @@ export function useGetQueryLoad(load?: Singletons) {
       return aboutPageQuery;
     case Singletons.HOME:
       return homePageQuery;
+    case Singletons.COURSE:
+      return coursePageQuery;
+    case Singletons.RESOURCES:
+      return resourcesPageQuery;
     default:
       return homePageQuery;
   }
