@@ -48,7 +48,7 @@ const Navbar = (props: Props) => {
 
             if (!href) return null;
 
-            const isActive = pathname === href;
+            const isActive = pathname.startsWith(href);
 
             return (
               <li
