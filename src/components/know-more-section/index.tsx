@@ -2,27 +2,32 @@ import dynamic from "next/dynamic";
 import { draftMode } from "next/headers";
 
 import { getSection } from "@/sanity/lib/utils";
-import { loadHomePage } from "@/sanity/loader/loadQuery";
-import { SectionsList, KnowMore as TypeKnowMoreSection } from "@/types";
+import { loadSingleton } from "@/sanity/loader/loadQuery";
+import {
+  SectionsList,
+  Singletons,
+  KnowMore as TypeKnowMoreSection,
+} from "@/types";
 import { KnowMoreSectionLayout } from "./know-more-layout";
 
 const KnowMorePreview = dynamic(() => import("./know-more-preview"));
 
 type Props = {
   _key: string;
+  load?: Singletons;
 };
 
-export async function KnowMoreSection({ _key: key }: Props) {
-  const home = await loadHomePage();
+export async function KnowMoreSection({ _key: key, load }: Props) {
+  const data = await loadSingleton(load);
 
   const feature = getSection<TypeKnowMoreSection>(
-    home.data.sections ?? [],
+    data.data.sections ?? [],
     SectionsList.KNOW_MORE,
     key,
   );
 
   if (draftMode().isEnabled) {
-    return <KnowMorePreview initial={home} _key={key} />;
+    return <KnowMorePreview initial={data} _key={key} load={load} />;
   }
 
   return <KnowMoreSectionLayout data={feature} />;

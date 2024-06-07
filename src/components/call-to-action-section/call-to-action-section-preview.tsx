@@ -2,20 +2,23 @@
 
 import { useQuery } from "@/sanity/loader/useQuery";
 
-import { homePageQuery } from "@/sanity/lib/queries";
+import { useGetQueryLoad } from "@/hooks/use-get-query-load";
 import { getSection } from "@/sanity/lib/utils";
-import { CtaSection, HomePagePayload, SectionsList } from "@/types";
+import { CtaSection, FullPagePayload, SectionsList, Singletons } from "@/types";
 import { QueryResponseInitial } from "@sanity/react-loader";
 import { CallToActionSectionLayout } from "./call-to-action-section-layout";
 
 type Props = {
-  initial: QueryResponseInitial<HomePagePayload>;
+  initial: QueryResponseInitial<FullPagePayload>;
   _key: string;
+  load?: Singletons;
 };
 
 export default function CallToActionSectionPreview(props: Props) {
-  const { data: home } = useQuery<HomePagePayload>(
-    homePageQuery,
+  const query = useGetQueryLoad(props.load);
+
+  const { data } = useQuery<FullPagePayload>(
+    query,
     {},
     {
       initial: props.initial,
@@ -23,7 +26,7 @@ export default function CallToActionSectionPreview(props: Props) {
   );
 
   const cta = getSection<CtaSection>(
-    home?.sections ?? [],
+    data?.sections ?? [],
     SectionsList.CTA_SECTION,
     props._key,
   );

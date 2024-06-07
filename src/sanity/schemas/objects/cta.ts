@@ -22,6 +22,9 @@ export default defineType({
         {
           type: "page",
         },
+        {
+          type: "about",
+        },
       ],
     }),
     defineField({

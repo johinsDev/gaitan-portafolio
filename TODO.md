@@ -1,5 +1,4 @@
 course singleton
-about singleton
 resources singleton
 list blog singleton
 property singleton / filters in frontend

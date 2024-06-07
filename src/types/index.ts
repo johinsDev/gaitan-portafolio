@@ -142,13 +142,18 @@ export type Sections =
   | AccordionSection
   | KnowMore;
 
-export interface HomePagePayload {
-  footer?: PortableTextBlock[];
-  showcaseProjects?: ShowcaseProject[];
-  title?: string;
-  hero?: Hero;
-  sections?: Sections[];
-  seo?: Seo;
+export enum Singletons {
+  ABOUT = "about",
+  HOME = "home",
+  SETTINGS = "settings",
+}
+
+export interface HomePagePayload extends FullPagePayload {
+  _type: Singletons.HOME;
+}
+
+export interface AboutPagePayload extends FullPagePayload {
+  _type: Singletons.ABOUT;
 }
 
 export interface PagePayload {
@@ -236,4 +241,13 @@ export type ColorVariables = {
   "--border": string;
   "--input": string;
   "--ring": string;
+};
+
+export type FullPagePayload = {
+  footer?: PortableTextBlock[];
+  showcaseProjects?: ShowcaseProject[];
+  title?: string;
+  hero?: Hero;
+  sections?: Sections[];
+  seo?: Seo;
 };

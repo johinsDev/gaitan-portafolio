@@ -30,7 +30,8 @@ import stat from "@/sanity/schemas/objects/stat";
 import stats from "@/sanity/schemas/objects/stats";
 import testimonialSection from "@/sanity/schemas/objects/testimonial-section";
 import timeline from "@/sanity/schemas/objects/timeline";
-import { youtubeSection } from "@/sanity/schemas/objects/youtube-section";
+import youtubeSection from "@/sanity/schemas/objects/youtube-section";
+import about from "@/sanity/schemas/singletons/about";
 import home from "@/sanity/schemas/singletons/home";
 import settings from "@/sanity/schemas/singletons/settings";
 import { colorInput } from "@sanity/color-input";
@@ -50,6 +51,7 @@ export default defineConfig({
       // Singletons
       home,
       settings,
+      about,
       // Documents
       testimonial,
       duration,
@@ -76,7 +78,7 @@ export default defineConfig({
   plugins: [
     colorInput(),
     structureTool({
-      structure: pageStructure([home, settings]),
+      structure: pageStructure([home, about, settings]),
     }),
     presentationTool({
       resolve,
@@ -87,7 +89,7 @@ export default defineConfig({
       },
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
-    singletonPlugin([home.name, settings.name]),
+    singletonPlugin([home.name, settings.name, about.name]),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
     // Vision lets you query your content with GROQ in the studio

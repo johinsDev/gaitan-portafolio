@@ -15,6 +15,11 @@ type Props = {
   settings: SettingsPayload;
 };
 
+const MAP_SINGLETONS_SLUGS = {
+  home: "/",
+  about: "/about",
+};
+
 const Navbar = (props: Props) => {
   const pathname = usePathname();
 

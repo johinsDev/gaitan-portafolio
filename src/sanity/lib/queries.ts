@@ -1,17 +1,70 @@
 import { groq } from "next-sanity";
 
-export const homePageQuery = groq`
-  *[_type == "home"][0]{
-    _id,
-    overview,
-    seo{
-      description,
-      image,
+const DEFAULT_QUERY = `
+  _id,
+  overview,
+  seo{
+    description,
+    image,
+    title,
+  },
+  hero{
+    title,
+    content,
+    cta{
+      externalLink,
+      link->{
+        _type,
+        "slug": slug.current,
+        title
+      },
       title,
+      variant,
     },
-    hero{
-      title,
-      content,
+    image{
+      ...,
+      image{
+        asset->{
+          ...,
+          "_ref": _id,
+        },
+      },
+    },
+  },
+  sections[]{
+    ...,
+    _type,
+    title,
+    _type == "testimonialSection" => {
+      ...,
+      testimonials[]->{
+        ...,
+        image{
+          ...,
+          image{
+            asset->{
+              ...,
+              "_ref": _id,
+            },
+          },
+        },
+        name,
+        review,
+        rating,
+      },
+    },
+    _type == "stats" => {
+      ...,
+      stats[]{
+        description,
+        icon,
+        title,
+        value,
+      },
+    },
+    _type == "ctaSection" => {
+      ...,
+      description,
       cta{
         externalLink,
         link->{
@@ -22,6 +75,42 @@ export const homePageQuery = groq`
         title,
         variant,
       },
+    },
+    _type == "youtubeSection" => {
+      ...,
+      description,
+      title,
+      url,
+      videoTitle,
+    },
+    _type == "accordion" => {
+      ...,
+      title,
+      items[]{
+        ...,
+        description,
+        title,
+      },
+    },
+    _type == "know_more" => {
+      ...,
+      customPortableText,
+      description,
+      gallery{
+        ...,
+        images[]{
+          ...,
+          asset->{
+            ...,
+            "_ref": _id,
+          },
+        },
+      },
+      title,
+    },
+    _type == "featureSection" => {
+      ...,
+      content,
       image{
         ...,
         image{
@@ -31,109 +120,30 @@ export const homePageQuery = groq`
           },
         },
       },
-    },
-    sections[]{
-      ...,
-      _type,
-      title,
-      _type == "testimonialSection" => {
-        ...,
-        testimonials[]->{
-          ...,
-          image{
-            ...,
-            image{
-              asset->{
-                ...,
-                "_ref": _id,
-              },
-            },
-          },
-          name,
-          review,
-          rating,
-        },
-      },
-      _type == "stats" => {
-        ...,
-        stats[]{
-          description,
-          icon,
-          title,
-          value,
-        },
-      },
-      _type == "ctaSection" => {
-        ...,
-        description,
-        cta{
-          externalLink,
-          link->{
-            _type,
-            "slug": slug.current,
-            title
-          },
-          title,
-          variant,
-        },
-      },
-      _type == "youtubeSection" => {
-        ...,
-        description,
-        title,
-        url,
-        videoTitle,
-      },
-      _type == "accordion" => {
-        ...,
-        title,
-        items[]{
-          ...,
-          description,
-          title,
-        },
-      },
-      _type == "know_more" => {
-        ...,
-        customPortableText,
-        description,
-        gallery{
-          ...,
-          images[]{
-            ...,
-            asset->{
-              ...,
-              "_ref": _id,
-            },
-          },
+      position,
+      cta{
+        externalLink,
+        link->{
+          _type,
+          "slug": slug.current,
+          title
         },
         title,
-      },
-      _type == "featureSection" => {
-        ...,
-        content,
-        image{
-          ...,
-          image{
-            asset->{
-              ...,
-              "_ref": _id,
-            },
-          },
-        },
-        position,
-        cta{
-          externalLink,
-          link->{
-            _type,
-            "slug": slug.current,
-            title
-          },
-          title,
-          variant,
-        },
+        variant,
       },
     },
+  },
+`;
+
+export const homePageQuery = groq`
+  *[_type == "home"][0]{
+   ${DEFAULT_QUERY}
+  }
+`;
+
+export const aboutPageQuery = groq`
+  *[_type == "about"][0]{
+   ${DEFAULT_QUERY}
   }
 `;
 

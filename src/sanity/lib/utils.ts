@@ -32,6 +32,8 @@ export function resolveHref(
   slug?: string,
 ): string | undefined {
   switch (documentType) {
+    case "about":
+      return "/about";
     case "home":
       return "/";
     case "page":

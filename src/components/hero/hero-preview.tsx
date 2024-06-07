@@ -2,23 +2,26 @@
 
 import { useQuery } from "@/sanity/loader/useQuery";
 
-import { homePageQuery } from "@/sanity/lib/queries";
-import { HomePagePayload } from "@/types";
+import { useGetQueryLoad } from "@/hooks/use-get-query-load";
+import { FullPagePayload, Singletons } from "@/types";
 import { QueryResponseInitial } from "@sanity/react-loader";
 import { HeroLayout } from "./hero-layout";
 
 type Props = {
-  initial: QueryResponseInitial<HomePagePayload>;
+  initial: QueryResponseInitial<any>;
+  load?: Singletons;
 };
 
 export default function HeroPreview(props: Props) {
-  const { data: home } = useQuery<HomePagePayload>(
-    homePageQuery,
+  const query = useGetQueryLoad(props.load);
+
+  const { data } = useQuery<FullPagePayload>(
+    query,
     {},
     {
       initial: props.initial,
     },
   );
 
-  return <HeroLayout hero={home?.hero} />;
+  return <HeroLayout hero={data?.hero} />;
 }

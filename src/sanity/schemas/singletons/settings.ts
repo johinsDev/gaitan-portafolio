@@ -43,7 +43,7 @@ export default defineType({
               type: "page",
             },
             {
-              type: "project",
+              type: "about",
             },
           ],
         },

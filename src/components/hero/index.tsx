@@ -1,17 +1,22 @@
 import dynamic from "next/dynamic";
 import { draftMode } from "next/headers";
 
-import { loadHomePage } from "@/sanity/loader/loadQuery";
+import { loadSingleton } from "@/sanity/loader/loadQuery";
+import { Singletons } from "@/types";
 import { HeroLayout } from "./hero-layout";
 
 const HeroPreview = dynamic(() => import("./hero-preview"));
 
-export async function Hero() {
-  const home = await loadHomePage();
+type HeroProps = {
+  load?: Singletons;
+};
+
+export async function Hero({ load = Singletons.HOME }: HeroProps) {
+  const data = await loadSingleton(load);
 
   if (draftMode().isEnabled) {
-    return <HeroPreview initial={home} />;
+    return <HeroPreview initial={data} load={load} />;
   }
 
-  return <HeroLayout hero={home.data?.hero} />;
+  return <HeroLayout hero={data?.data.hero} />;
 }

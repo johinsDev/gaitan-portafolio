@@ -1,11 +1,11 @@
-import { HomeIcon } from "@sanity/icons";
+import { PackageIcon } from "@sanity/icons";
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "home",
-  title: "Home",
+  name: "about",
+  title: "About",
   type: "document",
-  icon: HomeIcon,
+  icon: PackageIcon,
   // Uncomment below to have edits publish automatically as you type
   // liveEdit: true,
   fields: [
@@ -16,6 +16,7 @@ export default defineType({
       type: "string",
       validation: (rule) => rule.required(),
     }),
+    // slug
     defineField({
       name: "seo",
       title: "SEO",
@@ -62,7 +63,7 @@ export default defineType({
     },
     prepare({ title }) {
       return {
-        subtitle: "Home",
+        subtitle: "About",
         title,
       };
     },

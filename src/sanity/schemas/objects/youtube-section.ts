@@ -1,8 +1,8 @@
 // create youtube section object title, description CustomPortableText, url
 
-import { defineArrayMember, defineField } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 
-export const youtubeSection = {
+export default defineType({
   type: "object",
   name: "youtubeSection",
   title: "Youtube Section",
@@ -53,4 +53,15 @@ export const youtubeSection = {
       description: "Title of the video",
     }),
   ],
-};
+  preview: {
+    select: {
+      title: "title",
+      link: "url",
+    },
+    prepare({ title, link }) {
+      return {
+        title: `Youtube Section: ${title ?? link}`,
+      };
+    },
+  },
+});

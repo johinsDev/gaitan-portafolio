@@ -2,20 +2,28 @@
 
 import { useQuery } from "@/sanity/loader/useQuery";
 
-import { homePageQuery } from "@/sanity/lib/queries";
+import { useGetQueryLoad } from "@/hooks/use-get-query-load";
 import { getSection } from "@/sanity/lib/utils";
-import { AccordionSection, HomePagePayload, SectionsList } from "@/types";
+import {
+  AccordionSection,
+  FullPagePayload,
+  SectionsList,
+  Singletons,
+} from "@/types";
 import { QueryResponseInitial } from "@sanity/react-loader";
 import { AccordionSectionLayout } from "./accordion-layout";
 
 type Props = {
-  initial: QueryResponseInitial<HomePagePayload>;
+  initial: QueryResponseInitial<FullPagePayload>;
   _key: string;
+  load?: Singletons;
 };
 
 export default function AccordionPreview(props: Props) {
-  const { data: home } = useQuery<HomePagePayload>(
-    homePageQuery,
+  const query = useGetQueryLoad(props.load);
+
+  const { data } = useQuery<FullPagePayload>(
+    query,
     {},
     {
       initial: props.initial,
@@ -23,7 +31,7 @@ export default function AccordionPreview(props: Props) {
   );
 
   const accordion = getSection<AccordionSection>(
-    home?.sections ?? [],
+    data?.sections ?? [],
     SectionsList.ACCORDION_SECTION,
     props._key,
   );

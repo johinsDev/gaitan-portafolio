@@ -2,27 +2,28 @@ import dynamic from "next/dynamic";
 import { draftMode } from "next/headers";
 
 import { getSection } from "@/sanity/lib/utils";
-import { loadHomePage } from "@/sanity/loader/loadQuery";
-import { SectionsList, StatsSection } from "@/types";
+import { loadSingleton } from "@/sanity/loader/loadQuery";
+import { SectionsList, Singletons, StatsSection } from "@/types";
 import { StatsLAyout } from "./stats-layout";
 
 const StatsPreview = dynamic(() => import("./stats-preview"));
 
 type Props = {
   _key: string;
+  load?: Singletons;
 };
 
-export async function Stats({ _key: key }: Props) {
-  const home = await loadHomePage();
+export async function Stats({ _key: key, load }: Props) {
+  const data = await loadSingleton(load);
 
   const stats = getSection<StatsSection>(
-    home.data.sections ?? [],
+    data.data.sections ?? [],
     SectionsList.STATS_SECTION,
     key,
   );
 
   if (draftMode().isEnabled) {
-    return <StatsPreview initial={home} _key={key} />;
+    return <StatsPreview initial={data} _key={key} load={load} />;
   }
 
   return <StatsLAyout data={stats} />;

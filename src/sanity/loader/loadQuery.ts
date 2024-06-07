@@ -5,6 +5,7 @@ import { draftMode } from "next/headers";
 
 import { client } from "@/sanity/lib/client";
 import {
+  aboutPageQuery,
   homePageQuery,
   pagesBySlugQuery,
   projectBySlugQuery,
@@ -12,10 +13,12 @@ import {
 } from "@/sanity/lib/queries";
 import { token } from "@/sanity/lib/token";
 import {
+  AboutPagePayload,
   HomePagePayload,
   PagePayload,
   ProjectPayload,
   SettingsPayload,
+  Singletons,
 } from "@/types";
 
 const serverClient = client.withConfig({
@@ -92,4 +95,24 @@ export function loadPage(slug: string) {
     { slug },
     { next: { tags: [`page:${slug}`] } },
   );
+}
+
+export function loadAboutPage() {
+  return loadQuery<AboutPagePayload>(
+    aboutPageQuery,
+    {},
+    { next: { tags: ["about", "page"] } },
+  );
+}
+
+export function loadSingleton(load?: Singletons) {
+  if (load === Singletons.ABOUT) {
+    return loadAboutPage();
+  }
+
+  if (load === Singletons.HOME) {
+    return loadHomePage();
+  }
+
+  return loadHomePage();
 }

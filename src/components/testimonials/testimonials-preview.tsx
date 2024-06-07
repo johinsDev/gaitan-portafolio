@@ -2,20 +2,28 @@
 
 import { useQuery } from "@/sanity/loader/useQuery";
 
-import { homePageQuery } from "@/sanity/lib/queries";
+import { useGetQueryLoad } from "@/hooks/use-get-query-load";
 import { getSection } from "@/sanity/lib/utils";
-import { HomePagePayload, SectionsList, TestimonialSection } from "@/types";
+import {
+  FullPagePayload,
+  SectionsList,
+  Singletons,
+  TestimonialSection,
+} from "@/types";
 import { QueryResponseInitial } from "@sanity/react-loader";
 import { TestimonialsLayout } from "./testimonials-layout";
 
 type Props = {
-  initial: QueryResponseInitial<HomePagePayload>;
+  initial: QueryResponseInitial<FullPagePayload>;
   _key: string;
+  load?: Singletons;
 };
 
 export default function TestimonialsPreview(props: Props) {
-  const { data: home } = useQuery<HomePagePayload>(
-    homePageQuery,
+  const query = useGetQueryLoad(props.load);
+
+  const { data } = useQuery<FullPagePayload>(
+    query,
     {},
     {
       initial: props.initial,
@@ -23,7 +31,7 @@ export default function TestimonialsPreview(props: Props) {
   );
 
   const testimonials = getSection<TestimonialSection>(
-    home?.sections ?? [],
+    data?.sections ?? [],
     SectionsList.TESTIMONIAL_SECTION,
     props._key,
   );

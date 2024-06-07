@@ -2,28 +2,30 @@
 
 import { useQuery } from "@/sanity/loader/useQuery";
 
-import { homePageQuery } from "@/sanity/lib/queries";
+import { useGetQueryLoad } from "@/hooks/use-get-query-load";
 import { getSection } from "@/sanity/lib/utils";
-import { HomePagePayload, KnowMore, SectionsList } from "@/types";
+import { FullPagePayload, KnowMore, SectionsList, Singletons } from "@/types";
 import { QueryResponseInitial } from "@sanity/react-loader";
 import { KnowMoreSectionLayout } from "./know-more-layout";
 
 type Props = {
-  initial: QueryResponseInitial<HomePagePayload>;
+  initial: QueryResponseInitial<FullPagePayload>;
   _key: string;
+  load?: Singletons;
 };
 
 export default function KnowMorePreview(props: Props) {
-  const { data: home } = useQuery<HomePagePayload>(
-    homePageQuery,
+  const query = useGetQueryLoad(props.load);
+
+  const { data } = useQuery<FullPagePayload>(
+    query,
     {},
     {
       initial: props.initial,
     },
   );
-
   const accordion = getSection<KnowMore>(
-    home?.sections ?? [],
+    data?.sections ?? [],
     SectionsList.KNOW_MORE,
     props._key,
   );
