@@ -295,3 +295,60 @@ export const postBySlug = groq`
     "slug": slug.current,
   }
 `;
+
+export const propertiesQuery = groq`
+  *[_type == "property"]{
+    ...,
+    _id,
+    seo,
+    description,
+    gallery{
+      ...,
+      images[]{
+        ...,
+        asset->{
+          ...,
+          "_ref": _id,
+        },
+      },
+    },
+    "slug": slug.current,
+    kindOfDepartments[]{
+      ...,
+      image{
+        ...,
+        asset->{
+          ...,
+          "_ref": _id,
+        },
+      },
+    },
+    similarProperties[]->{
+      ...,
+      _id,
+      seo,
+      description,
+      kindOfDepartments[]{
+        ...,
+        image{
+          ...,
+          asset->{
+            ...,
+            "_ref": _id,
+          },
+        },
+      },
+      gallery{
+        ...,
+        images[]{
+          ...,
+          asset->{
+            ...,
+            "_ref": _id,
+          },
+        },
+      },
+      "slug": slug.current,
+    },
+  }
+`;

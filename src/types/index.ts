@@ -286,3 +286,43 @@ export type Post = {
 export interface BlogPagePayload extends FullPagePayload {
   _type: Singletons.BLOG;
 }
+
+interface ProjectCharacteristics {
+  _type: "projectCharacteristics";
+  _key: string;
+  title: string;
+  value: string;
+}
+
+interface KindOfDepartment {
+  image: Image;
+  area: number;
+}
+export interface PropertyDocument {
+  _id: string;
+  _type: "property";
+  name: string;
+  slug: string;
+  price?: string;
+  occupancy?: number;
+  gallery?: Gallery;
+  averageRent?: number;
+  description?: PortableTextBlock[];
+  capitalGain?: number;
+  characteristics?: ProjectCharacteristics[];
+  location?: {
+    _type: "projectLocation";
+    geopoint?: {
+      lat?: number;
+      lng?: number;
+    };
+    country?: string;
+    state?: string;
+    city?: string;
+    address?: string;
+    map?: Image;
+  };
+  seo?: Seo;
+  similarProperties?: PropertyDocument[];
+  kindOfDepartment?: KindOfDepartment[];
+}

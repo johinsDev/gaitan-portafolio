@@ -14,7 +14,7 @@ import * as resolve from "@/sanity/plugins/resolve";
 import { pageStructure, singletonPlugin } from "@/sanity/plugins/settings";
 import page from "@/sanity/schemas/documents/page";
 import post from "@/sanity/schemas/documents/post";
-import project from "@/sanity/schemas/documents/project";
+import property from "@/sanity/schemas/documents/property";
 import resource from "@/sanity/schemas/documents/resource";
 import testimonial from "@/sanity/schemas/documents/testimonial";
 import accordion from "@/sanity/schemas/objects/accordion";
@@ -25,8 +25,11 @@ import feature from "@/sanity/schemas/objects/feature";
 import gallery from "@/sanity/schemas/objects/gallery";
 import hero from "@/sanity/schemas/objects/hero";
 import image from "@/sanity/schemas/objects/image";
+import kindOfDepartment from "@/sanity/schemas/objects/kind-of-department";
 import knowMore from "@/sanity/schemas/objects/know-more";
 import milestone from "@/sanity/schemas/objects/milestone";
+import projectCharacteristics from "@/sanity/schemas/objects/project-characteristics";
+import projectLocation from "@/sanity/schemas/objects/project-location";
 import seo from "@/sanity/schemas/objects/seo";
 import stat from "@/sanity/schemas/objects/stat";
 import stats from "@/sanity/schemas/objects/stats";
@@ -64,10 +67,11 @@ export default defineConfig({
       testimonial,
       duration,
       page,
-      project,
       resource,
       post,
+      property,
       // Objects
+      projectLocation,
       milestone,
       timeline,
       cta,
@@ -83,6 +87,8 @@ export default defineConfig({
       accordion,
       gallery,
       knowMore,
+      kindOfDepartment,
+      projectCharacteristics,
     ],
   },
   plugins: [

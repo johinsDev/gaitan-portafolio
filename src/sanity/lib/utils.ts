@@ -48,6 +48,8 @@ export function resolveHref(
       return "/";
     case "page":
       return slug ? `/${slug}` : undefined;
+    case "property":
+      return `/listing/${slug}`;
     case "project":
       return slug ? `/projects/${slug}` : undefined;
     default:
@@ -82,7 +84,9 @@ export function _generateMetadata(seo?: Seo): Metadata {
   return flush({
     title: seo?.title ? capitalize(seo?.title) : undefined,
     description: seo?.description ? toPlainText(seo?.description) : undefined,
-    image: ogImage ? { url: ogImage } : undefined,
+    openGraph: {
+      images: ogImage ? [{ url: ogImage }] : undefined,
+    },
   });
 }
 

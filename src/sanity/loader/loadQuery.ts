@@ -13,6 +13,7 @@ import {
   postBySlug,
   postsQuery,
   projectBySlugQuery,
+  propertiesQuery,
   resourceBySlug,
   resourcesPageQuery,
   resourcesQuery,
@@ -26,6 +27,7 @@ import {
   PagePayload,
   Post,
   ProjectPayload,
+  PropertyDocument,
   Resource,
   ResourcesPagePayload,
   SettingsPayload,
@@ -198,4 +200,12 @@ export function loadSingleton(load?: Singletons, slug?: string) {
   }
 
   return loadHomePage();
+}
+
+export function loadProperties() {
+  return loadQuery<PropertyDocument[]>(
+    propertiesQuery,
+    {},
+    { next: { tags: ["properties"] } },
+  );
 }
