@@ -1,14 +1,14 @@
-'use client'
+"use client";
 
 import { eventMitt } from "@/lib/event";
 import { Button, ButtonProps } from "./button";
 
-type Props = ButtonProps
+type Props = ButtonProps;
 
 export default function ButtonClearParams(props: Props) {
   const handleClean = () => {
-    eventMitt.emit("clear-params")
-  }
+    eventMitt.emit("clear-params");
+  };
 
-  return <Button {...props} onClick={handleClean} />
+  return <Button {...props} onClick={handleClean} />;
 }
