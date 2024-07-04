@@ -87,7 +87,16 @@ export function _generateMetadata(seo?: Seo): Metadata {
     title: seo?.title ? capitalize(seo?.title) : undefined,
     description: seo?.description ? toPlainText(seo?.description) : undefined,
     openGraph: {
-      images: ogImage ? [{ url: ogImage }] : undefined,
+      type: "website",
+      site_name: seo?.title,
+      images: ogImage
+        ? [
+            {
+              url: ogImage,
+              alt: seo?.title,
+            },
+          ]
+        : undefined,
     },
   });
 }
