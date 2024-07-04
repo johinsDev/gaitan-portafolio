@@ -29,9 +29,11 @@ export function urlForOpenGraphImage(image: Image | undefined) {
 
 export function resolveHref(
   documentType?: string,
-  slug?: string,
+  slug?: string
 ): string | undefined {
   switch (documentType) {
+    case "invest":
+      return "/invest";
     case "blog":
       return "/blog";
     case "post":
@@ -59,7 +61,7 @@ export function resolveHref(
 }
 
 export function getVariantButton(
-  variant: string | null | undefined,
+  variant: string | null | undefined
 ): ButtonProps["variant"] {
   if (variant === "primary") {
     return "default";
@@ -71,10 +73,10 @@ export function getVariantButton(
 export function getSection<T>(
   sections: Sections[],
   type: SectionsList,
-  key: string,
+  key: string
 ): T | null {
   return sections.find(
-    (section) => section._type === type && section._key === key,
+    (section) => section._type === type && section._key === key
   ) as T | null;
 }
 
@@ -95,7 +97,7 @@ export const sleep = (ms: number) =>
 
 export const extractYoutubeId = (url: string) => {
   const match = url.match(
-    /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/,
+    /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
   );
 
   return match ? match[1] : undefined;

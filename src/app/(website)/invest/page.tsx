@@ -1,7 +1,17 @@
 import ButtonClearParams from "@/components/button-clear-params";
 import InputQueryParam from "@/components/input-query-param";
 import { ListingProperties } from "@/components/listing-properties";
-import { loadProperties } from "@/sanity/loader/loadQuery";
+import { _generateMetadata } from "@/sanity/lib/utils";
+import { loadInvestPage, loadProperties } from "@/sanity/loader/loadQuery";
+import { Metadata } from "next";
+
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { data } = await loadInvestPage();
+
+  return _generateMetadata(data.seo);
+}
+
 
 export default async function Invest() {
   const { data } = await loadProperties();

@@ -150,6 +150,7 @@ export enum Singletons {
   RESOURCES = "resources",
   BLOG = "blog",
   PAGE = "page",
+  INVEST = "invest",
 }
 
 export interface HomePagePayload extends FullPagePayload {
@@ -285,6 +286,10 @@ export type Post = {
 
 export interface BlogPagePayload extends FullPagePayload {
   _type: Singletons.BLOG;
+}
+
+export interface InvestPagePayload extends FullPagePayload {
+  _type: Singletons.INVEST;
 }
 
 interface ProjectCharacteristics {

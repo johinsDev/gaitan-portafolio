@@ -40,6 +40,7 @@ import about from "@/sanity/schemas/singletons/about";
 import blog from "@/sanity/schemas/singletons/blog";
 import course from "@/sanity/schemas/singletons/course";
 import home from "@/sanity/schemas/singletons/home";
+import invest from "@/sanity/schemas/singletons/invest";
 import resources from "@/sanity/schemas/singletons/resources";
 import settings from "@/sanity/schemas/singletons/settings";
 import { colorInput } from "@sanity/color-input";
@@ -63,6 +64,7 @@ export default defineConfig({
       course,
       resources,
       blog,
+      invest,
       // Documents
       testimonial,
       duration,
@@ -100,6 +102,7 @@ export default defineConfig({
         course,
         resources,
         blog,
+        invest,
         settings,
       ]),
     }),

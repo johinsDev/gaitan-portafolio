@@ -165,6 +165,12 @@ export const blogPageQuery = groq`
   }
 `;
 
+export const investPageQuery = groq`
+  *[_type == "invest"][0]{
+   ${DEFAULT_QUERY}
+  }
+`;
+
 export const pagesBySlugQuery = groq`
   *[_type == "page" && slug.current == $slug][0] {
     body,

@@ -1,8 +1,10 @@
 import { Button } from "@/components/button";
 import { Property } from "@/components/property";
 import { CustomPortableText } from "@/components/shared/CustomPortableText";
-import { urlForImage } from "@/sanity/lib/utils";
+import { _generateMetadata, urlForImage } from "@/sanity/lib/utils";
+import { generateStaticSlugs } from "@/sanity/loader/generateStaticSlugs";
 import { loadProperty } from "@/sanity/loader/loadQuery";
+import { Metadata } from "next";
 import Image from "next/image";
 
 type Props = {
@@ -10,6 +12,20 @@ type Props = {
     slug: string;
   };
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { data: page } = await loadProperty(params.slug);
+
+  return _generateMetadata({
+    title: page?.seo?.title || page?.name,
+    description: page?.seo?.description || page?.description,
+    image: page?.seo?.image || page?.gallery?.images?.[0],
+  })
+}
+
+export function generateStaticParams() {
+  return generateStaticSlugs("property");
+}
 
 export default async function ListingDetailPage(props: Props) {
   const { data } = await loadProperty(props.params.slug);

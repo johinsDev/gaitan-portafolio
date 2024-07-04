@@ -34,6 +34,9 @@ export default defineType({
         {
           type: "blog",
         },
+        {
+          type: "invest",
+        },
       ],
     }),
     defineField({
