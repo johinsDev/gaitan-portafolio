@@ -352,3 +352,80 @@ export const propertiesQuery = groq`
     },
   }
 `;
+
+export const propertyBySlug = groq`
+  *[_type == "property" && slug.current == $slug][0]{
+    ...,
+    _id,
+    seo,
+    description,
+    gallery{
+      ...,
+      images[]{
+        ...,
+        asset->{
+          ...,
+          "_ref": _id,
+        },
+      },
+    },
+    "slug": slug.current,
+    location{
+      ...,
+      map{
+        ...,
+        asset->{
+          ...,
+          "_ref": _id,
+        },
+      },
+    },
+    kindOfDepartments[]{
+      ...,
+      image{
+        ...,
+        asset->{
+          ...,
+          "_ref": _id,
+        },
+      },
+    },
+    similarProperties[]->{
+      ...,
+      _id,
+      seo,
+      description,
+      location{
+        ...,
+        map{
+          ...,
+          asset->{
+            ...,
+            "_ref": _id,
+          },
+        },
+      },
+      kindOfDepartments[]{
+        ...,
+        image{
+          ...,
+          asset->{
+            ...,
+            "_ref": _id,
+          },
+        },
+      },
+      gallery{
+        ...,
+        images[]{
+          ...,
+          asset->{
+            ...,
+            "_ref": _id,
+          },
+        },
+      },
+      "slug": slug.current,
+    },
+  }
+`;

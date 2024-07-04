@@ -14,6 +14,7 @@ import {
   postsQuery,
   projectBySlugQuery,
   propertiesQuery,
+  propertyBySlug,
   resourceBySlug,
   resourcesPageQuery,
   resourcesQuery,
@@ -207,5 +208,13 @@ export function loadProperties() {
     propertiesQuery,
     {},
     { next: { tags: ["properties"] } },
+  );
+}
+
+export function loadProperty(slug: string) {
+  return loadQuery<PropertyDocument | null>(
+    propertyBySlug,
+    { slug },
+    { next: { tags: [`property:${slug}`] } },
   );
 }

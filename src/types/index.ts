@@ -290,7 +290,7 @@ export interface BlogPagePayload extends FullPagePayload {
 interface ProjectCharacteristics {
   _type: "projectCharacteristics";
   _key: string;
-  title: string;
+  label: string;
   value: string;
 }
 
@@ -324,5 +324,5 @@ export interface PropertyDocument {
   };
   seo?: Seo;
   similarProperties?: PropertyDocument[];
-  kindOfDepartment?: KindOfDepartment[];
+  kindOfDepartments?: KindOfDepartment[];
 }
