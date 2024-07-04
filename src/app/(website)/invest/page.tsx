@@ -4,6 +4,7 @@ import { ListingProperties } from "@/components/listing-properties";
 import { _generateMetadata } from "@/sanity/lib/utils";
 import { loadInvestPage, loadProperties } from "@/sanity/loader/loadQuery";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -44,7 +45,9 @@ export default async function Invest() {
         <div className="w-full h-0.5 bg-gray-200" />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-          <ListingProperties properties={data} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <ListingProperties properties={data} />
+          </Suspense>
         </div>
       </section>
     </div>
