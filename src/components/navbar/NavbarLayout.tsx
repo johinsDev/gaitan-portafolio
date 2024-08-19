@@ -46,6 +46,8 @@ const Navbar = (props: Props) => {
           {menuItems.map((item) => {
             const href = resolveHref(item?._type, item?.slug);
 
+            console.log("href", href);
+
             if (!href) return null;
 
             const isActive = pathname.startsWith(href);

@@ -33,7 +33,7 @@ export function resolveHref(
 ): string | undefined {
   switch (documentType) {
     case "invest":
-      return "/invest";
+      return slug ? `/${slug}` : "/invest";
     case "blog":
       return "/blog";
     case "post":

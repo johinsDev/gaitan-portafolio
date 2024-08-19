@@ -3,6 +3,7 @@ import { groq } from "next-sanity";
 const DEFAULT_QUERY = `
   _id,
   overview,
+  "slug": slug.current,
   seo{
     description,
     image,

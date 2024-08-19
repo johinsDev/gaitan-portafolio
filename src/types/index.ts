@@ -262,6 +262,7 @@ export type FullPagePayload = {
   hero?: Hero;
   sections?: Sections[];
   seo?: Seo;
+  slug?: string;
 };
 
 export type Resource = {
