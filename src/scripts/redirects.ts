@@ -23,15 +23,19 @@ const INITIAL_REDIRECTS = {
   [Singletons.ABOUT]: "/about",
 };
 
+function transformEnvironmentPage(page: Singletons) {
+  return `${process.env.NODE_ENV ?? "development"}-${page}`;
+}
+
 async function seedInitialRedirects() {
   await Promise.all(
     REDIRECTS_LIST.map(async (page) => {
-      const slug = await redis.get(page);
+      const slug = await redis.get(transformEnvironmentPage(page));
       const initialSlug = INITIAL_REDIRECTS[page];
 
       if (!slug) {
         console.log(`Seeding initial redirect for ${page} to ${initialSlug}`);
-        await redis.set(page, initialSlug);
+        await redis.set(transformEnvironmentPage(page), initialSlug);
       }
     })
   );
@@ -53,7 +57,7 @@ export async function generateRedirects() {
     await seedInitialRedirects();
 
     const allRedirects = REDIRECTS_LIST.map(async (page) => {
-      const oldSlug = await redis.get(page);
+      const oldSlug = await redis.get(transformEnvironmentPage(page));
 
       console.log(`Checking ${page} for changes`);
 
@@ -74,20 +78,23 @@ export async function generateRedirects() {
         return Promise.resolve();
       }
 
-      if (oldSlug !== newSlug) {
-        console.log(`Renaming ${oldSlug} to ${newSlug}`);
+      console.log(`Renaming ${oldSlug} to ${newSlug}`);
 
-        fs.renameSync(
-          __dirname + `/../app/(website)/${oldSlug}`,
-          __dirname + `/../app/(website)/${newSlug}`
-        );
-
-        console.log(`Updating redis key for ${page} to ${newSlug}`);
-
-        await redis.set(page, newSlug);
-
-        console.log(`Redirects updated for ${page}`);
+      if (!fs.existsSync(__dirname + `/../app/(website)/${oldSlug}`)) {
+        console.log(`No directory found for ${oldSlug} - skipping`);
+        return Promise.resolve();
       }
+
+      fs.renameSync(
+        __dirname + `/../app/(website)/${oldSlug}`,
+        __dirname + `/../app/(website)/${newSlug}`
+      );
+
+      console.log(`Updating redis key for ${page} to ${newSlug}`);
+
+      await redis.set(transformEnvironmentPage(page), newSlug);
+
+      console.log(`Redirects updated for ${page}`);
     });
 
     await Promise.all(allRedirects);
