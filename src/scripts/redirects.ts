@@ -1,4 +1,4 @@
-import { investPageQuery } from "@/sanity/lib/queries";
+import { aboutPageQuery, investPageQuery } from "@/sanity/lib/queries";
 import { Singletons } from "@/types";
 import { createClient } from "@sanity/client";
 import "dotenv/config";
@@ -16,10 +16,11 @@ const client = createClient({
   apiVersion: "2023-05-03", // use current date (YYYY-MM-DD) to target the latest API version
 });
 
-const REDIRECTS_LIST = [Singletons.INVEST];
+const REDIRECTS_LIST = [Singletons.INVEST, Singletons.ABOUT];
 
 const INITIAL_REDIRECTS = {
   [Singletons.INVEST]: "/invest",
+  [Singletons.ABOUT]: "/about",
 };
 
 async function seedInitialRedirects() {
@@ -40,6 +41,8 @@ function getQuery(page: Singletons) {
   switch (page) {
     case Singletons.INVEST:
       return investPageQuery;
+    case Singletons.ABOUT:
+      return aboutPageQuery;
     default:
       return null;
   }

@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "npm run create-redirects && next dev",
+    "build": "npm run create-redirects && next build",
     "format": "npx prettier --write . --ignore-path .gitignore",
     "lint": "next lint .",
     "lint:fix": "npm run format && npm run lint -- --fix",
