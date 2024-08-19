@@ -45,7 +45,7 @@ export function resolveHref(
     case "course":
       return "/course";
     case "about":
-      return "/about";
+      return slug ? `/${slug}` : "/about";
     case "home":
       return "/";
     case "page":
