@@ -82,6 +82,7 @@ export async function generateRedirects() {
 
       if (!fs.existsSync(__dirname + `/../app/(website)/${oldSlug}`)) {
         console.log(`No directory found for ${oldSlug} - skipping`);
+        await redis.set(transformEnvironmentPage(page), newSlug);
         return Promise.resolve();
       }
 
