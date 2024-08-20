@@ -1,14 +1,15 @@
 "use client";
 
-import { PropertyDocument } from "@/types";
+import { InvestPagePayload, PropertyDocument } from "@/types";
 import { useSearchParams } from "next/navigation";
 import { Property } from "./property";
 
 type Props = {
   properties: PropertyDocument[];
+  investPage: InvestPagePayload
 };
 
-export function ListingProperties({ properties }: Props) {
+export function ListingProperties({ properties, investPage }: Props) {
   const params = useSearchParams();
 
   const country = params.get("country") || "";
@@ -30,6 +31,6 @@ export function ListingProperties({ properties }: Props) {
   }
 
   return filteredProperties.map((property, i) => {
-    return <Property key={i} property={property} />;
+    return <Property key={i} property={property} investPage={investPage} />;
   });
 }

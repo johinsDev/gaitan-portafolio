@@ -1,15 +1,19 @@
 import { resolveHref, urlForImage } from "@/sanity/lib/utils";
-import { PropertyDocument } from "@/types";
+import { InvestPagePayload, PropertyDocument } from "@/types";
 import { toPlainText } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
   property: PropertyDocument;
+  investPage: InvestPagePayload
 };
 
-export function Property({ property }: Props) {
-  const link = resolveHref("property", property.slug);
+export function Property({ property, investPage }: Props) {
+  const link = resolveHref("property", property.slug)?.replace(
+    "/listing",
+    `/${investPage.slug ?? 'listing'}`
+  );
 
   const image = urlForImage(property.gallery?.images?.[0])
     ?.width(500)

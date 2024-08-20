@@ -1,13 +1,14 @@
 import { resolveHref, urlForImage } from "@/sanity/lib/utils";
-import { Post } from "@/types";
+import { BlogPagePayload, Post } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
   posts: Post[] | null;
+  blogPage: BlogPagePayload | null;
 };
 
-export function PostsLayout({ posts }: Props) {
+export function PostsLayout({ posts, blogPage }: Props) {
   if (!posts) {
     return null;
   }
@@ -20,7 +21,10 @@ export function PostsLayout({ posts }: Props) {
         const imageUrl =
           image && urlForImage(image)?.height(220).width(420).fit("crop").url();
 
-        const href = resolveHref(post._type, post.slug);
+        const href = resolveHref(post._type, post.slug)?.replace(
+          "/blog",
+          `/${blogPage?.slug ?? 'blog'}`
+        );
 
         if (!imageUrl || !href) return null;
 

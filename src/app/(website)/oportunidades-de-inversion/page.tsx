@@ -17,6 +17,8 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Invest() {
   const { data } = await loadProperties();
 
+  const { data: investPage } = await loadInvestPage();
+
   return (
     <div className="flex flex-col gap-4">
       <div className="text-sub-title leading-sub-title font-bold text-center">
@@ -48,7 +50,7 @@ export default async function Invest() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
           <Suspense fallback={<div>Loading...</div>}>
-            <ListingProperties properties={data} />
+            <ListingProperties properties={data} investPage={investPage} />
           </Suspense>
         </div>
       </section>

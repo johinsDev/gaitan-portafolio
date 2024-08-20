@@ -3,12 +3,13 @@
 import { useQuery } from "@/sanity/loader/useQuery";
 
 import { postsQuery } from "@/sanity/lib/queries";
-import { Post } from "@/types";
+import { BlogPagePayload, Post } from "@/types";
 import { QueryResponseInitial } from "@sanity/react-loader";
 import { PostsLayout } from "./posts-layout";
 
 type Props = {
   initial: QueryResponseInitial<Post[]>;
+  blogPage: BlogPagePayload | null;
 };
 
 export default function ResourcesPreview(props: Props) {
@@ -20,5 +21,5 @@ export default function ResourcesPreview(props: Props) {
     },
   );
 
-  return <PostsLayout posts={data} />;
+  return <PostsLayout posts={data} blogPage={props.blogPage} />;
 }
