@@ -1,4 +1,10 @@
-import { aboutPageQuery, investPageQuery } from "@/sanity/lib/queries";
+import {
+  aboutPageQuery,
+  blogPageQuery,
+  coursePageQuery,
+  investPageQuery,
+  resourcesPageQuery,
+} from "@/sanity/lib/queries";
 import { Singletons } from "@/types";
 import { createClient } from "@sanity/client";
 import "dotenv/config";
@@ -16,11 +22,20 @@ const client = createClient({
   apiVersion: "2023-05-03", // use current date (YYYY-MM-DD) to target the latest API version
 });
 
-const REDIRECTS_LIST = [Singletons.INVEST, Singletons.ABOUT];
+const REDIRECTS_LIST = [
+  Singletons.INVEST,
+  Singletons.ABOUT,
+  Singletons.RESOURCES,
+  Singletons.COURSE,
+  Singletons.BLOG,
+];
 
 const INITIAL_REDIRECTS = {
   [Singletons.INVEST]: "/invest",
   [Singletons.ABOUT]: "/about",
+  [Singletons.RESOURCES]: "/resources",
+  [Singletons.COURSE]: "/course",
+  [Singletons.BLOG]: "/blog",
 };
 
 function transformEnvironmentPage(page: Singletons) {
@@ -47,6 +62,12 @@ function getQuery(page: Singletons) {
       return investPageQuery;
     case Singletons.ABOUT:
       return aboutPageQuery;
+    case Singletons.RESOURCES:
+      return resourcesPageQuery;
+    case Singletons.COURSE:
+      return coursePageQuery;
+    case Singletons.BLOG:
+      return blogPageQuery;
     default:
       return null;
   }

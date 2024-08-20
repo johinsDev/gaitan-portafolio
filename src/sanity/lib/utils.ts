@@ -35,15 +35,15 @@ export function resolveHref(
     case "invest":
       return slug ? `/${slug}` : "/invest";
     case "blog":
-      return "/blog";
+      return slug ? `/${slug}` : "/blog";
     case "post":
       return slug ? `/blog/${slug}` : undefined;
     case "resource":
       return slug ? `/resources/${slug}` : undefined;
     case "resources":
-      return "/resources";
+      return slug ? `/${slug}` : "/resources";
     case "course":
-      return "/course";
+      return slug ? `/${slug}` : "/course";
     case "about":
       return slug ? `/${slug}` : "/about";
     case "home":

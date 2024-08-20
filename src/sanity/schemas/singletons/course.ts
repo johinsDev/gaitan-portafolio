@@ -16,7 +16,15 @@ export default defineType({
       type: "string",
       validation: (rule) => rule.required(),
     }),
-    // slug
+    defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "title",
+      },
+      validation: (rule) => rule.required(),
+    }),
     defineField({
       name: "seo",
       title: "SEO",
