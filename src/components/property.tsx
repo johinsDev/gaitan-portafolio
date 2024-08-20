@@ -12,7 +12,7 @@ type Props = {
 export function Property({ property, investPage }: Props) {
   const link = resolveHref("property", property.slug)?.replace(
     "/listing",
-    `/${investPage.slug ?? 'listing'}`
+    `/${investPage?.slug ?? 'listing'}`
   );
 
   const image = urlForImage(property.gallery?.images?.[0])
