@@ -3,6 +3,7 @@ import { groq } from "next-sanity";
 const DEFAULT_QUERY = `
   _id,
   overview,
+  title,
   "slug": slug.current,
   seo{
     description,
@@ -225,6 +226,7 @@ export const resourcesQuery = groq`
     _id,
     seo,
     description,
+    "resource": download.asset->url,
     image{
       ...,
       image{
@@ -245,6 +247,7 @@ export const resourceBySlug = groq`
     _id,
     seo,
     description,
+    "resource": download.asset->url,
     image{
       ...,
       image{

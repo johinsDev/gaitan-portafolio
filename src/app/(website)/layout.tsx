@@ -36,7 +36,7 @@ export default function RootLayout({
         <Suspense>
           <Navbar />
         </Suspense>
-        <main className="main_container flex-grow pt-16">{children}</main>
+        <main className="main_container flex-grow py-16">{children}</main>
         <Suspense>
           <Footer />
         </Suspense>

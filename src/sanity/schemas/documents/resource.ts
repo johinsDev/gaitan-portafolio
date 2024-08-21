@@ -18,11 +18,11 @@ export default defineType({
       type: "string",
       validation: (rule) => rule.required(),
     }),
-    // seo
+    // defined a field to download a resource
     defineField({
-      name: "seo",
-      title: "SEO",
-      type: "seo",
+      name: "download",
+      title: "Download",
+      type: "file",
     }),
     // slug
     defineField({
@@ -48,6 +48,12 @@ export default defineType({
       name: "image",
       title: "Image",
       type: "customImage",
+    }),
+    // seo
+    defineField({
+      name: "seo",
+      title: "SEO",
+      type: "seo",
     }),
   ],
   preview: {

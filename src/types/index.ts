@@ -273,6 +273,12 @@ export type Resource = {
   _type: string;
   slug: string;
   seo?: Seo;
+  resource?: string;
+  download?: {
+    asset: {
+      url: string;
+    };
+  };
 };
 
 export type Post = {

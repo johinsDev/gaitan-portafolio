@@ -1,4 +1,4 @@
-import { resolveHref, urlForImage } from "@/sanity/lib/utils";
+import { urlForImage } from "@/sanity/lib/utils";
 import { Resource } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,15 +20,15 @@ export function ResourcesLayout({ resources }: Props) {
         const imageUrl =
           image && urlForImage(image)?.height(220).width(420).fit("crop").url();
 
-        const href = resolveHref(resource._type, resource.slug);
-
-        if (!imageUrl || !href) return null;
+        if (!imageUrl || !resource.resource) return null;
 
         return (
           <Link
-            href={href}
+            href={resource.resource}
             key={resource._id}
             className="flex flex-col items-center gap-8 text-center"
+            download={resource.title}
+            target="_blank"
           >
             <Image
               src={imageUrl}
@@ -42,8 +42,9 @@ export function ResourcesLayout({ resources }: Props) {
             />
             <div className="font-bold text-3xl">{resource.title}</div>
           </Link>
+
         );
       })}
-    </section>
+    </section >
   );
 }
