@@ -14,6 +14,7 @@ export enum SectionsList {
   YOUTUBE_SECTION = "youtubeSection",
   ACCORDION_SECTION = "accordion",
   KNOW_MORE = "know_more",
+  PORTABLE_TEXT = "portableTextSection",
 }
 
 export interface Seo {
@@ -140,7 +141,8 @@ export type Sections =
   | TestimonialSection
   | YoutubeSection
   | AccordionSection
-  | KnowMore;
+  | KnowMore
+  | PortableTextSection;
 
 export enum Singletons {
   ABOUT = "about",
@@ -219,6 +221,13 @@ export interface AccordionSection {
     _key: string;
   }[];
   _type: SectionsList.ACCORDION_SECTION;
+  _key: string;
+}
+
+export interface PortableTextSection {
+  title?: string;
+  body?: PortableTextBlock[];
+  _type: SectionsList.PORTABLE_TEXT;
   _key: string;
 }
 

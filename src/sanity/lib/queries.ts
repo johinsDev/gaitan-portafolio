@@ -37,6 +37,10 @@ const DEFAULT_QUERY = `
     ...,
     _type,
     title,
+    _type == "portableTextSection" => {
+      ...,
+      body,
+    },
     _type == "testimonialSection" => {
       ...,
       testimonials[]->{

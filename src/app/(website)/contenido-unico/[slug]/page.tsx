@@ -56,7 +56,7 @@ export default async function BlogDetail({ params }: Props) {
 
       <Share post={blog} />
 
-      <div className="text-xl font-bold mt-12">
+      <div className="mt-12">
         <CustomPortableText value={blog?.content as any} />
       </div>
     </div>

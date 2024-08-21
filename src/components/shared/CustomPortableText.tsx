@@ -17,11 +17,18 @@ export function CustomPortableText({
 }) {
   const components: PortableTextComponents = {
     listItem: {
+      // ol
+      number: ({ children, index }) => {
+        return (
+          <li className={`ml-4`}>
+            <span className="font-bold mr-1">{index + 1}.</span>
+            {children}
+          </li>
+        );
+      },
       bullet: ({ children }) => {
         return (
-          <li
-            className={`flex items-start space-x-2 ml-4 ${paragraphClasses}`}
-          >
+          <li className={`flex items-start space-x-2 ml-4 ${paragraphClasses}`}>
             <div className="size-1.5 bg-foreground rounded-full mt-2" />
             <span>{children}</span>
           </li>

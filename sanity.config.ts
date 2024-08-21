@@ -28,6 +28,7 @@ import image from "@/sanity/schemas/objects/image";
 import kindOfDepartment from "@/sanity/schemas/objects/kind-of-department";
 import knowMore from "@/sanity/schemas/objects/know-more";
 import milestone from "@/sanity/schemas/objects/milestone";
+import portableTextSection from "@/sanity/schemas/objects/portable-text-section";
 import projectCharacteristics from "@/sanity/schemas/objects/project-characteristics";
 import projectLocation from "@/sanity/schemas/objects/project-location";
 import seo from "@/sanity/schemas/objects/seo";
@@ -73,6 +74,7 @@ export default defineConfig({
       post,
       property,
       // Objects
+      portableTextSection,
       projectLocation,
       milestone,
       timeline,

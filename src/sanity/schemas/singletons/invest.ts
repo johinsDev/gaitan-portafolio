@@ -63,6 +63,9 @@ export default defineType({
         defineArrayMember({
           type: "know_more",
         }),
+        defineArrayMember({
+          type: "portableTextSection",
+        }),
       ],
     }),
   ],
