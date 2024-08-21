@@ -51,6 +51,8 @@ export function TestimonialsLayout({ data }: Props) {
                     <div className="font-bold text-xl font-noto">
                       {testimonial.name}
                     </div>
+                    {/* subtitle */}
+                    {!!testimonial.subtitle && <div className="text-base">{testimonial.subtitle}</div>}
                     <div>
                       {Array.from({ length: 5 }).map((_, index) => (
                         <span key={index} className="text-yellow-400">
@@ -58,7 +60,7 @@ export function TestimonialsLayout({ data }: Props) {
                         </span>
                       ))}
                     </div>
-                    <div className="text-base line-clamp-4">
+                    <div className="text-base">
                       {testimonial.review}
                     </div>
                   </div>

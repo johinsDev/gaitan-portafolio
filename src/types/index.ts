@@ -236,6 +236,7 @@ export interface TestimonialPayload {
   name?: string;
   rating?: number;
   review?: string;
+  subtitle?: string;
 }
 
 type GalleryImage = CustomImage["image"] & {

@@ -15,6 +15,13 @@ export default defineType({
       title: "Name",
       validation: (rule) => rule.required(),
     }),
+    // subtitle: string, any value to use like job title
+    defineField({
+      type: "string",
+      description: "Any value to use like job title",
+      name: "subtitle",
+      title: "Subtitle",
+    }),
     defineField({
       type: "text",
       name: "review",

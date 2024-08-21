@@ -57,6 +57,7 @@ const DEFAULT_QUERY = `
         name,
         review,
         rating,
+        subtitle
       },
     },
     _type == "stats" => {
