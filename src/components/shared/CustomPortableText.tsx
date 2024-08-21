@@ -20,9 +20,9 @@ export function CustomPortableText({
       bullet: ({ children }) => {
         return (
           <li
-            className={`flex items-center space-x-2 ml-4 ${paragraphClasses}`}
+            className={`flex items-start space-x-2 ml-4 ${paragraphClasses}`}
           >
-            <div className="size-1.5 bg-foreground rounded-full" />
+            <div className="size-1.5 bg-foreground rounded-full mt-2" />
             <span>{children}</span>
           </li>
         );
