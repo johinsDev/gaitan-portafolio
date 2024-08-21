@@ -19,6 +19,7 @@ export default defineType({
     defineField({
       name: "socialMedia",
       title: "Social Media",
+      description: "Social media links displayed on your site.",
       type: "array",
       of: [
         {
@@ -47,7 +48,34 @@ export default defineType({
         },
       ],
     }),
-    // define address, email, phone
+    defineField({
+      name: "footer",
+      description:
+        "This is a block of text that will be displayed at the bottom of the page.",
+      title: "Footer Info",
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "block",
+          marks: {
+            annotations: [
+              {
+                name: "link",
+                type: "object",
+                title: "Link",
+                fields: [
+                  {
+                    name: "href",
+                    type: "url",
+                    title: "Url",
+                  },
+                ],
+              },
+            ],
+          },
+        }),
+      ],
+    }),
     defineField({
       name: "address",
       title: "Address",
@@ -118,34 +146,7 @@ export default defineType({
         },
       ],
     }),
-    defineField({
-      name: "footer",
-      description:
-        "This is a block of text that will be displayed at the bottom of the page.",
-      title: "Footer Info",
-      type: "array",
-      of: [
-        defineArrayMember({
-          type: "block",
-          marks: {
-            annotations: [
-              {
-                name: "link",
-                type: "object",
-                title: "Link",
-                fields: [
-                  {
-                    name: "href",
-                    type: "url",
-                    title: "Url",
-                  },
-                ],
-              },
-            ],
-          },
-        }),
-      ],
-    }),
+
     defineField({
       name: "seo",
       title: "SEO",
