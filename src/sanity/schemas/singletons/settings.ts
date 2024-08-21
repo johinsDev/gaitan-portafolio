@@ -16,6 +16,38 @@ export default defineType({
       type: "string",
       description: "The title of your site.",
     }),
+    // define footer social media (facebook, twitter, instagram, linkedin)
+    defineField({
+      name: "socialMedia",
+      title: "Social Media",
+      type: "array",
+      of: [
+        {
+          title: "Social Media",
+          type: "object",
+          fields: [
+            {
+              name: "name",
+              title: "Name",
+              type: "string",
+              options: {
+                list: [
+                  { title: "Facebook", value: "facebook" },
+                  { title: "Twitter", value: "twitter" },
+                  { title: "Instagram", value: "instagram" },
+                  { title: "LinkedIn", value: "linkedin" },
+                ],
+              },
+            },
+            {
+              name: "url",
+              title: "URL",
+              type: "url",
+            },
+          ],
+        },
+      ],
+    }),
     // color theme
     defineField({
       name: "theme",

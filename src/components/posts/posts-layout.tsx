@@ -23,7 +23,7 @@ export function PostsLayout({ posts, blogPage }: Props) {
 
         const href = resolveHref(post._type, post.slug)?.replace(
           "/blog",
-          `/${blogPage?.slug ?? 'blog'}`
+          `/${blogPage?.slug ?? "blog"}`,
         );
 
         if (!imageUrl || !href) return null;

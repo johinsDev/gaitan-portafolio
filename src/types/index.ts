@@ -192,6 +192,10 @@ export interface ProjectPayload {
 
 export interface SettingsPayload {
   footer?: PortableTextBlock[];
+  socialMedia?: {
+    name?: string;
+    url?: string;
+  }[];
   menuItems?: MenuItem[];
   title?: string;
   seo?: Seo;

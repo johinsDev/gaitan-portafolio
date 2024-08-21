@@ -48,6 +48,7 @@
     "react-share": "^5.1.0",
     "sanity": "^3.42.1",
     "sanity-plugin-asset-source-unsplash": "^3.0.1",
+    "sanity-plugin-social-preview": "^1.1.0",
     "server-only": "^0.0.1",
     "styled-components": "^6.1",
     "tailwind-merge": "^2.3.0",

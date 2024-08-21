@@ -6,13 +6,11 @@ import { loadInvestPage, loadProperties } from "@/sanity/loader/loadQuery";
 import { Metadata } from "next";
 import { Suspense } from "react";
 
-
 export async function generateMetadata(): Promise<Metadata> {
   const { data } = await loadInvestPage();
 
   return _generateMetadata(data.seo);
 }
-
 
 export default async function Invest() {
   const { data } = await loadProperties();

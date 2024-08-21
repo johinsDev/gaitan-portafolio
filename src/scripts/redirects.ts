@@ -52,7 +52,7 @@ async function seedInitialRedirects() {
         console.log(`Seeding initial redirect for ${page} to ${initialSlug}`);
         await redis.set(transformEnvironmentPage(page), initialSlug);
       }
-    })
+    }),
   );
 }
 
@@ -109,7 +109,7 @@ export async function generateRedirects() {
 
       fs.renameSync(
         __dirname + `/../app/(website)/${oldSlug}`,
-        __dirname + `/../app/(website)/${newSlug}`
+        __dirname + `/../app/(website)/${newSlug}`,
       );
 
       console.log(`Updating redis key for ${page} to ${newSlug}`);

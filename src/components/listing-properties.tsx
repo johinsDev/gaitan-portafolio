@@ -6,7 +6,7 @@ import { Property } from "./property";
 
 type Props = {
   properties: PropertyDocument[];
-  investPage: InvestPagePayload
+  investPage: InvestPagePayload;
 };
 
 export function ListingProperties({ properties, investPage }: Props) {

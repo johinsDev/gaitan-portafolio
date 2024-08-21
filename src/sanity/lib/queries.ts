@@ -207,6 +207,7 @@ export const settingsQuery = groq`
     title,
     seo,
     theme,
+    socialMedia,
     contactCta{
       externalLink,
       link->{

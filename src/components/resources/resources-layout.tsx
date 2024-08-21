@@ -42,9 +42,8 @@ export function ResourcesLayout({ resources }: Props) {
             />
             <div className="font-bold text-3xl">{resource.title}</div>
           </Link>
-
         );
       })}
-    </section >
+    </section>
   );
 }

@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: page?.seo?.title || page?.name,
     description: page?.seo?.description || page?.description,
     image: page?.seo?.image || page?.gallery?.images?.[0],
-  })
+  });
 }
 
 export function generateStaticParams() {
@@ -31,7 +31,6 @@ export default async function ListingDetailPage(props: Props) {
   const { data } = await loadProperty(props.params.slug);
 
   const { data: investPage } = await loadInvestPage();
-
 
   const mainImage = data?.gallery?.images?.[0];
 
@@ -198,7 +197,9 @@ export default async function ListingDetailPage(props: Props) {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 mt-8 gap-4">
           {data?.similarProperties?.map((property, i) => {
-            return <Property key={i} property={property} investPage={investPage} />;
+            return (
+              <Property key={i} property={property} investPage={investPage} />
+            );
           })}
         </div>
       </section>
