@@ -196,6 +196,9 @@ export interface SettingsPayload {
     name?: string;
     url?: string;
   }[];
+  phone?: string;
+  email?: string;
+  address?: string;
   menuItems?: MenuItem[];
   title?: string;
   seo?: Seo;

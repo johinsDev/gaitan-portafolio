@@ -16,7 +16,6 @@ export default defineType({
       type: "string",
       description: "The title of your site.",
     }),
-    // define footer social media (facebook, twitter, instagram, linkedin)
     defineField({
       name: "socialMedia",
       title: "Social Media",
@@ -47,6 +46,25 @@ export default defineType({
           ],
         },
       ],
+    }),
+    // define address, email, phone
+    defineField({
+      name: "address",
+      title: "Address",
+      type: "string",
+      description: "The address of your site.",
+    }),
+    defineField({
+      name: "email",
+      title: "Email",
+      type: "string",
+      description: "The email of your site.",
+    }),
+    defineField({
+      name: "phone",
+      title: "Phone",
+      type: "string",
+      description: "The phone number of your site.",
     }),
     // color theme
     defineField({
