@@ -3,9 +3,10 @@
 import { Button } from "@/components/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/sheet";
 import { cn } from "@/lib/cn";
-import { resolveHref } from "@/sanity/lib/utils";
+import { resolveHref, urlForImage } from "@/sanity/lib/utils";
 import { MenuItem, SettingsPayload } from "@/types";
 import { Menu } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -24,6 +25,10 @@ const Navbar = (props: Props) => {
 
   const menuItems = settings?.menuItems || ([] as MenuItem[]);
 
+  const logo = !!settings?.logo?.image?.asset ? urlForImage(settings.logo.image)?.url() : "";
+
+
+
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <nav className="h-24 bg-primary text-background flex items-center justify-between px-8">
@@ -36,9 +41,24 @@ const Navbar = (props: Props) => {
           </SheetTrigger>
 
           <Link href="/">
-            <p className="font-bold text-xl xl:text-3xl">
+            <p className={cn("font-bold text-xl xl:text-3xl", {
+              hidden: !settings?.title || !!logo
+            })}>
               {settings?.title ?? "Juan Felipe Gaitán"}.
             </p>
+
+            {!!logo &&
+              <div className="w-28 aspect-video relative">
+                <Image
+                  src={logo}
+                  fill
+                  alt={settings?.logo?.alt ?? "Logo"}
+                  className="object-contain"
+                  placeholder="blur"
+                  blurDataURL={settings?.logo?.image?.asset?.metadata?.lqip}
+                />
+              </div>
+            }
           </Link>
         </div>
 

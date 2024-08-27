@@ -198,6 +198,7 @@ export interface SettingsPayload {
     name?: string;
     url?: string;
   }[];
+  logo?: CustomImage;
   phone?: string;
   email?: string;
   address?: string;

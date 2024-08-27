@@ -16,6 +16,13 @@ export default defineType({
       type: "string",
       description: "The title of your site.",
     }),
+    // Define logo field
+    defineField({
+      name: "logo",
+      title: "Logo",
+      type: "customImage",
+      description: "The logo of your site.",
+    }),
     defineField({
       name: "socialMedia",
       title: "Social Media",
@@ -36,6 +43,8 @@ export default defineType({
                   { title: "Twitter", value: "twitter" },
                   { title: "Instagram", value: "instagram" },
                   { title: "LinkedIn", value: "linkedin" },
+                  { title: "YouTube", value: "youtube" },
+                  { title: "TikTok", value: "tiktok" },
                 ],
               },
             },

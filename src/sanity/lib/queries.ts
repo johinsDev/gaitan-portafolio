@@ -216,6 +216,16 @@ export const settingsQuery = groq`
     phone,
     address,
     email,
+    logo{
+      ...,
+      image{
+        ...,
+        asset->{
+          ...,
+          "_ref": _id,
+        },
+      },
+    },
     contactCta{
       externalLink,
       link->{

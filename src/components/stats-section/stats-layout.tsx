@@ -24,7 +24,7 @@ export function StatsLAyout({ data }: Props) {
                 key={index}
                 className="py-4 lg:px-16 flex items-center lg:items-start lg:flex-col gap-4"
               >
-                <div className="text-metrics leading-metrics font-bold flex-1">
+                <div className="text-metrics leading-metrics font-bold truncate w-full">
                   {stat.value}
                 </div>
                 <div className="h-full w-0.5 bg-foreground lg:hidden" />
