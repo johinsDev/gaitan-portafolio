@@ -4,7 +4,12 @@ import { useQuery } from "@/sanity/loader/useQuery";
 
 import { useGetQueryLoad } from "@/hooks/use-get-query-load";
 import { getSection } from "@/sanity/lib/utils";
-import { FullPagePayload, NewsletterSection, SectionsList, Singletons } from "@/types";
+import {
+  FullPagePayload,
+  NewsletterSection,
+  SectionsList,
+  Singletons,
+} from "@/types";
 import { QueryResponseInitial } from "@sanity/react-loader";
 import { NewsletterSectionLayout } from "./newsletter-layout";
 

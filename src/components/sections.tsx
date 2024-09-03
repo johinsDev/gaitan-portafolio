@@ -9,6 +9,7 @@ import { AlliedsSection } from "./allieds-section";
 import { KnowMoreSection } from "./know-more-section";
 import { NewsletterSection } from "./newsletter-section";
 import { PortableTextSectionComponent } from "./portable-text-section";
+import { ServicesSection } from "./services-section";
 import { YoutubeSection } from "./youtube-section";
 
 type SectionProps = {
@@ -23,6 +24,15 @@ export async function Sections({ load = Singletons.HOME, slug }: SectionProps) {
     <>
       {data?.data?.sections?.map((section) => {
         switch (section._type) {
+          case SectionsList.SERVICES_SECTION:
+            return (
+              <ServicesSection
+                key={section._key}
+                _key={section._key}
+                load={load}
+                slug={slug}
+              />
+            );
           case SectionsList.NEWSLETTER_SECTION:
             return (
               <NewsletterSection

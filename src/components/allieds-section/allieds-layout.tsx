@@ -23,25 +23,24 @@ export function AlliedsSectionLayout({ data }: Props) {
       )}
       <div className="main_container mt-12">
         <div className="grid grid-cols-5 gap-8">
-          {
-            data.allieds?.map((allied) => {
-              const imageUrl =
-                allied?.image?.image?.asset && urlForImage(allied?.image?.image)?.width(420).url();
+          {data.allieds?.map((allied) => {
+            const imageUrl =
+              allied?.image?.image?.asset &&
+              urlForImage(allied?.image?.image)?.width(420).url();
 
-              if (!imageUrl) return null;
+            if (!imageUrl) return null;
 
-              return (
-                <div key={allied._key} className="aspect-video relative">
-                  <Image
-                    src={imageUrl}
-                    alt={allied.image?.alt ?? ""}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              );
-            })
-          }
+            return (
+              <div key={allied._key} className="aspect-video relative">
+                <Image
+                  src={imageUrl}
+                  alt={allied.image?.alt ?? ""}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

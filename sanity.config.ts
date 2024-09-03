@@ -35,6 +35,8 @@ import portableTextSection from "@/sanity/schemas/objects/portable-text-section"
 import projectCharacteristics from "@/sanity/schemas/objects/project-characteristics";
 import projectLocation from "@/sanity/schemas/objects/project-location";
 import seo from "@/sanity/schemas/objects/seo";
+import service from "@/sanity/schemas/objects/service";
+import servicesSection from "@/sanity/schemas/objects/services-section";
 import stat from "@/sanity/schemas/objects/stat";
 import stats from "@/sanity/schemas/objects/stats";
 import testimonialSection from "@/sanity/schemas/objects/testimonial-section";
@@ -77,6 +79,8 @@ export default defineConfig({
       post,
       property,
       // Objects
+      service,
+      servicesSection,
       allied,
       alliedSection,
       newsletterSection,

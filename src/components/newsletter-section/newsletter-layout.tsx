@@ -41,14 +41,26 @@ export function NewsletterSectionLayout({ data }: Props) {
           onSubmit={(e) => {
             e.preventDefault();
             setSubmitted(true);
-          }}>
-          <Input type="text" placeholder={data.placeholderName ?? "Escribe tu nombre"} name="name" className="h-16 md:flex-1" required />
-          <Input type="email" placeholder={data.placeholderEmail ?? "Escribe tu email"} name="email" className="h-16 md:flex-1" required />
+          }}
+        >
+          <Input
+            type="text"
+            placeholder={data.placeholderName ?? "Escribe tu nombre"}
+            name="name"
+            className="h-16 md:flex-1"
+            required
+          />
+          <Input
+            type="email"
+            placeholder={data.placeholderEmail ?? "Escribe tu email"}
+            name="email"
+            className="h-16 md:flex-1"
+            required
+          />
           <Button type="submit" className="h-16 w-full md:w-1/4">
             {data.submitText ?? "Suscribirme"}
           </Button>
         </form>
-
       </div>
     </section>
   );

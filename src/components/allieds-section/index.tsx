@@ -6,7 +6,7 @@ import { loadSingleton } from "@/sanity/loader/loadQuery";
 import {
   AlliedsSection as AlliedsSectionType,
   SectionsList,
-  Singletons
+  Singletons,
 } from "@/types";
 import { AlliedsSectionLayout } from "./allieds-layout";
 
@@ -28,9 +28,7 @@ export async function AlliedsSection({ _key: key, load, slug }: Props) {
   );
 
   if (draftMode().isEnabled) {
-    return (
-      <AlliedsPreview initial={data} _key={key} load={load} slug={slug} />
-    );
+    return <AlliedsPreview initial={data} _key={key} load={load} slug={slug} />;
   }
 
   return <AlliedsSectionLayout data={feature} />;

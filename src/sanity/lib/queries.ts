@@ -46,6 +46,23 @@ const DEFAULT_QUERY = `
       placeholderName,
       placeholderEmail,
     },
+    _type == "servicesSection" => {
+      ...,
+      description,
+      title,
+      services[]{
+        ...,
+        image{
+          ...,
+          asset->{
+            ...,
+            "_ref": _id,
+          },
+        },
+        title,
+        description,
+      },
+    },
     _type == "alliedSection" => {
       ...,
       allieds[]{

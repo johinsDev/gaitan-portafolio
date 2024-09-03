@@ -72,6 +72,9 @@ export default defineType({
         defineArrayMember({
           type: "newsletterSection",
         }),
+        defineArrayMember({
+          type: "servicesSection",
+        }),
       ],
     }),
   ],

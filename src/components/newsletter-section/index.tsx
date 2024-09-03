@@ -6,7 +6,7 @@ import { loadSingleton } from "@/sanity/loader/loadQuery";
 import {
   NewsletterSection as NewsletterSectionType,
   SectionsList,
-  Singletons
+  Singletons,
 } from "@/types";
 import { NewsletterSectionLayout } from "./newsletter-layout";
 
