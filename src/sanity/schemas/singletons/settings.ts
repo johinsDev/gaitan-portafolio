@@ -58,6 +58,15 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "privacyPolicy",
+      title: "Privacy Policy",
+      type: "file",
+      description: "The privacy policy of your site.",
+      options: {
+        accept: "application/pdf",
+      },
+    }),
+    defineField({
       name: "footer",
       description:
         "This is a block of text that will be displayed at the bottom of the page.",

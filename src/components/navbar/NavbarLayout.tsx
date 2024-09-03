@@ -25,9 +25,9 @@ const Navbar = (props: Props) => {
 
   const menuItems = settings?.menuItems || ([] as MenuItem[]);
 
-  const logo = !!settings?.logo?.image?.asset ? urlForImage(settings.logo.image)?.url() : "";
-
-
+  const logo = !!settings?.logo?.image?.asset
+    ? urlForImage(settings.logo.image)?.url()
+    : "";
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -41,13 +41,15 @@ const Navbar = (props: Props) => {
           </SheetTrigger>
 
           <Link href="/">
-            <p className={cn("font-bold text-xl xl:text-3xl", {
-              hidden: !settings?.title || !!logo
-            })}>
+            <p
+              className={cn("font-bold text-xl xl:text-3xl", {
+                hidden: !settings?.title || !!logo,
+              })}
+            >
               {settings?.title ?? "Juan Felipe Gaitán"}.
             </p>
 
-            {!!logo &&
+            {!!logo && (
               <div className="w-28 aspect-video relative">
                 <Image
                   src={logo}
@@ -58,7 +60,7 @@ const Navbar = (props: Props) => {
                   blurDataURL={settings?.logo?.image?.asset?.metadata?.lqip}
                 />
               </div>
-            }
+            )}
           </Link>
         </div>
 

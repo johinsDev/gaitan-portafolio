@@ -8,7 +8,7 @@ import {
   FullPagePayload,
   PortableTextSection,
   SectionsList,
-  Singletons
+  Singletons,
 } from "@/types";
 import { QueryResponseInitial } from "@sanity/react-loader";
 import { PortableTextLayout } from "./portable-text-layout";

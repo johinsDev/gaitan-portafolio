@@ -211,6 +211,7 @@ export interface SettingsPayload {
     hex: string;
   } | null;
   contactCta?: Cta;
+  privacyPolicyURL?: string;
 }
 
 export interface AccordionSection {

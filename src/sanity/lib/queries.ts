@@ -216,6 +216,7 @@ export const settingsQuery = groq`
     phone,
     address,
     email,
+    "privacyPolicyURL": privacyPolicy.asset->url,
     logo{
       ...,
       image{
