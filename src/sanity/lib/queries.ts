@@ -37,6 +37,21 @@ const DEFAULT_QUERY = `
     ...,
     _type,
     title,
+    _type == "alliedSection" => {
+      ...,
+      allieds[]{
+        ...,
+        image{
+          ...,
+          asset->{
+            ...,
+            "_ref": _id,
+          },
+        },
+        name,
+        url,
+      },
+    },
     _type == "portableTextSection" => {
       ...,
       body,

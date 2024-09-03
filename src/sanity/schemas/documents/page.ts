@@ -121,6 +121,9 @@ export default defineType({
         defineArrayMember({
           type: "portableTextSection",
         }),
+        defineArrayMember({
+          type: "alliedSection",
+        }),
       ],
     }),
   ],

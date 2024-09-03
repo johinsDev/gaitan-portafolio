@@ -15,6 +15,7 @@ export enum SectionsList {
   ACCORDION_SECTION = "accordion",
   KNOW_MORE = "know_more",
   PORTABLE_TEXT = "portableTextSection",
+  ALLIEDS_SECTION = "alliedSection",
 }
 
 export interface Seo {
@@ -142,7 +143,8 @@ export type Sections =
   | YoutubeSection
   | AccordionSection
   | KnowMore
-  | PortableTextSection;
+  | PortableTextSection
+  | AlliedsSection;
 
 export enum Singletons {
   ABOUT = "about",
@@ -212,6 +214,19 @@ export interface SettingsPayload {
   } | null;
   contactCta?: Cta;
   privacyPolicyURL?: string;
+}
+
+export interface AlliedsSection {
+  title?: string;
+  description?: PortableTextBlock[];
+  allieds?: {
+    title?: string;
+    description?: PortableTextBlock[];
+    image?: CustomImage;
+    _key: string;
+  }[];
+  _type: SectionsList.ALLIEDS_SECTION;
+  _key: string;
 }
 
 export interface AccordionSection {

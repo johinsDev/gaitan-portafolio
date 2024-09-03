@@ -5,6 +5,7 @@ import { Testimonials } from "@/components/testimonials";
 import { loadSingleton } from "@/sanity/loader/loadQuery";
 import { SectionsList, Singletons } from "@/types";
 import { AccordionSection } from "./accordion-section";
+import { AlliedsSection } from "./allieds-section";
 import { KnowMoreSection } from "./know-more-section";
 import { PortableTextSectionComponent } from "./portable-text-section";
 import { YoutubeSection } from "./youtube-section";
@@ -21,6 +22,15 @@ export async function Sections({ load = Singletons.HOME, slug }: SectionProps) {
     <>
       {data?.data?.sections?.map((section) => {
         switch (section._type) {
+          case SectionsList.ALLIEDS_SECTION:
+            return (
+              <AlliedsSection
+                key={section._key}
+                _key={section._key}
+                load={load}
+                slug={slug}
+              />
+            );
           case SectionsList.PORTABLE_TEXT:
             return (
               <PortableTextSectionComponent

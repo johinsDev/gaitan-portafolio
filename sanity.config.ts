@@ -18,6 +18,8 @@ import property from "@/sanity/schemas/documents/property";
 import resource from "@/sanity/schemas/documents/resource";
 import testimonial from "@/sanity/schemas/documents/testimonial";
 import accordion from "@/sanity/schemas/objects/accordion";
+import allied from "@/sanity/schemas/objects/allied";
+import alliedSection from "@/sanity/schemas/objects/allied-section";
 import cta from "@/sanity/schemas/objects/cta";
 import ctaSection from "@/sanity/schemas/objects/cta-section";
 import duration from "@/sanity/schemas/objects/duration";
@@ -74,6 +76,8 @@ export default defineConfig({
       post,
       property,
       // Objects
+      allied,
+      alliedSection,
       portableTextSection,
       projectLocation,
       milestone,
