@@ -17,18 +17,18 @@ export function StatsLAyout({ data }: Props) {
       </h2>
 
       {!!data.stats?.length && (
-        <div className="mt-8 lg:mt-16 grid lg:grid-cols-3 lg:*:border-r-black lg:*:border-r-[1.5px] lg:[&>*:first-child]:border-l-black lg:[&>*:first-child]:border-l-[1.5px]">
+        <div className="mt-8 lg:mt-16 grid lg:grid-cols-4 lg:*:border-r-black lg:*:border-r-[1.5px] lg:[&>*:first-child]:border-l-black lg:[&>*:first-child]:border-l-[1.5px]">
           {data?.stats?.map((stat, index) => {
             return (
               <div
                 key={index}
-                className="py-4 lg:px-16 flex items-center lg:items-start lg:flex-col gap-4"
+                className="py-4 lg:px-6 flex items-center lg:items-start lg:flex-col gap-4"
               >
-                <div className="text-metrics leading-metrics font-bold truncate w-full">
+                <div className="text-2xl md:text-3xl lg:text-4xl font-bold truncate w-full flex-1">
                   {stat.value}
                 </div>
                 <div className="h-full w-0.5 bg-foreground lg:hidden" />
-                <div className="text-body2 leading-body2 flex-1 md:flex-2">
+                <div className="text-lg flex-1">
                   {stat.title ?? stat.description}
                 </div>
               </div>

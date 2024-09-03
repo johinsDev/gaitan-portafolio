@@ -28,8 +28,7 @@ export default function Footer(props: FooterProps) {
 
   const linkedin = data?.socialMedia?.find((item) => item.name === "linkedin");
 
-  const privacyPolicy = data?.privacyPolicyURL
-
+  const privacyPolicy = data?.privacyPolicyURL;
 
   return (
     <footer className="bg-primary text-center text-primary-foreground lg:text-left">
