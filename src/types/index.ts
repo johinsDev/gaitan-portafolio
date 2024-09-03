@@ -16,6 +16,7 @@ export enum SectionsList {
   KNOW_MORE = "know_more",
   PORTABLE_TEXT = "portableTextSection",
   ALLIEDS_SECTION = "alliedSection",
+  NEWSLETTER_SECTION = "newsletterSection",
 }
 
 export interface Seo {
@@ -144,7 +145,8 @@ export type Sections =
   | AccordionSection
   | KnowMore
   | PortableTextSection
-  | AlliedsSection;
+  | AlliedsSection
+  | NewsletterSection;
 
 export enum Singletons {
   ABOUT = "about",
@@ -227,6 +229,17 @@ export interface AlliedsSection {
   }[];
   _type: SectionsList.ALLIEDS_SECTION;
   _key: string;
+}
+
+export interface NewsletterSection {
+  title?: string;
+  description?: PortableTextBlock[];
+  _type: SectionsList.NEWSLETTER_SECTION;
+  _key: string;
+  successMessage?: PortableTextBlock[];
+  placeholderName?: string;
+  placeholderEmail?: string;
+  submitText?: string;
 }
 
 export interface AccordionSection {

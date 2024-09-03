@@ -37,6 +37,15 @@ const DEFAULT_QUERY = `
     ...,
     _type,
     title,
+    _type == "newsletterSection" => {
+      ...,
+      description,
+      title,
+      successMessage,
+      submitText,
+      placeholderName,
+      placeholderEmail,
+    },
     _type == "alliedSection" => {
       ...,
       allieds[]{

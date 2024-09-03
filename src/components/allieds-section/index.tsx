@@ -10,7 +10,7 @@ import {
 } from "@/types";
 import { AlliedsSectionLayout } from "./allieds-layout";
 
-const KnowMorePreview = dynamic(() => import("./allieds-preview"));
+const AlliedsPreview = dynamic(() => import("./allieds-preview"));
 
 type Props = {
   _key: string;
@@ -29,7 +29,7 @@ export async function AlliedsSection({ _key: key, load, slug }: Props) {
 
   if (draftMode().isEnabled) {
     return (
-      <KnowMorePreview initial={data} _key={key} load={load} slug={slug} />
+      <AlliedsPreview initial={data} _key={key} load={load} slug={slug} />
     );
   }
 

@@ -30,6 +30,7 @@ import image from "@/sanity/schemas/objects/image";
 import kindOfDepartment from "@/sanity/schemas/objects/kind-of-department";
 import knowMore from "@/sanity/schemas/objects/know-more";
 import milestone from "@/sanity/schemas/objects/milestone";
+import newsletterSection from "@/sanity/schemas/objects/newsletter-section";
 import portableTextSection from "@/sanity/schemas/objects/portable-text-section";
 import projectCharacteristics from "@/sanity/schemas/objects/project-characteristics";
 import projectLocation from "@/sanity/schemas/objects/project-location";
@@ -78,6 +79,7 @@ export default defineConfig({
       // Objects
       allied,
       alliedSection,
+      newsletterSection,
       portableTextSection,
       projectLocation,
       milestone,
