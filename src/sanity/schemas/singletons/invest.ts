@@ -75,6 +75,9 @@ export default defineType({
         defineArrayMember({
           type: "servicesSection",
         }),
+        defineArrayMember({
+          type: "lastEntriesSection",
+        }),
       ],
     }),
   ],

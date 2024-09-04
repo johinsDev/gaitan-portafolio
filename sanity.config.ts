@@ -29,6 +29,7 @@ import hero from "@/sanity/schemas/objects/hero";
 import image from "@/sanity/schemas/objects/image";
 import kindOfDepartment from "@/sanity/schemas/objects/kind-of-department";
 import knowMore from "@/sanity/schemas/objects/know-more";
+import lastEntriesSection from "@/sanity/schemas/objects/last-entries-section";
 import milestone from "@/sanity/schemas/objects/milestone";
 import newsletterSection from "@/sanity/schemas/objects/newsletter-section";
 import portableTextSection from "@/sanity/schemas/objects/portable-text-section";
@@ -79,6 +80,7 @@ export default defineConfig({
       post,
       property,
       // Objects
+      lastEntriesSection,
       service,
       servicesSection,
       allied,

@@ -496,3 +496,23 @@ export const propertyBySlug = groq`
     },
   }
 `;
+
+export const queryLastEntries = groq`
+  *[_type == "post"] | order(publishedAt desc) [0...3]{
+    ...,
+    _id,
+    seo,
+    content,
+    image{
+      ...,
+      image{
+        asset->{
+          ...,
+          "_ref": _id,
+        },
+      },
+    },
+    title,
+    "slug": slug.current,
+  }
+`;

@@ -7,6 +7,7 @@ import { SectionsList, Singletons } from "@/types";
 import { AccordionSection } from "./accordion-section";
 import { AlliedsSection } from "./allieds-section";
 import { KnowMoreSection } from "./know-more-section";
+import { LastEntriesSection } from "./last-entries";
 import { NewsletterSection } from "./newsletter-section";
 import { PortableTextSectionComponent } from "./portable-text-section";
 import { ServicesSection } from "./services-section";
@@ -24,6 +25,15 @@ export async function Sections({ load = Singletons.HOME, slug }: SectionProps) {
     <>
       {data?.data?.sections?.map((section) => {
         switch (section._type) {
+          case SectionsList.LAST_ENTRIES_SECTION:
+            return (
+              <LastEntriesSection
+                key={section._key}
+                _key={section._key}
+                load={load}
+                slug={slug}
+              />
+            );
           case SectionsList.SERVICES_SECTION:
             return (
               <ServicesSection
