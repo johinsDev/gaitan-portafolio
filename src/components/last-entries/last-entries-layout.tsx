@@ -27,7 +27,7 @@ export function LastEntriesSectionLayout({ data, lastEntries, blogPage }: Props)
       )}
       <div className="main_container mt-12">
         <Carousel className="w-full">
-          <CarouselContent className="-ml-8">
+          <CarouselContent className="-ml-4 md:-ml-8">
             {lastEntries?.map((post) => {
               const image = post?.image?.image;
 
@@ -44,25 +44,25 @@ export function LastEntriesSectionLayout({ data, lastEntries, blogPage }: Props)
               return (
                 <CarouselItem
                   key={post._id}
-                  className="basis-3/4 lg:basis-1/3 pl-8"
+                  className="basis-3/4 lg:basis-1/3 pl-4 md:pl-8 flex flex-col items-center gap-4 text-center"
                 >
                   <Link
                     href={href}
-                    className="flex flex-col items-center gap-8 text-center"
                   >
-                    <Image
-                      src={imageUrl}
-                      width={420}
-                      height={220}
-                      alt={post.title}
-                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      blurDataURL={image.asset?.metadata?.lqip}
-                      placeholder="blur"
-                      className="object-cover w-full aspect-video rounded-2xl"
-                    />
+                    <div className="relative w-full rounded-2xl overflow-hidden aspect-video">
+                      <Image
+                        src={imageUrl}
+                        fill
+                        alt={post.title}
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        blurDataURL={image.asset?.metadata?.lqip}
+                        placeholder="blur"
+                        className="object-cover"
+                      />
+                    </div>
 
-                    <div className="p-6 py-2 flex flex-col items-center justify-center text-center">
-                      <div className="font-bold text-3xl mt-6">{post.title}</div>
+                    <div className="flex flex-col items-center justify-center text-center">
+                      <div className="font-bold text-lg md:text-xl lg:text-2xl mt-6">{post.title}</div>
                     </div>
                   </Link>
                 </CarouselItem>
