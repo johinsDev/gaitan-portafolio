@@ -10,7 +10,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Cta } from "../cta";
 
 type Props = {
   settings: SettingsPayload;
@@ -89,8 +88,6 @@ const Navbar = (props: Props) => {
             );
           })}
         </ul>
-
-        <Cta className="hidden lg:flex" {...settings.contactCta} />
       </nav>
 
       <SheetContent side="left" className="sm:max-w-xs">
@@ -111,8 +108,6 @@ const Navbar = (props: Props) => {
               </Link>
             );
           })}
-
-          <Cta {...settings.contactCta} variant="primary" />
         </nav>
       </SheetContent>
     </Sheet>
