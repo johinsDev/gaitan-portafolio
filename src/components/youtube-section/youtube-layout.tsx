@@ -1,9 +1,17 @@
 "use client";
 import { extractYoutubeId } from "@/sanity/lib/utils";
 import { YoutubeSection } from "@/types";
-import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import dynamic from "next/dynamic";
 import { CustomPortableText } from "../shared/CustomPortableText";
-import "./youtube.css";
+
+const ReactPlayer = dynamic(() => import('react-player/lazy'), {
+  ssr: false,
+  loading() {
+    return (
+      <div className="aspect-video w-full animate-pulse bg-neutral-200" />
+    )
+  },
+})
 
 type Props = {
   data?: YoutubeSection | null;
@@ -17,7 +25,7 @@ export function YoutubeSectionLayout({ data }: Props) {
   if (!id) return null;
 
   return (
-    <section className="py-16 w-full aspect-video">
+    <section className="py-16 w-full max-w-4xl mx-auto">
       {!!data.title && (
         <h2 className="text-sub-title leading-sub-title font-bold text-center mb-12">
           {data.title}
@@ -28,13 +36,19 @@ export function YoutubeSectionLayout({ data }: Props) {
           <CustomPortableText value={data.description as any} />
         </p>
       )}
-      <LiteYouTubeEmbed
-        id={id}
-        title={data.videoTitle || ""}
-        aspectHeight={9}
-        aspectWidth={16}
-        poster="hqdefault"
-      />
+      <div className="relative aspect-video w-full">
+        <ReactPlayer
+          url={data.url}
+          title={data?.videoTitle}
+          width="100%"
+          height="100%"
+          className="absolute inset-0"
+          controls
+          fallback={
+            <div className="aspect-video w-full animate-pulse bg-cruisebound-neutral-200" />
+          }
+        />
+      </div>
     </section>
   );
 }
