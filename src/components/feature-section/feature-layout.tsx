@@ -21,19 +21,21 @@ export function FeatureSectionLayout({ data }: Props) {
 
   return (
     <section
-      className={cn("py-8 md:py-12 flex items-center gap-4", {
+      className={cn("py-8 md:py-12 flex items-center gap-8", {
         "flex-col md:flex-row-reverse": position === "left",
         "flex-col-reverse md:flex-row": position === "right",
       })}
     >
       <div
-        className={cn("flex-1 flex flex-col items-center text-center", {
+        className={cn("w-full md:w-1/2 flex flex-col items-center text-center", {
           "md:text-right md:items-end": position === "left",
           "md:text-left md:items-start": position === "right",
         })}
       >
+        <h2 className="text-h2 leading-h2 font-semibold">{data?.title}</h2>
+
         {!!data?.content && (
-          <div className="text-body1 leading-body1 w-full lg:w-3/4">
+          <div className="text-body1 leading-body1 mt-8 w-full lg:w-3/4">
             <CustomPortableText value={data?.content as any} />
           </div>
         )}
@@ -42,15 +44,14 @@ export function FeatureSectionLayout({ data }: Props) {
       </div>
 
       {!!imageUrl && (
-        <div className="flex-shrink-0 flex justify-end">
+        <div className="relative flex-shrink-0 flex justify-end w-full md:w-1/2 aspect-video overflow-hidden rounded-xl">
           <Image
             src={imageUrl}
-            width={444}
-            height={250}
+            fill
             alt={data?.image?.alt ?? ""}
             blurDataURL={image.asset.metadata.lqip}
             placeholder="blur"
-            className="object-cover object-top aspect-video"
+            className="object-cover object-top"
             sizes="(min-width: 1024px) 444px, 100vw"
           />
         </div>

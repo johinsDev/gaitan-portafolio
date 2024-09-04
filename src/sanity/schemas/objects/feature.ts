@@ -20,32 +20,7 @@ export default defineType({
         // Paragraphs
         defineArrayMember({
           lists: [],
-          marks: {
-            annotations: [
-              {
-                name: "link",
-                type: "object",
-                title: "Link",
-                fields: [
-                  {
-                    name: "href",
-                    type: "url",
-                    title: "Url",
-                  },
-                ],
-              },
-            ],
-            decorators: [
-              {
-                title: "Italic",
-                value: "em",
-              },
-              {
-                title: "Strong",
-                value: "strong",
-              },
-            ],
-          },
+          marks: {},
           styles: [],
           type: "block",
         }),
