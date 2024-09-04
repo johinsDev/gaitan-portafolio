@@ -3,12 +3,13 @@
 import { useQuery } from "@/sanity/loader/useQuery";
 
 import { resourcesQuery } from "@/sanity/lib/queries";
-import { Resource } from "@/types";
+import { Resource, ResourcesPagePayload } from "@/types";
 import { QueryResponseInitial } from "@sanity/react-loader";
 import { ResourcesLayout } from "./resources-layout";
 
 type Props = {
   initial: QueryResponseInitial<Resource[]>;
+  resourcePage: ResourcesPagePayload | null;
 };
 
 export default function ResourcesPreview(props: Props) {
@@ -20,5 +21,5 @@ export default function ResourcesPreview(props: Props) {
     },
   );
 
-  return <ResourcesLayout resources={data} />;
+  return <ResourcesLayout resources={data} resourcePage={props.resourcePage} />;
 }

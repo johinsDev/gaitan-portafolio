@@ -1,13 +1,15 @@
-import { urlForImage } from "@/sanity/lib/utils";
-import { Resource } from "@/types";
+import { resolveHref, urlForImage } from "@/sanity/lib/utils";
+import { Resource, ResourcesPagePayload } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "../button";
 
 type Props = {
   resources: Resource[] | null;
+  resourcePage: ResourcesPagePayload | null;
 };
 
-export function ResourcesLayout({ resources }: Props) {
+export function ResourcesLayout({ resources, resourcePage }: Props) {
   if (!resources) {
     return null;
   }
@@ -20,27 +22,32 @@ export function ResourcesLayout({ resources }: Props) {
         const imageUrl =
           image && urlForImage(image)?.height(220).width(420).fit("crop").url();
 
-        if (!imageUrl || !resource.resource) return null;
+        const href = resolveHref(resource._type, resource.slug)?.replace(
+          "/resources",
+          `/${resourcePage?.slug ?? "resources"}`,
+        );
+
+        if (!imageUrl || !resource.resource || !href) return null;
 
         return (
           <Link
-            href={resource.resource}
+            href={href}
             key={resource._id}
             className="flex flex-col items-center gap-8 text-center"
-            download={resource.title}
-            target="_blank"
           >
-            <Image
-              src={imageUrl}
-              width={420}
-              height={220}
-              alt={resource.title}
-              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-              blurDataURL={image.asset?.metadata?.lqip}
-              placeholder="blur"
-              className="object-cover object-top aspect-video w-full"
-            />
-            <div className="font-bold text-3xl">{resource.title}</div>
+            <div className="relative w-full aspect-video">
+              <Image
+                src={imageUrl}
+                fill
+                alt={resource.title}
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                blurDataURL={image.asset?.metadata?.lqip}
+                placeholder="blur"
+                className="object-cover object-top aspect-video w-full"
+              />
+            </div>
+            <div className="font-bold text-xl md:text-2xl">{resource.title}</div>
+            <Button>Descargar</Button>
           </Link>
         );
       })}

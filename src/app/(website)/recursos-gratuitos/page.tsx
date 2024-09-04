@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function Resources() {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 pb-16">
       <Suspense fallback={<HeroSkeleton />}>
         <Hero load={Singletons.RESOURCES} />
       </Suspense>
