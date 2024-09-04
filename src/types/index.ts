@@ -56,6 +56,7 @@ export interface StatsSection {
   title?: string;
   _type: SectionsList.STATS_SECTION;
   _key: string;
+  bgColor?: Color;
 }
 
 export interface KnowMore {
@@ -161,6 +162,39 @@ export enum Singletons {
   BLOG = "blog",
   PAGE = "page",
   INVEST = "invest",
+}
+
+export interface Color {
+  _type: string;
+  hex: string;
+  hsv: Hsv;
+  rgb: Rgb;
+  hsl: Hsl;
+  alpha: number;
+}
+
+export interface Hsv {
+  v: number;
+  _type: string;
+  h: number;
+  a: number;
+  s: number;
+}
+
+export interface Rgb {
+  b: number;
+  r: number;
+  g: number;
+  _type: string;
+  a: number;
+}
+
+export interface Hsl {
+  s: number;
+  _type: string;
+  h: number;
+  l: number;
+  a: number;
 }
 
 export interface HomePagePayload extends FullPagePayload {

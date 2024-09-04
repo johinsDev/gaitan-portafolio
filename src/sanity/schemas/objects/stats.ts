@@ -16,6 +16,11 @@ export default defineType({
       type: "array",
       of: [{ type: "stat" }],
     }),
+    defineField({
+      name: "bgColor",
+      title: "Background color",
+      type: "color",
+    }),
   ],
   preview: {
     select: {
