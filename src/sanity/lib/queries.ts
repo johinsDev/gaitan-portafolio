@@ -11,6 +11,7 @@ const DEFAULT_QUERY = `
     title,
   },
   hero{
+    position,
     title,
     content,
     cta{

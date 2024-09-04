@@ -109,6 +109,7 @@ export interface Hero {
   image?: CustomImage;
   title?: string;
   cta?: Cta;
+  position?: PositionImageList;
 }
 
 export interface MenuItem {

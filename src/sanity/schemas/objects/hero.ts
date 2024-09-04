@@ -16,6 +16,19 @@ export default defineType({
       type: "customImage",
     }),
     defineField({
+      name: "position",
+      title: "Position",
+      type: "string",
+      initialValue: "left",
+      description: "Position of the image",
+      options: {
+        list: [
+          { title: "Left", value: "left" },
+          { title: "Right", value: "right" },
+        ],
+      },
+    }),
+    defineField({
       name: "content",
       title: "Description",
       type: "array",
