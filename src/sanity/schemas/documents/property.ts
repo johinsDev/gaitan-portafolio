@@ -31,6 +31,12 @@ export default defineType({
       validation: (rule) => rule.required(),
     },
     {
+      name: "deliveryDate",
+      title: "Fecha de entrega",
+      type: "date",
+      validation: (rule) => rule.required(),
+    },
+    {
       name: "occupancy",
       title: "Ocupación zona",
       type: "number",

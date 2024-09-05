@@ -1,4 +1,5 @@
 import ButtonClearParams from "@/components/button-clear-params";
+import { DatePickerFilter } from "@/components/filters/date-picker-filter";
 import { PriceFilter } from "@/components/filters/price-filter";
 import InputQueryParam from "@/components/input-query-param";
 import { ListingProperties } from "@/components/listing-properties";
@@ -25,7 +26,7 @@ export default async function Invest() {
       </div>
 
       <section className="flex flex-col gap-8 py-12">
-        <div className="flex flex-col items-center lg:flex-row gap-2 md:gap-8">
+        <div className="flex flex-col items-center lg:flex-row gap-2 md:gap-4">
           <Suspense>
             <InputQueryParam
               type="text"
@@ -41,8 +42,10 @@ export default async function Invest() {
             />
 
             <PriceFilter />
+
+            <DatePickerFilter />
           </Suspense>
-          <ButtonClearParams className="w-40 flex-shrink-0 mt-4 md:mt-0">
+          <ButtonClearParams className="w-36 flex-shrink-0 h-10 mt-4 md:mt-0">
             Limpiar
           </ButtonClearParams>
         </div>

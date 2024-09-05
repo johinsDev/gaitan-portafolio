@@ -2,7 +2,7 @@
 
 import { eventMitt } from "@/lib/event";
 import { parseAsInteger, useQueryState } from "next-usequerystate";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import {
   Select,
   SelectContent,
@@ -61,14 +61,16 @@ export function PriceFilter() {
     parseAsInteger.withDefault(Infinity),
   );
 
-  const updatePrice = (min: number | null, max: number | null) => {
-    setMinPrice(min);
-    setMaxPrice(max);
-  };
+  const updatePrice = useCallback(
+    (min: number | null, max: number | null) => {
+      setMinPrice(min);
+      setMaxPrice(max);
+    },
+    [setMinPrice, setMaxPrice],
+  );
 
   const onValueChange = (price: string) => {
     const { max, min } = PRICES.find((p) => p.label === price) || {};
-
 
     if (!max || !min) {
       return;
@@ -86,12 +88,11 @@ export function PriceFilter() {
       eventMitt.off("clear-params", () => {
         updatePrice(null, null);
       });
-  }, []);
+  }, [updatePrice]);
 
-
-  const value = PRICES.find(
-    (price) => price.min === minPrice && price.max === maxPrice,
-  )?.label;
+  const value =
+    PRICES.find((price) => price.min === minPrice && price.max === maxPrice)
+      ?.label || "";
 
   return (
     <Select value={value} onValueChange={onValueChange}>

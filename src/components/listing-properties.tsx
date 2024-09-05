@@ -18,7 +18,7 @@ function transformStringToNumber(value: string | null | undefined | number) {
 
   if (typeof value !== "string") return 0;
 
-  if (value.toLowerCase() === 'infinity') return Infinity;
+  if (value.toLowerCase() === "infinity") return Infinity;
 
   return parseInt(value.replace(/\D/g, ""), 10);
 }

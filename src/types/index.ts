@@ -419,6 +419,7 @@ interface KindOfDepartment {
 export interface PropertyDocument {
   _id: string;
   _type: "property";
+  deliveryDate?: string;
   name: string;
   slug: string;
   price?: number;
