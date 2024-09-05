@@ -3,7 +3,7 @@
 import { cn } from "@/lib/cn";
 import { eventMitt } from "@/lib/event";
 import { format, parseISO } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 import { createParser, useQueryStates } from "next-usequerystate";
 import * as React from "react";
 import { DateRange } from "react-day-picker";
@@ -84,7 +84,7 @@ export function DatePickerFilter({
 
 
   return (
-    <div className={cn("grid gap-2 flex-1", className)}>
+    <div className={cn("grid gap-2 w-full md:flex-1", className)}>
       <Popover>
         <PopoverTrigger asChild>
           <Button
@@ -98,7 +98,6 @@ export function DatePickerFilter({
               },
             )}
           >
-            <CalendarIcon className="mr-2 h-4 w-4" />
             {date?.from ? (
               date.to ? (
                 <>
@@ -111,9 +110,10 @@ export function DatePickerFilter({
             ) : (
               <span>Fecha</span>
             )}
+            <ChevronDownIcon className="ml-auto h-4 w-4 text-muted-foreground opacity-50" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-auto p-0" align="start">
+        <PopoverContent className="w-auto p-0" align="center">
           <Calendar
             initialFocus
             mode="range"
