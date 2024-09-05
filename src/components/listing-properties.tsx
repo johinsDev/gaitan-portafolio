@@ -35,6 +35,10 @@ function filterProperties(
 
   const maxPrice = params.get("maxPrice") || "";
 
+  const fromDateString = params.get("from") || "";
+
+  const toDateString = params.get("to") || "";
+
   return properties
     .filter((property) => {
       const JSONString = JSON.stringify(property.location)
@@ -55,6 +59,23 @@ function filterProperties(
         price >= transformStringToNumber(minPrice) &&
         price <= transformStringToNumber(maxPrice)
       );
+    })
+    .filter((property) => {
+      if (!fromDateString || !toDateString) {
+        return true;
+      }
+
+      if (!property.deliveryDate) {
+        return false;
+      }
+
+      const date = new Date(property.deliveryDate);
+
+      const from = fromDateString ? new Date(fromDateString) : new Date(0);
+
+      const to = toDateString ? new Date(toDateString) : new Date();
+
+      return date >= from && date <= to;
     });
 }
 

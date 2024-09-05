@@ -2,12 +2,12 @@
 
 import { cn } from "@/lib/cn";
 import { eventMitt } from "@/lib/event";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { createParser, useQueryStates } from "next-usequerystate";
 import * as React from "react";
 import { DateRange } from "react-day-picker";
-import { useDebounce } from "react-use";
+import { useDebounce, useUpdateEffect } from "react-use";
 import { Button } from "../button";
 import { Calendar } from "../ui/calendar/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover/popover";
@@ -15,7 +15,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover/popover";
 const parserDate = createParser({
   parse: (value: string) => {
     try {
-      const date = new Date(value);
+      const date = parseISO(value);
       // format to YYYY-MM-DD
       return isNaN(date.getTime()) ? undefined : date;
     } catch (e) {
@@ -34,14 +34,35 @@ export function DatePickerFilter({
 }: React.HTMLAttributes<HTMLDivElement>) {
   const [date, setDate] = React.useState<DateRange | undefined>(undefined);
 
-  const [_date, _setDate] = useQueryStates({
+  const [queryDate, setQueryDateDate] = useQueryStates({
     from: parserDate,
     to: parserDate,
   });
 
+  const hasBeenChanged = React.useRef(false);
+
+  const syncHasBeenDone = React.useRef(false);
+
+  useUpdateEffect(() => {
+    if (syncHasBeenDone.current) {
+      return;
+    }
+
+    setDate({
+      from: queryDate.from || undefined,
+      to: queryDate.to || undefined,
+    });
+
+    syncHasBeenDone.current = true;
+  }, [queryDate]);
+
   useDebounce(
     () => {
-      _setDate({
+      if (!hasBeenChanged.current) {
+        return;
+      }
+
+      setQueryDateDate({
         from: date?.from,
         to: date?.to,
       });
@@ -98,7 +119,10 @@ export function DatePickerFilter({
             mode="range"
             defaultMonth={date?.from}
             selected={date}
-            onSelect={setDate}
+            onSelect={date => {
+              setDate(date);
+              hasBeenChanged.current = true;
+            }}
             numberOfMonths={2}
           />
         </PopoverContent>
