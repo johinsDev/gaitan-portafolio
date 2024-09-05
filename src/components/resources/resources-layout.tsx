@@ -46,7 +46,9 @@ export function ResourcesLayout({ resources, resourcePage }: Props) {
                 className="object-cover object-top aspect-video w-full"
               />
             </div>
-            <div className="font-bold text-xl md:text-2xl">{resource.title}</div>
+            <div className="font-bold text-xl md:text-2xl">
+              {resource.title}
+            </div>
             <Button>Descargar</Button>
           </Link>
         );

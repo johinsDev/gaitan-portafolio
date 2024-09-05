@@ -16,6 +16,7 @@
     "@next/env": "^14.2.3",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slot": "^1.0.2",
     "@sanity/client": "^6.21.3",
     "@sanity/color-input": "^3.1.1",

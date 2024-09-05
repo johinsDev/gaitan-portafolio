@@ -9,6 +9,20 @@ type Props = {
   investPage: InvestPagePayload;
 };
 
+function formatPrice(price: number | undefined | null) {
+  if (!price) {
+    return "";
+  }
+
+  return (
+    "$ " +
+    price.toLocaleString("es-MX", {
+      notation: "compact",
+      maximumFractionDigits: 0,
+    })
+  );
+}
+
 export function Property({ property, investPage }: Props) {
   const link = resolveHref("property", property.slug)?.replace(
     "/listing",
@@ -45,7 +59,9 @@ export function Property({ property, investPage }: Props) {
           {property.location?.country}
         </div>
         <div className="font-bold">{property.name}</div>
-        <div className="font-bold text-3xl mt-6">{property.price}</div>
+        <div className="font-bold text-3xl mt-6">
+          {formatPrice(property.price)}
+        </div>
         {property.description && (
           <div className="text-xl line-clamp-2">
             {toPlainText(property.description)}

@@ -4,14 +4,12 @@ import { YoutubeSection } from "@/types";
 import dynamic from "next/dynamic";
 import { CustomPortableText } from "../shared/CustomPortableText";
 
-const ReactPlayer = dynamic(() => import('react-player/lazy'), {
+const ReactPlayer = dynamic(() => import("react-player/lazy"), {
   ssr: false,
   loading() {
-    return (
-      <div className="aspect-video w-full animate-pulse bg-neutral-200" />
-    )
+    return <div className="aspect-video w-full animate-pulse bg-neutral-200" />;
   },
-})
+});
 
 type Props = {
   data?: YoutubeSection | null;

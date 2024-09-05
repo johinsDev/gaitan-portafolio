@@ -25,10 +25,15 @@ export function HeroLayout({ hero }: Props) {
         </div>
 
         <div
-          className={cn("w-full flex lg:mt-12 mt-4 items-center text-center gap-6", {
-            "flex-col lg:flex-row-reverse lg:text-left": hero?.position === "left",
-            "flex-col-reverse lg:flex-row lg:text-left": hero?.position === "right",
-          })}
+          className={cn(
+            "w-full flex lg:mt-12 mt-4 items-center text-center gap-6",
+            {
+              "flex-col lg:flex-row-reverse lg:text-left":
+                hero?.position === "left",
+              "flex-col-reverse lg:flex-row lg:text-left":
+                hero?.position === "right",
+            },
+          )}
         >
           <div className="w-full flex flex-col md:items-start lg:w-7/12">
             <CustomPortableText value={hero?.content as any} />
@@ -36,7 +41,11 @@ export function HeroLayout({ hero }: Props) {
           </div>
 
           {!!imageUrl && (
-            <div className={cn("flex-shrink-0 w-full lg:w-5/12 flex mt-4 lg:mt-0 justify-center")}>
+            <div
+              className={cn(
+                "flex-shrink-0 w-full lg:w-5/12 flex mt-4 lg:mt-0 justify-center",
+              )}
+            >
               <Image
                 src={imageUrl}
                 width={420}

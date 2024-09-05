@@ -27,10 +27,13 @@ export function FeatureSectionLayout({ data }: Props) {
       })}
     >
       <div
-        className={cn("w-full md:w-1/2 flex flex-col items-center text-center", {
-          "md:text-right md:items-end": position === "left",
-          "md:text-left md:items-start": position === "right",
-        })}
+        className={cn(
+          "w-full md:w-1/2 flex flex-col items-center text-center",
+          {
+            "md:text-right md:items-end": position === "left",
+            "md:text-left md:items-start": position === "right",
+          },
+        )}
       >
         <h2 className="text-h2 leading-h2 font-semibold">{data?.title}</h2>
 

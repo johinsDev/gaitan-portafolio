@@ -26,7 +26,8 @@ export function ServicesSectionLayout({ data }: Props) {
         <Carousel className="w-full">
           <CarouselContent className="-ml-8">
             {data.services?.map((service, index) => {
-              const image = service?.image?.image?.asset &&
+              const image =
+                service?.image?.image?.asset &&
                 urlForImage(service?.image?.image)?.width(600).url();
 
               if (!image) return null;
@@ -50,7 +51,9 @@ export function ServicesSectionLayout({ data }: Props) {
                     </div>
                     {!!service.description && (
                       <div className="text-left lg:text-center text-lg mt-4">
-                        <CustomPortableText value={service.description as any} />
+                        <CustomPortableText
+                          value={service.description as any}
+                        />
                       </div>
                     )}
                   </div>
@@ -59,8 +62,7 @@ export function ServicesSectionLayout({ data }: Props) {
             })}
           </CarouselContent>
         </Carousel>
-
       </div>
-    </section >
+    </section>
   );
 }

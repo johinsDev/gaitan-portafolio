@@ -2,7 +2,11 @@ import dynamic from "next/dynamic";
 import { draftMode } from "next/headers";
 
 import { getSection } from "@/sanity/lib/utils";
-import { loadBlogPage, loadLastEntries, loadSingleton } from "@/sanity/loader/loadQuery";
+import {
+  loadBlogPage,
+  loadLastEntries,
+  loadSingleton,
+} from "@/sanity/loader/loadQuery";
 import {
   LastEntriesSection as LastEntriesSectionType,
   SectionsList,
@@ -19,9 +23,11 @@ type Props = {
 };
 
 export async function LastEntriesSection({ _key: key, load, slug }: Props) {
-
-  const [data, lastEntries, blogPage] = await Promise.all([loadSingleton(load, slug), loadLastEntries(), loadBlogPage()]);
-
+  const [data, lastEntries, blogPage] = await Promise.all([
+    loadSingleton(load, slug),
+    loadLastEntries(),
+    loadBlogPage(),
+  ]);
 
   const feature = getSection<LastEntriesSectionType>(
     data.data.sections ?? [],
@@ -31,9 +37,22 @@ export async function LastEntriesSection({ _key: key, load, slug }: Props) {
 
   if (draftMode().isEnabled) {
     return (
-      <LastEntriesPreview initial={data} lastEntries={lastEntries.data} _key={key} load={load} slug={slug} blogPage={blogPage.data} />
+      <LastEntriesPreview
+        initial={data}
+        lastEntries={lastEntries.data}
+        _key={key}
+        load={load}
+        slug={slug}
+        blogPage={blogPage.data}
+      />
     );
   }
 
-  return <LastEntriesSectionLayout data={feature} lastEntries={lastEntries.data} blogPage={blogPage.data} />;
+  return (
+    <LastEntriesSectionLayout
+      data={feature}
+      lastEntries={lastEntries.data}
+      blogPage={blogPage.data}
+    />
+  );
 }

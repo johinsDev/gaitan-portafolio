@@ -11,7 +11,10 @@ export function StatsLAyout({ data }: Props) {
   if (!data.stats && !data.title) return null;
 
   return (
-    <section className="bg-gray-50 py-12 w-full full-width" style={{ backgroundColor: data.bgColor?.hex }}>
+    <section
+      className="bg-gray-50 py-12 w-full full-width"
+      style={{ backgroundColor: data.bgColor?.hex }}
+    >
       <h2 className={cn("text-sub-title font-bold text-center font-noto")}>
         {data?.title}
       </h2>
@@ -38,7 +41,6 @@ export function StatsLAyout({ data }: Props) {
           </div>
         )}
       </div>
-
     </section>
   );
 }

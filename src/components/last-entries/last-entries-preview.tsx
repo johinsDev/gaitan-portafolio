@@ -10,7 +10,7 @@ import {
   LastEntriesSection,
   Post,
   SectionsList,
-  Singletons
+  Singletons,
 } from "@/types";
 import { QueryResponseInitial } from "@sanity/react-loader";
 import { LastEntriesSectionLayout } from "./last-entries-layout";
@@ -26,7 +26,6 @@ type Props = {
 
 export default function LastEntriesPreview(props: Props) {
   const query = useGetQueryLoad(props.load);
-
 
   const { data } = useQuery<FullPagePayload>(
     query,
@@ -44,5 +43,11 @@ export default function LastEntriesPreview(props: Props) {
     props._key,
   );
 
-  return <LastEntriesSectionLayout data={section} lastEntries={props.lastEntries} blogPage={props.blogPage} />;
+  return (
+    <LastEntriesSectionLayout
+      data={section}
+      lastEntries={props.lastEntries}
+      blogPage={props.blogPage}
+    />
+  );
 }

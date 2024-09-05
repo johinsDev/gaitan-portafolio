@@ -421,7 +421,7 @@ export interface PropertyDocument {
   _type: "property";
   name: string;
   slug: string;
-  price?: string;
+  price?: number;
   occupancy?: number;
   gallery?: Gallery;
   averageRent?: number;

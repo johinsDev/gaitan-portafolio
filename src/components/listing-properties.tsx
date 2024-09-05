@@ -9,18 +9,59 @@ type Props = {
   investPage: InvestPagePayload;
 };
 
-export function ListingProperties({ properties, investPage }: Props) {
-  const params = useSearchParams();
+function transformStringToNumber(value: string | null | undefined | number) {
+  if (!value) return 0;
 
+  if (typeof value === "number") return value;
+
+  if (value === "" || value === null || value === undefined) return 0;
+
+  if (typeof value !== "string") return 0;
+
+  if (value.toLowerCase() === 'infinity') return Infinity;
+
+  return parseInt(value.replace(/\D/g, ""), 10);
+}
+
+function filterProperties(
+  properties: PropertyDocument[],
+  params: URLSearchParams,
+) {
   const country = params.get("country") || "";
 
   const state = params.get("state") || "";
 
-  const filteredProperties = properties.filter((property) => {
-    const JSONString = JSON.stringify(property.location);
+  const minPrice = params.get("minPrice") || "";
 
-    return JSONString.includes(country) && JSONString.includes(state);
-  });
+  const maxPrice = params.get("maxPrice") || "";
+
+  return properties
+    .filter((property) => {
+      const JSONString = JSON.stringify(property.location)
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+      return JSONString.includes(country) && JSONString.includes(state);
+    })
+    .filter((property) => {
+      const price = property.price || 0;
+
+      if (!minPrice || !maxPrice) {
+        return true;
+      }
+
+      return (
+        price >= transformStringToNumber(minPrice) &&
+        price <= transformStringToNumber(maxPrice)
+      );
+    });
+}
+
+export function ListingProperties({ properties, investPage }: Props) {
+  const params = useSearchParams();
+
+  const filteredProperties = filterProperties(properties, params);
 
   if (!filteredProperties.length) {
     return (

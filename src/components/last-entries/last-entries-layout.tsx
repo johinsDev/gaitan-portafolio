@@ -12,7 +12,11 @@ type Props = {
   blogPage?: BlogPagePayload | null;
 };
 
-export function LastEntriesSectionLayout({ data, lastEntries, blogPage }: Props) {
+export function LastEntriesSectionLayout({
+  data,
+  lastEntries,
+  blogPage,
+}: Props) {
   if (!data) return null;
 
   return (
@@ -32,7 +36,8 @@ export function LastEntriesSectionLayout({ data, lastEntries, blogPage }: Props)
               const image = post?.image?.image;
 
               const imageUrl =
-                image && urlForImage(image)?.height(220).width(420).fit("crop").url();
+                image &&
+                urlForImage(image)?.height(220).width(420).fit("crop").url();
 
               const href = resolveHref(post._type, post.slug)?.replace(
                 "/blog",
@@ -46,9 +51,7 @@ export function LastEntriesSectionLayout({ data, lastEntries, blogPage }: Props)
                   key={post._id}
                   className="basis-3/4 lg:basis-1/3 pl-4 md:pl-8 flex flex-col items-center gap-4 text-center"
                 >
-                  <Link
-                    href={href}
-                  >
+                  <Link href={href}>
                     <div className="relative w-full rounded-2xl overflow-hidden aspect-video">
                       <Image
                         src={imageUrl}
@@ -62,18 +65,17 @@ export function LastEntriesSectionLayout({ data, lastEntries, blogPage }: Props)
                     </div>
 
                     <div className="flex flex-col items-center justify-center text-center">
-                      <div className="font-bold text-lg md:text-xl lg:text-2xl mt-6">{post.title}</div>
+                      <div className="font-bold text-lg md:text-xl lg:text-2xl mt-6">
+                        {post.title}
+                      </div>
                     </div>
                   </Link>
                 </CarouselItem>
-
               );
-            }
-            )}
+            })}
           </CarouselContent>
         </Carousel>
-
       </div>
-    </section >
+    </section>
   );
 }

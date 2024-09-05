@@ -27,7 +27,7 @@ export default defineType({
     {
       name: "price",
       title: "Precio",
-      type: "string",
+      type: "number",
       validation: (rule) => rule.required(),
     },
     {
