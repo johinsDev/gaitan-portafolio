@@ -163,6 +163,7 @@ export enum Singletons {
   BLOG = "blog",
   PAGE = "page",
   INVEST = "invest",
+  SERVICE = "service",
 }
 
 export interface Color {
@@ -295,6 +296,7 @@ export interface Service {
   seo?: Seo;
   sections?: Sections[];
   cta?: Cta;
+  image?: CustomImage;
 }
 
 export interface ServicesSection {

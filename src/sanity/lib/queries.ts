@@ -1,40 +1,7 @@
 import { groq } from "next-sanity";
 
-const DEFAULT_QUERY = `
-  _id,
-  overview,
-  title,
-  "slug": slug.current,
-  seo{
-    description,
-    image,
-    title,
-  },
-  hero{
-    position,
-    title,
-    content,
-    cta{
-      externalLink,
-      link->{
-        _type,
-        "slug": slug.current,
-        title
-      },
-      title,
-      variant,
-    },
-    image{
-      ...,
-      image{
-        asset->{
-          ...,
-          "_ref": _id,
-        },
-      },
-    },
-  },
-  sections[]{
+const SECTIONS_QUERY = `
+ sections[]{
     ...,
     _type,
     title,
@@ -184,6 +151,43 @@ const DEFAULT_QUERY = `
   },
 `;
 
+const DEFAULT_QUERY = `
+  _id,
+  overview,
+  title,
+  "slug": slug.current,
+  seo{
+    description,
+    image,
+    title,
+  },
+  hero{
+    position,
+    title,
+    content,
+    cta{
+      externalLink,
+      link->{
+        _type,
+        "slug": slug.current,
+        title
+      },
+      title,
+      variant,
+    },
+    image{
+      ...,
+      image{
+        asset->{
+          ...,
+          "_ref": _id,
+        },
+      },
+    },
+  },
+ ${SECTIONS_QUERY}
+`;
+
 export const homePageQuery = groq`
   *[_type == "home"][0]{
    ${DEFAULT_QUERY}
@@ -217,6 +221,35 @@ export const blogPageQuery = groq`
 export const investPageQuery = groq`
   *[_type == "invest"][0]{
    ${DEFAULT_QUERY}
+  }
+`;
+
+export const queryServiceBySlug = groq`
+  *[_type == "service" && slug.current == $slug][0] {
+    _id,
+    title,
+    description,
+    shortDescription,
+    cta{
+      externalLink,
+      link->{
+        _type,
+        "slug": slug.current,
+        title
+      },
+      title,
+      variant,
+    },
+    image{
+      ...,
+      image{
+        asset->{
+          ...,
+          "_ref": _id,
+        },
+      },
+    },
+    ${SECTIONS_QUERY}
   }
 `;
 
