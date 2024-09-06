@@ -15,6 +15,8 @@ export function HeroLayout({ hero }: Props) {
   const imageUrl =
     image && urlForImage(image)?.height(560).width(420).fit("crop").url();
 
+  if (!hero?.image?.image && !hero?.content) return null;
+
   if (hero?.content) {
     return (
       <div className={cn("flex items-center flex-col lg:gap-4")}>

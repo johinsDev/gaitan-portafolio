@@ -39,32 +39,36 @@ export default async function PageSlugRoute({ params }: Props) {
     notFound();
   }
 
+
   return (
-    <div>
-      <div className="mb-14">
-        <h1 className="text-title font-bold text-center">
-          {initial.data.title}
-        </h1>
-        {/* Header */}
-        <Suspense fallback={<HeroSkeleton />}>
-          <Hero slug={params.slug} load={Singletons.PAGE} />
-        </Suspense>
-
-        {/* Body */}
-        {initial.data.body && (
-          <div className="mx-auto w-full max-w-4xl mt-12">
-            <CustomPortableText
-              paragraphClasses="font-serif text-gray-600 text-xl xm"
-              value={initial.data.body as any}
-            />
-          </div>
-        )}
-      </div>
-      <div className="absolute left-0 w-screen border-t" />
-
-      <Suspense>
-        <Sections load={Singletons.PAGE} slug={params.slug} />
+    <>
+      <h1 className="text-title font-bold text-center mb-12">
+        {initial.data.title}
+      </h1>
+      {/* Header */}
+      <Suspense fallback={<HeroSkeleton />}>
+        <Hero slug={params.slug} load={Singletons.PAGE} />
       </Suspense>
-    </div>
+
+      {/* Body */}
+      {initial.data.body && (
+        <div className="mx-auto w-full max-w-4xl">
+          <CustomPortableText
+            paragraphClasses="font-serif text-gray-600 text-xl xm"
+            value={initial.data.body as any}
+          />
+        </div>
+      )}
+
+      {initial.data.sections && (<div className="absolute left-0 w-screen border-t" />)}
+
+      {initial.data.sections && (
+        <div className="mt-14">
+          <Suspense>
+            <Sections load={Singletons.PAGE} slug={params.slug} />
+          </Suspense>
+        </div>
+      )}
+    </>
   );
 }
