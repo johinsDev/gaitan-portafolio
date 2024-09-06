@@ -323,9 +323,9 @@ export interface PortableTextSection {
 export interface TestimonialPayload {
   image?: CustomImage;
   name?: string;
-  rating?: number;
   review?: string;
   subtitle?: string;
+  video?: string;
 }
 
 type GalleryImage = CustomImage["image"] & {

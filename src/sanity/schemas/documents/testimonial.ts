@@ -29,16 +29,15 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      type: "number",
-      name: "rating",
-      title: "Rating",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
       type: "customImage",
       name: "image",
       title: "Image",
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      type: "url",
+      name: "video",
+      title: "Video",
     }),
   ],
   preview: {
@@ -49,10 +48,10 @@ export default defineType({
       media: "image",
     },
     prepare(selection) {
-      const { name, review, rating, media } = selection;
+      const { name, review, media } = selection;
       return {
         title: name,
-        subtitle: `${rating} stars`,
+        subtitle: review,
         media,
       };
     },
