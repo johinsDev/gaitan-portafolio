@@ -28,7 +28,13 @@ export function generateStaticParams() {
 export default async function Resource(props: Props) {
   const resource = await loadResource(props.params.slug);
 
-  const imageURL = resource.data?.image && urlForImage(resource.data.image.image)?.width(1200).height(450).fit("crop").url();
+  const imageURL =
+    resource.data?.image &&
+    urlForImage(resource.data.image.image)
+      ?.width(1200)
+      .height(450)
+      .fit("crop")
+      .url();
 
   return (
     <div>
@@ -38,16 +44,19 @@ export default async function Resource(props: Props) {
             {resource.data?.title}
           </div>
 
-          {!!resource.data?.description && <CustomPortableText value={resource.data?.description as any} />}
+          {!!resource.data?.description && (
+            <CustomPortableText value={resource.data?.description as any} />
+          )}
         </div>
         <div className="w-full md:w-1/2 aspect-video relative">
-          {imageURL &&
+          {imageURL && (
             <Image
               fill
               src={imageURL}
               alt={resource.data?.image?.alt ?? "resource"}
               className="object-contain rounded-2xl"
-            />}
+            />
+          )}
         </div>
       </section>
 
@@ -59,10 +68,13 @@ export default async function Resource(props: Props) {
 
           <form className="flex flex-col gap-4 w-full">
             <Input placeholder="Nombre comleto*" required className="h-14" />
-            <Input placeholder="Email*" required type="email" className="h-14" />
-            <Button className="mt-8">
-              Descargar plantilla
-            </Button>
+            <Input
+              placeholder="Email*"
+              required
+              type="email"
+              className="h-14"
+            />
+            <Button className="mt-8">Descargar plantilla</Button>
           </form>
         </div>
       </div>

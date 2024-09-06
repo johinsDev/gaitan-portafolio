@@ -13,7 +13,6 @@ const ReactPlayer = dynamic(() => import("react-player/lazy"), {
   },
 });
 
-
 type Props = {
   data?: TestimonialSection | null;
 };
@@ -43,25 +42,21 @@ export function TestimonialsLayout({ data }: Props) {
                   className="md:basis-1/2 lg:basis-1/3 pl-12"
                 >
                   <div className="flex flex-col gap-4 items-center text-center">
-
-                    {
-                      testimonial.video && (
-                        <div className="relative aspect-video w-full">
-
-                          <ReactPlayer
-                            url={testimonial.video}
-                            title={testimonial.name}
-                            width="100%"
-                            height="100%"
-                            className="absolute inset-0"
-                            controls
-                            fallback={
-                              <div className="aspect-video w-full animate-pulse bg-cruisebound-neutral-200" />
-                            }
-                          />
-                        </div>
-                      )
-                    }
+                    {testimonial.video && (
+                      <div className="relative aspect-video w-full">
+                        <ReactPlayer
+                          url={testimonial.video}
+                          title={testimonial.name}
+                          width="100%"
+                          height="100%"
+                          className="absolute inset-0"
+                          controls
+                          fallback={
+                            <div className="aspect-video w-full animate-pulse bg-cruisebound-neutral-200" />
+                          }
+                        />
+                      </div>
+                    )}
 
                     {imageURL && !testimonial.video && (
                       <Image

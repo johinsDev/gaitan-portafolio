@@ -50,6 +50,8 @@ export function resolveHref(
       return "/";
     case "page":
       return slug ? `/${slug}` : undefined;
+    case "service":
+      return slug ? `/servicios/${slug}` : undefined;
     case "property":
       return `/listing/${slug}`;
     case "project":

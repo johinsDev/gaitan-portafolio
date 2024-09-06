@@ -43,11 +43,7 @@ export default defineType({
       name: "services",
       title: "Services",
       type: "array",
-      of: [
-        {
-          type: "service",
-        },
-      ],
+      of: [{ type: "reference", to: { type: "service" } }],
     }),
   ],
   preview: {

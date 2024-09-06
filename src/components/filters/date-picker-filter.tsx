@@ -82,7 +82,6 @@ export function DatePickerFilter({
       });
   }, []);
 
-
   return (
     <div className={cn("grid gap-2 w-full md:flex-1", className)}>
       <Popover>
@@ -119,7 +118,7 @@ export function DatePickerFilter({
             mode="range"
             defaultMonth={date?.from}
             selected={date}
-            onSelect={date => {
+            onSelect={(date) => {
               setDate(date);
               hasBeenChanged.current = true;
             }}

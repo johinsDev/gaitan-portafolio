@@ -88,7 +88,7 @@ export function loadSettings() {
   return loadQuery<SettingsPayload>(
     settingsQuery,
     {},
-    { next: { tags: ["settings", "home", "page", "project"] } }
+    { next: { tags: ["settings", "home", "page", "project"] } },
   );
 }
 
@@ -96,7 +96,7 @@ export function loadHomePage() {
   return loadQuery<HomePagePayload>(
     homePageQuery,
     {},
-    { next: { tags: ["home", "project"] } }
+    { next: { tags: ["home", "project"] } },
   );
 }
 
@@ -104,7 +104,7 @@ export function loadProject(slug: string) {
   return loadQuery<ProjectPayload | null>(
     projectBySlugQuery,
     { slug },
-    { next: { tags: [`project:${slug}`] } }
+    { next: { tags: [`project:${slug}`] } },
   );
 }
 
@@ -112,7 +112,7 @@ export function loadPage(slug?: string) {
   return loadQuery<PagePayload>(
     pagesBySlugQuery,
     { slug },
-    { next: { tags: [`page:${slug}`] } }
+    { next: { tags: [`page:${slug}`] } },
   );
 }
 
@@ -120,7 +120,7 @@ export function loadService(slug?: string) {
   return loadQuery<Service>(
     queryServiceBySlug,
     { slug },
-    { next: { tags: [`service:${slug}`] } }
+    { next: { tags: [`service:${slug}`] } },
   );
 }
 
@@ -128,7 +128,7 @@ export function loadAboutPage() {
   return loadQuery<AboutPagePayload>(
     aboutPageQuery,
     {},
-    { next: { tags: ["about", "page"] } }
+    { next: { tags: ["about", "page"] } },
   );
 }
 
@@ -136,7 +136,7 @@ export function loadCoursePage() {
   return loadQuery<AboutPagePayload>(
     coursePageQuery,
     {},
-    { next: { tags: ["course", "page"] } }
+    { next: { tags: ["course", "page"] } },
   );
 }
 
@@ -144,7 +144,7 @@ export function loadResourcePage() {
   return loadQuery<ResourcesPagePayload>(
     resourcesPageQuery,
     {},
-    { next: { tags: ["resources", "page"] } }
+    { next: { tags: ["resources", "page"] } },
   );
 }
 
@@ -152,7 +152,7 @@ export function loadResources() {
   return loadQuery<Resource[]>(
     resourcesQuery,
     {},
-    { next: { tags: ["resources", "documents"] } }
+    { next: { tags: ["resources", "documents"] } },
   );
 }
 
@@ -160,7 +160,7 @@ export function loadResource(slug: string) {
   return loadQuery<Resource | null>(
     resourceBySlug,
     { slug },
-    { next: { tags: [`resource:${slug}`] } }
+    { next: { tags: [`resource:${slug}`] } },
   );
 }
 
@@ -168,7 +168,7 @@ export function loadBlogPage() {
   return loadQuery<BlogPagePayload>(
     blogPageQuery,
     {},
-    { next: { tags: ["blog", "page"] } }
+    { next: { tags: ["blog", "page"] } },
   );
 }
 
@@ -176,7 +176,7 @@ export function loadInvestPage() {
   return loadQuery<InvestPagePayload>(
     investPageQuery,
     {},
-    { next: { tags: ["invest", "page"] } }
+    { next: { tags: ["invest", "page"] } },
   );
 }
 
@@ -184,7 +184,7 @@ export function loadBlog(slug: string) {
   return loadQuery<Post | null>(
     postBySlug,
     { slug },
-    { next: { tags: [`post:${slug}`] } }
+    { next: { tags: [`post:${slug}`] } },
   );
 }
 
@@ -192,7 +192,7 @@ export function loadBlogPosts() {
   return loadQuery<Post[]>(
     postsQuery,
     {},
-    { next: { tags: ["blog", "posts"] } }
+    { next: { tags: ["blog", "posts"] } },
   );
 }
 
@@ -231,7 +231,7 @@ export function loadProperties() {
   return loadQuery<PropertyDocument[]>(
     propertiesQuery,
     {},
-    { next: { tags: ["properties"] } }
+    { next: { tags: ["properties"] } },
   );
 }
 
@@ -239,7 +239,7 @@ export function loadProperty(slug: string) {
   return loadQuery<PropertyDocument | null>(
     propertyBySlug,
     { slug },
-    { next: { tags: [`property:${slug}`] } }
+    { next: { tags: [`property:${slug}`] } },
   );
 }
 
@@ -249,6 +249,6 @@ export function loadLastEntries() {
     {},
     {
       next: { tags: ["last-entries"] },
-    }
+    },
   );
 }

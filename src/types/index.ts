@@ -289,6 +289,7 @@ export interface NewsletterSection {
 
 export interface Service {
   title?: string;
+  _id: string;
   shortDescription?: PortableTextBlock[];
   description?: PortableTextBlock[];
   _type: string;

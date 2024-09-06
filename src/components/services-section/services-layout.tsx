@@ -1,12 +1,17 @@
 "use client";
-import { urlForImage } from "@/sanity/lib/utils";
+import { resolveHref, urlForImage } from "@/sanity/lib/utils";
 import { ServicesSection } from "@/types";
 import Image from "next/image";
+import Link from "next/link";
 import { Carousel, CarouselContent, CarouselItem } from "../carousel";
 import { CustomPortableText } from "../shared/CustomPortableText";
 
 type Props = {
   data?: ServicesSection | null;
+};
+
+const servicesPage = {
+  slug: "servicios",
 };
 
 export function ServicesSectionLayout({ data }: Props) {
@@ -37,7 +42,14 @@ export function ServicesSectionLayout({ data }: Props) {
                   key={index}
                   className="basis-3/4 lg:basis-1/3 pl-8"
                 >
-                  <div key={service._key} className="text-center">
+                  <Link
+                    key={service._id}
+                    className="text-center"
+                    href={resolveHref("service", service.slug)!?.replace(
+                      "/servicios",
+                      `/${servicesPage?.slug ?? "servicios"}`,
+                    )}
+                  >
                     <div className="aspect-video relative rounded-3xl overflow-hidden">
                       <Image
                         src={image}
@@ -49,14 +61,14 @@ export function ServicesSectionLayout({ data }: Props) {
                     <div className="text-2xl text-left lg:text-center md:text-3xl font-bold mt-4">
                       {service.title}
                     </div>
-                    {!!service.description && (
+                    {!!service.shortDescription && (
                       <div className="text-left lg:text-center text-lg mt-4">
                         <CustomPortableText
-                          value={service.description as any}
+                          value={service.shortDescription as any}
                         />
                       </div>
                     )}
-                  </div>
+                  </Link>
                 </CarouselItem>
               );
             })}

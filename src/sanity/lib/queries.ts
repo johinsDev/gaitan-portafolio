@@ -18,17 +18,20 @@ const SECTIONS_QUERY = `
       ...,
       description,
       title,
-      services[]{
-        ...,
+      services[]->{
+        _id,
+        title,
+        "slug": slug.current,
+        shortDescription,
         image{
           ...,
-          asset->{
-            ...,
-            "_ref": _id,
+          image{
+            asset->{
+              ...,
+              "_ref": _id,
+            },
           },
         },
-        title,
-        description,
       },
     },
     _type == "alliedSection" => {

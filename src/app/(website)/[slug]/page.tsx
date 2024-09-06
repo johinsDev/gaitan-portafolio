@@ -39,7 +39,6 @@ export default async function PageSlugRoute({ params }: Props) {
     notFound();
   }
 
-
   return (
     <>
       <h1 className="text-title font-bold text-center mb-12">
@@ -60,7 +59,9 @@ export default async function PageSlugRoute({ params }: Props) {
         </div>
       )}
 
-      {initial.data.sections && (<div className="absolute left-0 w-screen border-t" />)}
+      {initial.data.sections && (
+        <div className="absolute left-0 w-screen border-t" />
+      )}
 
       {initial.data.sections && (
         <div className="mt-14">

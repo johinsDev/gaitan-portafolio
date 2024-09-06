@@ -39,7 +39,8 @@ export default async function ServicePage({ params }: Props) {
     notFound();
   }
 
-  const image = initial.data.image && urlForImage(initial.data.image.image)?.url();
+  const image =
+    initial.data.image && urlForImage(initial.data.image.image)?.url();
 
   return (
     <>
@@ -49,15 +50,20 @@ export default async function ServicePage({ params }: Props) {
 
       <section className="flex flex-col gap-12 lg:flex-row lg:gap-12 items-center">
         <div className="w-full lg:w-1/2 relative aspect-video overflow-hidden rounded-lg">
-          {image &&
+          {image && (
             <Image
               className="object-cover w-full h-full"
               src={image}
               blurDataURL={initial.data.image?.image?.asset.metadata.lqip}
-              placeholder={initial.data.image?.image?.asset.metadata.lqip ? "blur" : "empty"}
+              placeholder={
+                initial.data.image?.image?.asset.metadata.lqip
+                  ? "blur"
+                  : "empty"
+              }
               fill
               alt={initial.data.title || ""}
-            />}
+            />
+          )}
         </div>
         <div className="w-full lg:w-1/2">
           {/* Body */}
@@ -74,7 +80,9 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      {initial.data.sections && (<div className="absolute left-0 w-screen border-t my-14" />)}
+      {initial.data.sections && (
+        <div className="absolute left-0 w-screen border-t my-14" />
+      )}
 
       {initial.data.sections && (
         <div className="mt-14">

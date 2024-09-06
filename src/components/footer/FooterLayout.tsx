@@ -1,4 +1,3 @@
-
 import { cn } from "@/lib/cn";
 import type { SettingsPayload } from "@/types";
 import Link from "next/link";
@@ -8,7 +7,6 @@ interface FooterProps {
 }
 export default function Footer(props: FooterProps) {
   const { data } = props;
-
 
   const menuItems = data?.menuItems || [];
 
@@ -215,10 +213,7 @@ export default function Footer(props: FooterProps) {
         </div>
 
         <div className="flex flex-col gap-4 text-left items-start  border-t-2 border-neutral-200 py-6 dark:border-white/10 md:flex-row md:justify-between">
-          <Link
-            href={privacyPolicy || "/"}
-            className="font-bold"
-          >
+          <Link href={privacyPolicy || "/"} className="font-bold">
             Política de privacidad
           </Link>
 
