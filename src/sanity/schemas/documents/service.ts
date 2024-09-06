@@ -1,43 +1,33 @@
-import { ImageIcon } from "@sanity/icons";
-import { ChromeIcon } from "lucide-react";
+// create  service (image, title, description)
+
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 export default defineType({
+  name: "service",
+  title: "Service",
   type: "document",
-  name: "page",
-  title: "Page",
-  icon: ChromeIcon,
+  icon: () => "🛠️",
   fields: [
     defineField({
-      type: "string",
       name: "title",
       title: "Title",
-      validation: (rule) => rule.required(),
+      type: "string",
     }),
     defineField({
-      type: "slug",
       name: "slug",
       title: "Slug",
+      type: "slug",
       options: {
         source: "title",
       },
-      validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "seo",
-      type: "seo",
-      title: "SEO",
-    }),
-    defineField({
+      name: "shortDescription",
+      title: "Short description",
       type: "array",
-      name: "body",
-      title: "Body",
-      description:
-        "This is where you can write the page's content. Including custom blocks like timelines for more a more visual display of information.",
       of: [
         // Paragraphs
         defineArrayMember({
-          type: "block",
           marks: {
             annotations: [
               {
@@ -54,42 +44,51 @@ export default defineType({
               },
             ],
           },
-        }),
-        defineField({
-          type: "image",
-          icon: ImageIcon,
-          name: "image",
-          title: "Image",
-          options: {
-            hotspot: true,
-          },
-          preview: {
-            select: {
-              imageUrl: "asset.url",
-              title: "caption",
-            },
-          },
-          fields: [
-            defineField({
-              title: "Caption",
-              name: "caption",
-              type: "string",
-            }),
-            defineField({
-              name: "alt",
-              type: "string",
-              title: "Alt text",
-              description:
-                "Alternative text for screenreaders. Falls back on caption if not set",
-            }),
-          ],
+          type: "block",
         }),
       ],
     }),
     defineField({
-      name: "hero",
-      title: "Hero section",
-      type: "hero",
+      name: "description",
+      title: "Description",
+      type: "array",
+      of: [
+        // Paragraphs
+        defineArrayMember({
+          marks: {
+            annotations: [
+              {
+                name: "link",
+                type: "object",
+                title: "Link",
+                fields: [
+                  {
+                    name: "href",
+                    type: "url",
+                    title: "Url",
+                  },
+                ],
+              },
+            ],
+          },
+          type: "block",
+        }),
+      ],
+    }),
+    defineField({
+      name: "cta",
+      title: "Call to action",
+      type: "cta",
+    }),
+    defineField({
+      name: "image",
+      title: "Image",
+      type: "customImage",
+    }),
+    defineField({
+      name: "seo",
+      title: "SEO",
+      type: "seo",
     }),
     // define array of sections
     defineField({
@@ -142,8 +141,8 @@ export default defineType({
     },
     prepare({ title }) {
       return {
-        subtitle: "Page",
-        title,
+        title: title || "No title",
+        subtitle: "Service",
       };
     },
   },

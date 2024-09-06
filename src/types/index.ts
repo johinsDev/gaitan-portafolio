@@ -286,17 +286,23 @@ export interface NewsletterSection {
   submitText?: string;
 }
 
+export interface Service {
+  title?: string;
+  shortDescription?: PortableTextBlock[];
+  description?: PortableTextBlock[];
+  _type: string;
+  slug?: string;
+  seo?: Seo;
+  sections?: Sections[];
+  cta?: Cta;
+}
+
 export interface ServicesSection {
   title?: string;
   description?: PortableTextBlock[];
   _type: SectionsList.SERVICES_SECTION;
   _key: string;
-  services?: {
-    title?: string;
-    description?: PortableTextBlock[];
-    image?: CustomImage;
-    _key: string;
-  }[];
+  services?: Service[];
 }
 
 export interface LastEntriesSection {
