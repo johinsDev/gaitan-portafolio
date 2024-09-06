@@ -37,8 +37,8 @@ export default function ImageBox({
           height={height}
           sizes={size}
           src={imageUrl}
-          placeholder="blur"
-          blurDataURL={image.asset.metadata.lqip}
+          placeholder={image?.asset?.metadata?.lqip ? "blur" : "empty"}
+          blurDataURL={image?.asset?.metadata?.lqip}
         />
       )}
     </div>

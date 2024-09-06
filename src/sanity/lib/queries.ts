@@ -245,6 +245,14 @@ export const projectBySlugQuery = groq`
 
 export const settingsQuery = groq`
   *[_type == "settings"][0]{
+    privacyPolicy->{
+      ...,
+      _id,
+      seo,
+      content,
+      title,
+      "slug": slug.current,
+    },
     footer,
     menuItems[]->{
       _type,
@@ -258,7 +266,6 @@ export const settingsQuery = groq`
     phone,
     address,
     email,
-    "privacyPolicyURL": privacyPolicy.asset->url,
     logo{
       ...,
       image{

@@ -60,11 +60,13 @@ export default defineType({
     defineField({
       name: "privacyPolicy",
       title: "Privacy Policy",
-      type: "file",
       description: "The privacy policy of your site.",
-      options: {
-        accept: "application/pdf",
-      },
+      type: "reference",
+      to: [
+        {
+          type: "page",
+        },
+      ],
     }),
     defineField({
       name: "footer",
@@ -164,7 +166,6 @@ export default defineType({
         },
       ],
     }),
-
     defineField({
       name: "seo",
       title: "SEO",

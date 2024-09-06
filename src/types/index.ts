@@ -254,7 +254,12 @@ export interface SettingsPayload {
     hex: string;
   } | null;
   contactCta?: Cta;
-  privacyPolicyURL?: string;
+  privacyPolicy?: {
+    content?: PortableTextBlock[];
+    seo?: Seo;
+    title?: string;
+    slug?: string;
+  };
 }
 
 export interface AlliedsSection {

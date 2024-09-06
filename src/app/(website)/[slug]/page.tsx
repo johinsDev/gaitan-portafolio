@@ -42,6 +42,9 @@ export default async function PageSlugRoute({ params }: Props) {
   return (
     <div>
       <div className="mb-14">
+        <h1 className="text-title font-bold text-center">
+          {initial.data.title}
+        </h1>
         {/* Header */}
         <Suspense fallback={<HeroSkeleton />}>
           <Hero slug={params.slug} load={Singletons.PAGE} />
@@ -49,10 +52,12 @@ export default async function PageSlugRoute({ params }: Props) {
 
         {/* Body */}
         {initial.data.body && (
-          <CustomPortableText
-            paragraphClasses="font-serif max-w-3xl text-gray-600 text-xl"
-            value={initial.data.body as any}
-          />
+          <div className="mx-auto w-full max-w-4xl mt-12">
+            <CustomPortableText
+              paragraphClasses="font-serif text-gray-600 text-xl xm"
+              value={initial.data.body as any}
+            />
+          </div>
         )}
       </div>
       <div className="absolute left-0 w-screen border-t" />

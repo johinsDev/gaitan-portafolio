@@ -1,4 +1,3 @@
-import type { PortableTextBlock } from "next-sanity";
 
 import { cn } from "@/lib/cn";
 import type { SettingsPayload } from "@/types";
@@ -10,7 +9,6 @@ interface FooterProps {
 export default function Footer(props: FooterProps) {
   const { data } = props;
 
-  const footer = data?.footer || ([] as PortableTextBlock[]);
 
   const menuItems = data?.menuItems || [];
 
@@ -28,7 +26,7 @@ export default function Footer(props: FooterProps) {
 
   const linkedin = data?.socialMedia?.find((item) => item.name === "linkedin");
 
-  const privacyPolicy = data?.privacyPolicyURL;
+  const privacyPolicy = data?.privacyPolicy?.slug;
 
   return (
     <footer className="bg-primary text-center text-primary-foreground lg:text-left">
@@ -219,8 +217,6 @@ export default function Footer(props: FooterProps) {
         <div className="flex flex-col gap-4 text-left items-start  border-t-2 border-neutral-200 py-6 dark:border-white/10 md:flex-row md:justify-between">
           <Link
             href={privacyPolicy || "/"}
-            download
-            target="_blank"
             className="font-bold"
           >
             Política de privacidad
