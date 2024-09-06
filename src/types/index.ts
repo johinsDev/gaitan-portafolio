@@ -164,6 +164,7 @@ export enum Singletons {
   PAGE = "page",
   INVEST = "invest",
   SERVICE = "service",
+  SERVICES = "services",
 }
 
 export interface Color {
@@ -209,6 +210,10 @@ export interface AboutPagePayload extends FullPagePayload {
 
 export interface ResourcesPagePayload extends FullPagePayload {
   _type: Singletons.RESOURCES;
+}
+
+export interface ServicesPagePayload extends FullPagePayload {
+  _type: Singletons.SERVICES;
 }
 
 export interface CoursePagePayload extends FullPagePayload {

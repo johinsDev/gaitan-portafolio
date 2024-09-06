@@ -3,6 +3,7 @@ import {
   blogPageQuery,
   coursePageQuery,
   investPageQuery,
+  queryServicesPage,
   resourcesPageQuery,
 } from "@/sanity/lib/queries";
 import { Singletons } from "@/types";
@@ -28,6 +29,7 @@ const REDIRECTS_LIST = [
   Singletons.RESOURCES,
   Singletons.COURSE,
   Singletons.BLOG,
+  Singletons.SERVICES,
 ];
 
 const INITIAL_REDIRECTS = {
@@ -36,6 +38,7 @@ const INITIAL_REDIRECTS = {
   [Singletons.RESOURCES]: "/resources",
   [Singletons.COURSE]: "/course",
   [Singletons.BLOG]: "/blog",
+  [Singletons.SERVICES]: "/servicios",
 };
 
 function transformEnvironmentPage(page: Singletons) {
@@ -52,7 +55,7 @@ async function seedInitialRedirects() {
         console.log(`Seeding initial redirect for ${page} to ${initialSlug}`);
         await redis.set(transformEnvironmentPage(page), initialSlug);
       }
-    }),
+    })
   );
 }
 
@@ -68,6 +71,8 @@ function getQuery(page: Singletons) {
       return coursePageQuery;
     case Singletons.BLOG:
       return blogPageQuery;
+    case Singletons.SERVICES:
+      return queryServicesPage;
     default:
       return null;
   }
@@ -83,7 +88,7 @@ export async function generateRedirects() {
       console.log(`Checking ${page} for changes`);
 
       const newSlug = (await client.fetch(getQuery(page) as unknown as string))
-        .slug;
+        ?.slug;
 
       console.log(`New slug: ${newSlug}`);
 
@@ -109,7 +114,7 @@ export async function generateRedirects() {
 
       fs.renameSync(
         __dirname + `/../app/(website)/${oldSlug}`,
-        __dirname + `/../app/(website)/${newSlug}`,
+        __dirname + `/../app/(website)/${newSlug}`
       );
 
       console.log(`Updating redis key for ${page} to ${newSlug}`);

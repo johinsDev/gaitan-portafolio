@@ -49,6 +49,7 @@ import course from "@/sanity/schemas/singletons/course";
 import home from "@/sanity/schemas/singletons/home";
 import invest from "@/sanity/schemas/singletons/invest";
 import resources from "@/sanity/schemas/singletons/resources";
+import services from "@/sanity/schemas/singletons/services";
 import settings from "@/sanity/schemas/singletons/settings";
 import { colorInput } from "@sanity/color-input";
 
@@ -72,6 +73,7 @@ export default defineConfig({
       resources,
       blog,
       invest,
+      services,
       // Documents
       testimonial,
       duration,
@@ -118,6 +120,7 @@ export default defineConfig({
         blog,
         invest,
         settings,
+        services,
       ]),
     }),
     presentationTool({
@@ -136,6 +139,7 @@ export default defineConfig({
       course.name,
       resources.name,
       blog.name,
+      services.name,
     ]),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),

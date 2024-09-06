@@ -215,6 +215,12 @@ export const resourcesPageQuery = groq`
   }
 `;
 
+export const queryServicesPage = groq`
+  *[_type == "services"][0]{
+   ${DEFAULT_QUERY}
+  }
+`;
+
 export const blogPageQuery = groq`
   *[_type == "blog"][0]{
    ${DEFAULT_QUERY}
@@ -322,6 +328,36 @@ export const settingsQuery = groq`
       title,
       variant,
     },
+  }
+`;
+
+export const queryAllServices = groq`
+  *[_type == "service"]{
+    ...,
+    _id,
+    title,
+    description,
+    shortDescription,
+    cta{
+      externalLink,
+      link->{
+        _type,
+        "slug": slug.current,
+        title
+      },
+      title,
+      variant,
+    },
+    image{
+      ...,
+      image{
+        asset->{
+          ...,
+          "_ref": _id,
+        },
+      },
+    },
+    "slug": slug.current,
   }
 `;
 

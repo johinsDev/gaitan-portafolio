@@ -162,6 +162,12 @@ export default defineType({
             {
               type: "invest",
             },
+            {
+              type: "service",
+            },
+            {
+              type: "services",
+            },
           ],
         },
       ],
