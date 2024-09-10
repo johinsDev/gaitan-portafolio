@@ -20,7 +20,7 @@ export default async function Invest() {
   const { data: investPage } = await loadInvestPage();
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 py-16">
       <div className="text-sub-title leading-sub-title font-bold text-center">
         {investPage.title}
       </div>

@@ -39,7 +39,7 @@ export default async function ListingDetailPage(props: Props) {
   const mapUrl = urlForImage(data?.location?.map)?.width(1200).url();
 
   return (
-    <div className="pb-12">
+    <div className="py-16">
       <section className="w-full flex items-stretch gap-2 lg:gap-4">
         <div className="w-full md:w-3/5">
           <Image

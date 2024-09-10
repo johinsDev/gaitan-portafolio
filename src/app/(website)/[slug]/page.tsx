@@ -40,7 +40,7 @@ export default async function PageSlugRoute({ params }: Props) {
   }
 
   return (
-    <div className="pb-16">
+    <div className="py-16">
       <h1 className="text-title font-bold text-center mb-12">
         {initial.data.title}
       </h1>

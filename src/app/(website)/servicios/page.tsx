@@ -18,7 +18,7 @@ export default async function Services() {
   const { data } = await loadServicesPage();
 
   return (
-    <div className="flex flex-col gap-4 pb-16">
+    <div className="flex flex-col gap-4 py-16">
       <h1 className="text-title leading-sub-title font-bold text-center">
         {data.title}
       </h1>

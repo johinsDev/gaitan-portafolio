@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function AboutMe() {
   return (
-    <div className="flex flex-col pb-16">
+    <div className="flex flex-col py-16">
       <Suspense fallback={<HeroSkeleton />}>
         <Hero load={Singletons.ABOUT} />
       </Suspense>

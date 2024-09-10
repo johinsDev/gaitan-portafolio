@@ -43,7 +43,7 @@ export default async function ServicePage({ params }: Props) {
     initial.data.image && urlForImage(initial.data.image.image)?.url();
 
   return (
-    <>
+    <div className="py-16">
       <h1 className="text-title font-bold text-center mb-12">
         {initial.data.title}
       </h1>
@@ -91,6 +91,6 @@ export default async function ServicePage({ params }: Props) {
           </Suspense>
         </div>
       )}
-    </>
+    </div>
   );
 }

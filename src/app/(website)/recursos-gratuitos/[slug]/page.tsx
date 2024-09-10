@@ -37,7 +37,7 @@ export default async function Resource(props: Props) {
       .url();
 
   return (
-    <div>
+    <div className="pt-16">
       <section className="w-full flex flex-col md:flex-row gap-4 items-center">
         <div className="w-full md:w-1/2 text-center md:text-left">
           <div className="font-bold text-lg md:text-4xl">

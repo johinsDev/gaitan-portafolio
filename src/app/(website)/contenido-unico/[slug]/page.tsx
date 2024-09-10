@@ -37,7 +37,7 @@ export default async function BlogDetail({ params }: Props) {
     urlForImage(blog.image.image)?.width(1200).height(450).fit("crop").url();
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 py-16">
       {image && (
         <Image
           src={image}
