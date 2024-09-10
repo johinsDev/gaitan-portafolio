@@ -21,5 +21,7 @@ export default function ResourcesPreview(props: Props) {
     },
   );
 
-  return <ServicesListLayout services={data} servicesPage={props.servicesPage} />;
+  return (
+    <ServicesListLayout services={data} servicesPage={props.servicesPage} />
+  );
 }

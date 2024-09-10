@@ -19,5 +19,5 @@ export async function BgHero({ load = Singletons.HOME, slug }: BgHeroProps) {
     return <BgHeroPreview initial={data} load={load} />;
   }
 
-  return <BgHeroLayout hero={data?.data?.['bgHero'] as BgHeroType} />;
+  return <BgHeroLayout hero={data?.data?.["bgHero"] as BgHeroType} />;
 }

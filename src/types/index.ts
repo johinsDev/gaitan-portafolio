@@ -104,12 +104,16 @@ export interface CtaSection {
 
 export type PositionImageList = "left" | "right";
 
-export interface Hero {
+export interface HeroSlide {
   content?: PortableTextBlock[];
   image?: CustomImage;
-  title?: string;
   cta?: Cta;
-  position?: PositionImageList;
+  _key: string;
+}
+export interface Hero {
+  slides: HeroSlide[];
+  title?: string;
+  bgColor?: Color;
 }
 
 export interface MenuItem {

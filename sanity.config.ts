@@ -28,6 +28,7 @@ import duration from "@/sanity/schemas/objects/duration";
 import feature from "@/sanity/schemas/objects/feature";
 import gallery from "@/sanity/schemas/objects/gallery";
 import hero from "@/sanity/schemas/objects/hero";
+import heroSlide from "@/sanity/schemas/objects/hero-slide";
 import image from "@/sanity/schemas/objects/image";
 import kindOfDepartment from "@/sanity/schemas/objects/kind-of-department";
 import knowMore from "@/sanity/schemas/objects/know-more";
@@ -85,6 +86,7 @@ export default defineConfig({
       service,
       // Objects
       bgHero,
+      heroSlide,
       lastEntriesSection,
       servicesSection,
       allied,

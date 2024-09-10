@@ -177,28 +177,30 @@ const DEFAULT_QUERY = `
     },
   },
   hero{
-    position,
+    ...,
     title,
-    content,
-    cta{
-      externalLink,
-      link->{
-        _type,
-        "slug": slug.current,
-        title
+    slides[]{
+      content,
+      cta{
+        externalLink,
+        link->{
+          _type,
+          "slug": slug.current,
+          title
+        },
+        title,
+        variant,
       },
-      title,
-      variant,
-    },
-    image{
-      ...,
       image{
-        asset->{
-          ...,
-          "_ref": _id,
+        ...,
+        image{
+          asset->{
+            ...,
+            "_ref": _id,
+          },
         },
       },
-    },
+    }
   },
  ${SECTIONS_QUERY}
 `;

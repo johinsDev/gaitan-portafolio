@@ -51,12 +51,12 @@ export function ServicesListLayout({ services, servicesPage }: Props) {
                 {service.title}
               </div>
 
-              {!!service.description && <CustomPortableText value={service.description as any} />}
+              {!!service.description && (
+                <CustomPortableText value={service.description as any} />
+              )}
 
-              <Button asChild className="w-fit mt-2 lg:mt-8" size='lg'>
-                <Link href={href}>
-                  Empezar
-                </Link>
+              <Button asChild className="w-fit mt-2 lg:mt-8" size="lg">
+                <Link href={href}>Empezar</Link>
               </Button>
             </div>
           </article>

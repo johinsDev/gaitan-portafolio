@@ -1,4 +1,4 @@
-import { defineArrayMember, defineField, defineType } from "sanity";
+import { defineField, defineType } from "sanity";
 
 export default defineType({
   name: "hero",
@@ -11,54 +11,19 @@ export default defineType({
       type: "string",
     }),
     defineField({
-      name: "image",
-      title: "Image",
-      type: "customImage",
-    }),
-    defineField({
-      name: "position",
-      title: "Position",
-      type: "string",
-      initialValue: "left",
-      description: "Position of the image",
+      name: "bgColor",
+      title: "Background color",
+      type: "color",
+      description: "The background color of the hero section",
       options: {
-        list: [
-          { title: "Left", value: "left" },
-          { title: "Right", value: "right" },
-        ],
+        disableAlpha: true,
       },
     }),
     defineField({
-      name: "content",
-      title: "Description",
+      name: "slides",
+      title: "Slides description",
       type: "array",
-      of: [
-        // Paragraphs
-        defineArrayMember({
-          marks: {
-            annotations: [
-              {
-                name: "link",
-                type: "object",
-                title: "Link",
-                fields: [
-                  {
-                    name: "href",
-                    type: "url",
-                    title: "Url",
-                  },
-                ],
-              },
-            ],
-          },
-          type: "block",
-        }),
-      ],
-    }),
-    defineField({
-      name: "cta",
-      title: "Call to action",
-      type: "cta",
+      of: [{ type: "heroSlide" }],
     }),
   ],
   preview: {

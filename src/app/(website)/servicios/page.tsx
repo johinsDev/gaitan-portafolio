@@ -23,10 +23,9 @@ export default async function Services() {
         {data.title}
       </h1>
 
-      <Suspense >
+      <Suspense>
         <ServicesListSection />
       </Suspense>
-
 
       <Suspense fallback={<HeroSkeleton />}>
         <Hero load={Singletons.SERVICES} />

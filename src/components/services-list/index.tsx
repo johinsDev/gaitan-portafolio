@@ -15,5 +15,7 @@ export async function ServicesListSection() {
     return <ServicesListPreview initial={data} servicesPage={servicesPage} />;
   }
 
-  return <ServicesListLayout services={data.data} servicesPage={servicesPage} />;
+  return (
+    <ServicesListLayout services={data.data} servicesPage={servicesPage} />
+  );
 }
