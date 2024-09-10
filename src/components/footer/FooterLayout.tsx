@@ -28,7 +28,7 @@ export default function Footer(props: FooterProps) {
 
   return (
     <footer className="bg-primary text-center text-primary-foreground lg:text-left">
-      <div className="container mx-auto">
+      <div className="main_container mx-auto">
         <div className="py-10 text-center md:text-left">
           <div className="grid-1 grid gap-8 md:grid-cols-2">
             <div className="flex flex-col space-y-2 items-start">
