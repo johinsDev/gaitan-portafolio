@@ -27,14 +27,14 @@ export function BgHeroLayout({ hero }: Props) {
 
   return <header className="relative full-width aspect-[16/5]">
     {/* bg overlay */}
-    <div className="absolute inset-0 z-10 bg-black bg-opacity-30" />
+    <div className="absolute inset-0 z-10 bg-black bg-opacity-50" />
 
-    <div className="h-full w-full mx-auto max-w-2xl text-center z-20 relative pt-[5vh]">
-      <h1 className="text-white text-3xl lg:text-5xl font-bold text-center">
+    <div className="h-full w-full mx-auto max-w-2xl text-center z-20 relative gid place-content-center">
+      <h1 className="text-white text-3xl lg:text-7xl font-bold text-center">
         {hero?.title}
       </h1>
 
-      {hero?.subtitle && <div className="text-white text-lg lg:text-2xl font-light mt-6">
+      {hero?.subtitle && <div className="text-white text-lg lg:text-2xl mt-6">
         <CustomPortableText value={hero.subtitle as any} />
       </div>}
     </div>
