@@ -52,7 +52,7 @@ export function TestimonialsLayout({ data }: Props) {
                           className="absolute inset-0"
                           controls
                           fallback={
-                            <div className="aspect-video w-full animate-pulse bg-cruisebound-neutral-200" />
+                            <div className="aspect-video w-full animate-pulse bg-neutral-200" />
                           }
                         />
                       </div>

@@ -40,7 +40,7 @@ export default async function PageSlugRoute({ params }: Props) {
   }
 
   return (
-    <>
+    <div className="pb-16">
       <h1 className="text-title font-bold text-center mb-12">
         {initial.data.title}
       </h1>
@@ -53,7 +53,7 @@ export default async function PageSlugRoute({ params }: Props) {
       {initial.data.body && (
         <div className="mx-auto w-full max-w-4xl">
           <CustomPortableText
-            paragraphClasses="font-serif text-gray-600 text-xl xm"
+            paragraphClasses="text-xl xm"
             value={initial.data.body as any}
           />
         </div>
@@ -70,6 +70,6 @@ export default async function PageSlugRoute({ params }: Props) {
           </Suspense>
         </div>
       )}
-    </>
+    </div>
   );
 }

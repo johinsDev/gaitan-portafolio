@@ -31,9 +31,9 @@ export default defineType({
       type: "seo",
     }),
     defineField({
-      name: "hero",
-      title: "Hero section",
-      type: "hero",
+      name: "bgHero",
+      title: "Hero",
+      type: "bgHero",
     }),
     // define array of sections
     defineField({

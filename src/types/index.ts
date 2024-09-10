@@ -292,6 +292,13 @@ export interface NewsletterSection {
   submitText?: string;
 }
 
+export interface BgHero {
+  title?: string;
+  bgVideo?: string;
+  subtitle?: PortableTextBlock[];
+  bg?: CustomImage["image"];
+}
+
 export interface Service {
   title?: string;
   _id: string;
@@ -388,6 +395,7 @@ export type FullPagePayload = {
   sections?: Sections[];
   seo?: Seo;
   slug?: string;
+  bgHero?: BgHero;
 };
 
 export type Resource = {

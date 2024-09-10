@@ -21,6 +21,7 @@ import testimonial from "@/sanity/schemas/documents/testimonial";
 import accordion from "@/sanity/schemas/objects/accordion";
 import allied from "@/sanity/schemas/objects/allied";
 import alliedSection from "@/sanity/schemas/objects/allied-section";
+import bgHero from "@/sanity/schemas/objects/bg-hero";
 import cta from "@/sanity/schemas/objects/cta";
 import ctaSection from "@/sanity/schemas/objects/cta-section";
 import duration from "@/sanity/schemas/objects/duration";
@@ -83,6 +84,7 @@ export default defineConfig({
       property,
       service,
       // Objects
+      bgHero,
       lastEntriesSection,
       servicesSection,
       allied,

@@ -164,6 +164,18 @@ const DEFAULT_QUERY = `
     image,
     title,
   },
+  bgHero{
+    title,
+    "bgVideo": bgVideo.asset->url,
+    subtitle,
+    bg{
+      ...,
+      asset->{
+        ...,
+        "_ref": _id,
+      },
+    },
+  },
   hero{
     position,
     title,

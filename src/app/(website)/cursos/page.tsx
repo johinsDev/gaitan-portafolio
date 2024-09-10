@@ -1,3 +1,4 @@
+import { BgHero } from "@/components/bg-hero";
 import { Hero } from "@/components/hero";
 import { HeroSkeleton } from "@/components/hero/hero-skeleton";
 import { Sections } from "@/components/sections";
@@ -16,6 +17,10 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function Course() {
   return (
     <div className="flex flex-col">
+      <Suspense fallback={<HeroSkeleton />}>
+        <BgHero load={Singletons.COURSE} />
+      </Suspense>
+
       <Suspense fallback={<HeroSkeleton />}>
         <Hero load={Singletons.COURSE} />
       </Suspense>
