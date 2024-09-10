@@ -23,7 +23,7 @@ export function BgHeroLayout({ hero }: Props) {
   const imageUrl =
     image && urlForImage(image)?.url();
 
-  return <header className="relative full-width aspect-[16/5]">
+  return <header className="relative full-width aspect-[16/5] overflow-hidden">
     {/* bg overlay */}
     <div className="absolute inset-0 z-10 bg-black bg-opacity-50" />
 
