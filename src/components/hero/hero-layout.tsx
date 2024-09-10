@@ -31,7 +31,7 @@ export function HeroLayout({ hero }: Props) {
     };
   }, [api]);
 
-  if (!hero?.slides.length) return null;
+  if (!hero?.slides?.length) return null;
 
   return (
     <header
