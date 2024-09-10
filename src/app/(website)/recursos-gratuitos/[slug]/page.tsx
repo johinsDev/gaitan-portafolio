@@ -63,7 +63,7 @@ export default async function Resource(props: Props) {
       <div className="full-width bg-gray-50 py-20">
         <div className="main_container bg-white rounded-lg py-10 flex flex-col text-center items-center gap-8">
           <div className="font-bold text-2xl text-center">
-            Lorem ipsum dolor sit amet
+            Obtén la herramienta GRATIS
           </div>
 
           <form className="flex flex-col gap-4 w-full">
