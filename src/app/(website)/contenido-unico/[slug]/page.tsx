@@ -50,14 +50,16 @@ export default async function BlogDetail({ params }: Props) {
         />
       )}
 
-      <div className="text-sub-title leading-sub-title font-bold text-center mt-8">
-        {blog?.title}
-      </div>
+      <div className=" mx-auto max-w-4xl">
+        <div className="text-sub-title leading-sub-title font-bold text-center mt-8">
+          {blog?.title}
+        </div>
 
-      <Share post={blog} />
+        <Share post={blog} />
 
-      <div className="mt-12">
-        <CustomPortableText value={blog?.content as any} />
+        <div className="mt-12">
+          <CustomPortableText value={blog?.content as any} />
+        </div>
       </div>
     </div>
   );
