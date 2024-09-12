@@ -28,13 +28,11 @@ function formatPrice(price: number | undefined | null) {
     return "";
   }
 
-  return (
-    "$ " +
-    price.toLocaleString("es-MX", {
-      notation: "compact",
-      maximumFractionDigits: 0,
-    })
-  );
+  return price.toLocaleString("es-ES", {
+    style: "currency",
+    currency: "MXN",
+    minimumFractionDigits: 0,
+  });
 }
 
 export function Property({ property, investPage }: Props) {
@@ -79,7 +77,7 @@ export function Property({ property, investPage }: Props) {
             Valorización:
           </div>
           <strong>
-            {formatPrice(property.price)}
+            {property.capitalGain ?? 0}%*
           </strong>
         </div>
 
@@ -92,12 +90,25 @@ export function Property({ property, investPage }: Props) {
           </strong>
         </div>
 
-        <div className="flex items-center justify-between gap-2 w-full mb-1">
+        <div className="flex items-center justify-between gap-2 w-full">
           <div>
             Entrega:
           </div>
           <strong>
             {calcMonths(property.deliveryDate ?? "")} meses
+          </strong>
+        </div>
+
+        <div
+          className="w-full h-px bg-primary my-4"
+        />
+
+        <div className="flex items-center justify-between gap-1 w-full">
+          <div className="flex-shrink-0">
+            Precio desde:
+          </div>
+          <strong className="truncate">
+            {formatPrice(property.price)}
           </strong>
         </div>
       </div>
