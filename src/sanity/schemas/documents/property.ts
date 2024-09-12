@@ -31,6 +31,17 @@ export default defineType({
       validation: (rule) => rule.required(),
     },
     {
+      name: "highlight",
+      title: "Destacado",
+      type: "boolean",
+    },
+    {
+      name: "highlightText",
+      title: "Texto destacado",
+      type: "string",
+      validation: (rule) => rule.required(),
+    },
+    {
       name: "deliveryDate",
       title: "Fecha de entrega",
       type: "date",

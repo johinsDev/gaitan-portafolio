@@ -465,6 +465,8 @@ export interface PropertyDocument {
   description?: PortableTextBlock[];
   capitalGain?: number;
   characteristics?: ProjectCharacteristics[];
+  highlight?: boolean;
+  highlightText?: string;
   location?: {
     _type: "projectLocation";
     geopoint?: {

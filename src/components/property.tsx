@@ -42,9 +42,7 @@ export function Property({ property, investPage }: Props) {
   );
 
   const image = urlForImage(property.gallery?.images?.[0])
-    ?.width(500)
-    .auto("format")
-    .url();
+    ?.url();
 
   if (!link) {
     return null;
@@ -55,15 +53,25 @@ export function Property({ property, investPage }: Props) {
       href={link}
       className="flex flex-col bg-gray-200 rounded-2xl overflow-hidden"
     >
-      {!!image && (
-        <Image
-          src={image}
-          width={370}
-          height={240}
-          alt="Real Estate"
-          className="object-cover w-full aspect-video rounded-t-2xl"
-        />
-      )}
+      <div className="relative w-full overflow-hidden aspect-video min-h-56">
+        {
+          property.highlight && (
+            <div className="absolute z-10 bg-white bg-opacity-70 text-sm font-medium px-4 py-1 rounded-full top-3 left-4 border border-white">
+              {property.highlightText}
+            </div>
+          )
+        }
+        {!!image && (
+          <Image
+            fill
+            src={image}
+            alt="Real Estate"
+            className="object-cover w-full aspect-video rounded-t-2xl"
+          />
+        )}
+
+      </div>
+
 
       <div className="p-6 flex flex-col items-start justify-center text-left text-lg lg:text-xl">
         <strong className="text-xl lg:text-2xl">{property.name}</strong>
