@@ -1,6 +1,5 @@
 import { resolveHref, urlForImage } from "@/sanity/lib/utils";
 import { InvestPagePayload, PropertyDocument } from "@/types";
-import { toPlainText } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,6 +7,21 @@ type Props = {
   property: PropertyDocument;
   investPage: InvestPagePayload;
 };
+
+function calcMonths(date: string) {
+  if (!date) {
+    return 0;
+  }
+
+  const now = new Date();
+  const then = new Date(date);
+
+  return (
+    (then.getFullYear() - now.getFullYear()) * 12 +
+    then.getMonth() -
+    now.getMonth()
+  );
+}
 
 function formatPrice(price: number | undefined | null) {
   if (!price) {
@@ -53,20 +67,39 @@ export function Property({ property, investPage }: Props) {
         />
       )}
 
-      <div className="p-6 flex flex-col items-center justify-center text-center text-2xl">
+      <div className="p-6 flex flex-col items-start justify-center text-left text-lg lg:text-xl">
+        <strong className="text-xl lg:text-2xl">{property.name}</strong>
         <div>
           {property.location?.city || property.location?.state},{" "}
           {property.location?.country}
         </div>
-        <div className="font-bold">{property.name}</div>
-        <div className="font-bold text-3xl mt-6">
-          {formatPrice(property.price)}
-        </div>
-        {property.description && (
-          <div className="text-xl line-clamp-2">
-            {toPlainText(property.description)}
+
+        <div className="flex items-center justify-between gap-2 w-full mb-1 mt-8">
+          <div>
+            Valorización:
           </div>
-        )}
+          <strong>
+            {formatPrice(property.price)}
+          </strong>
+        </div>
+
+        <div className="flex items-center justify-between gap-2 w-full mb-1">
+          <div>
+            Ocupación zona:
+          </div>
+          <strong>
+            {property.occupancy ?? 0}%
+          </strong>
+        </div>
+
+        <div className="flex items-center justify-between gap-2 w-full mb-1">
+          <div>
+            Entrega:
+          </div>
+          <strong>
+            {calcMonths(property.deliveryDate ?? "")} meses
+          </strong>
+        </div>
       </div>
     </Link>
   );
