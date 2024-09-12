@@ -80,6 +80,9 @@ export default defineType({
         defineArrayMember({
           type: "gridSection",
         }),
+        defineArrayMember({
+          type: "propertiesSection",
+        }),
       ],
     }),
   ],

@@ -20,6 +20,7 @@ export enum SectionsList {
   SERVICES_SECTION = "servicesSection",
   LAST_ENTRIES_SECTION = "lastEntriesSection",
   GRID_SECTION = "gridSection",
+  PROPERTIES_SECTION = "propertiesSection",
 }
 
 export interface Seo {
@@ -158,7 +159,8 @@ export type Sections =
   | NewsletterSection
   | ServicesSection
   | LastEntriesSection
-  | GridSection;
+  | GridSection
+  | PropertiesSection;
 
 export enum Singletons {
   ABOUT = "about",
@@ -493,5 +495,13 @@ export interface GridSection {
   description?: PortableTextBlock[];
   grids?: Grid[];
   _type: SectionsList.GRID_SECTION;
+  _key: string;
+}
+
+export interface PropertiesSection {
+  title?: string;
+  description?: PortableTextBlock[];
+  properties?: PropertyDocument[];
+  _type: SectionsList.PROPERTIES_SECTION;
   _key: string;
 }

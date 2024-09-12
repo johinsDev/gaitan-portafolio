@@ -14,6 +14,38 @@ const SECTIONS_QUERY = `
       placeholderName,
       placeholderEmail,
     },
+    _type == "propertiesSection" => {
+      ...,
+      title,
+      description,
+      properties[]->{
+        ...,
+        _id,
+        seo,
+        description,
+        kindOfDepartments[]{
+          ...,
+          image{
+            ...,
+            asset->{
+              ...,
+              "_ref": _id,
+            },
+          },
+        },
+        gallery{
+          ...,
+          images[]{
+            ...,
+            asset->{
+              ...,
+              "_ref": _id,
+            },
+          },
+        },
+        "slug": slug.current,
+      },
+    },
     _type == "gridSection" => {
       ...,
       title,

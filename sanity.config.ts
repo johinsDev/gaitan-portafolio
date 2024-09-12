@@ -40,6 +40,7 @@ import newsletterSection from "@/sanity/schemas/objects/newsletter-section";
 import portableTextSection from "@/sanity/schemas/objects/portable-text-section";
 import projectCharacteristics from "@/sanity/schemas/objects/project-characteristics";
 import projectLocation from "@/sanity/schemas/objects/project-location";
+import propertiesSection from "@/sanity/schemas/objects/properties-section";
 import seo from "@/sanity/schemas/objects/seo";
 import servicesSection from "@/sanity/schemas/objects/services-section";
 import stat from "@/sanity/schemas/objects/stat";
@@ -87,6 +88,7 @@ export default defineConfig({
       property,
       service,
       // Objects
+      propertiesSection,
       grid,
       gridSection,
       bgHero,
