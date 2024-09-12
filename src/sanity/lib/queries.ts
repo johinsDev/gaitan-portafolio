@@ -295,6 +295,12 @@ export const investPageQuery = groq`
   }
 `;
 
+export const marketPageQuery = groq`
+  *[_type == "marketPage"][0]{
+   ${DEFAULT_QUERY}
+  }
+`;
+
 export const queryServiceBySlug = groq`
   *[_type == "service" && slug.current == $slug][0] {
     _id,

@@ -35,6 +35,7 @@ import image from "@/sanity/schemas/objects/image";
 import kindOfDepartment from "@/sanity/schemas/objects/kind-of-department";
 import knowMore from "@/sanity/schemas/objects/know-more";
 import lastEntriesSection from "@/sanity/schemas/objects/last-entries-section";
+import markets from "@/sanity/schemas/objects/markets";
 import milestone from "@/sanity/schemas/objects/milestone";
 import newsletterSection from "@/sanity/schemas/objects/newsletter-section";
 import portableTextSection from "@/sanity/schemas/objects/portable-text-section";
@@ -53,6 +54,7 @@ import blog from "@/sanity/schemas/singletons/blog";
 import course from "@/sanity/schemas/singletons/course";
 import home from "@/sanity/schemas/singletons/home";
 import invest from "@/sanity/schemas/singletons/invest";
+import market from "@/sanity/schemas/singletons/market";
 import resources from "@/sanity/schemas/singletons/resources";
 import services from "@/sanity/schemas/singletons/services";
 import settings from "@/sanity/schemas/singletons/settings";
@@ -89,6 +91,7 @@ export default defineConfig({
       service,
       // Objects
       propertiesSection,
+      markets,
       grid,
       gridSection,
       bgHero,
@@ -131,6 +134,7 @@ export default defineConfig({
         invest,
         settings,
         services,
+        market,
       ]),
     }),
     presentationTool({
@@ -150,6 +154,7 @@ export default defineConfig({
       resources.name,
       blog.name,
       services.name,
+      market.name,
     ]),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),

@@ -173,6 +173,7 @@ export enum Singletons {
   INVEST = "invest",
   SERVICE = "service",
   SERVICES = "services",
+  MARKET = "market",
 }
 
 export interface Color {
@@ -506,4 +507,15 @@ export interface PropertiesSection {
   properties?: PropertyDocument[];
   _type: SectionsList.PROPERTIES_SECTION;
   _key: string;
+}
+
+export interface MarketDocument {
+  _id: string;
+  _type: "market";
+  title?: string;
+  image?: CustomImage;
+  description?: PortableTextBlock[];
+  cta?: Cta;
+  displayTitle?: string;
+  grid?: Grid;
 }
