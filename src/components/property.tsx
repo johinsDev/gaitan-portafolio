@@ -28,7 +28,7 @@ function formatPrice(price: number | undefined | null) {
     return "";
   }
 
-  return price.toLocaleString("es-ES", {
+  return price.toLocaleString("es-MX", {
     style: "currency",
     currency: "MXN",
     minimumFractionDigits: 0,
