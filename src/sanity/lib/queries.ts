@@ -14,6 +14,22 @@ const SECTIONS_QUERY = `
       placeholderName,
       placeholderEmail,
     },
+    _type == "gridSection" => {
+      ...,
+      title,
+      grid[]{
+        ...,
+        image{
+          ...,
+          asset->{
+            ...,
+            "_ref": _id,
+          },
+        },
+        title,
+        description,
+      },
+    },
     _type == "servicesSection" => {
       ...,
       description,

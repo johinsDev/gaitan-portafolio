@@ -6,6 +6,7 @@ import { loadSingleton } from "@/sanity/loader/loadQuery";
 import { SectionsList, Singletons } from "@/types";
 import { AccordionSection } from "./accordion-section";
 import { AlliedsSection } from "./allieds-section";
+import { GridSection } from "./grid-section";
 import { KnowMoreSection } from "./know-more-section";
 import { LastEntriesSection } from "./last-entries";
 import { NewsletterSection } from "./newsletter-section";
@@ -25,6 +26,15 @@ export async function Sections({ load = Singletons.HOME, slug }: SectionProps) {
     <>
       {data?.data?.sections?.map((section) => {
         switch (section._type) {
+          case SectionsList.GRID_SECTION:
+            return (
+              <GridSection
+                key={section._key}
+                _key={section._key}
+                load={load}
+                slug={slug}
+              />
+            );
           case SectionsList.LAST_ENTRIES_SECTION:
             return (
               <LastEntriesSection

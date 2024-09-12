@@ -78,6 +78,9 @@ export default defineType({
         defineArrayMember({
           type: "lastEntriesSection",
         }),
+        defineArrayMember({
+          type: "gridSection",
+        }),
       ],
     }),
   ],
