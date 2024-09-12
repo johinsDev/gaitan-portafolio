@@ -80,6 +80,7 @@ export default defineConfig({
       resources,
       blog,
       invest,
+      market,
       services,
       // Documents
       testimonial,

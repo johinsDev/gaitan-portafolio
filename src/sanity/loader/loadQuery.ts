@@ -229,6 +229,10 @@ export function loadSingleton(load?: Singletons, slug?: string) {
     return loadAboutPage();
   }
 
+  if (load === Singletons.MARKET) {
+    return loadMarketPage();
+  }
+
   if (load === Singletons.HOME) {
     return loadHomePage();
   }

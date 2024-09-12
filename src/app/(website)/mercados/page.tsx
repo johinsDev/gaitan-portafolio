@@ -14,8 +14,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function MarketPage() {
+  const { data: marketPage } = await loadMarketPage();
 
-  const { data: investPage } = await loadMarketPage();
+  console.log(marketPage);
 
   return (
 
@@ -23,8 +24,6 @@ export default async function MarketPage() {
       <Suspense fallback={<HeroSkeleton />}>
         <Hero load={Singletons.MARKET} />
       </Suspense>
-
-
 
       <Suspense>
         <Sections load={Singletons.MARKET} />

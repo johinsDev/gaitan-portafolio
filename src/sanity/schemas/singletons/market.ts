@@ -1,7 +1,7 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "market",
+  name: "marketPage",
   title: "Market Page",
   type: "document",
   icon: () => "🏢",
