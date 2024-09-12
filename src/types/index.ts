@@ -246,6 +246,7 @@ export interface ProjectPayload {
 }
 
 export interface SettingsPayload {
+  gtm?: string;
   footer?: PortableTextBlock[];
   socialMedia?: {
     name?: string;

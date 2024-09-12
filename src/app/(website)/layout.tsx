@@ -1,5 +1,6 @@
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
+import { TagManager } from "@/components/tag-manager/tag-manager";
 import { ThemeProvider } from "@/components/theme-provider";
 import { _generateMetadata } from "@/sanity/lib/utils";
 import { loadSettings } from "@/sanity/loader/loadQuery";
@@ -32,6 +33,9 @@ export default function RootLayout({
 }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+      <Suspense>
+        <TagManager />
+      </Suspense>
       <div className="relative flex flex-col overflow-x-hidden flex-1">
         <Suspense>
           <Navbar />

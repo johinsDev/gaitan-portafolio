@@ -173,6 +173,12 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "gtm",
+      title: "Tag Manager",
+      type: "string",
+      description: "The tag manager gtm id.",
+    }),
+    defineField({
       name: "seo",
       title: "SEO",
       type: "seo",
