@@ -46,6 +46,7 @@ import {
   SettingsPayload,
   Singletons,
 } from "@/types";
+import { groq } from "next-sanity";
 
 const serverClient = client.withConfig({
   token,
@@ -295,6 +296,42 @@ export function loadLastEntries() {
     {},
     {
       next: { tags: ["last-entries"] },
+    },
+  );
+}
+
+export function loadDocumentByQParam(q: string) {
+  return loadQuery<Post[]>(
+    groq`
+      *[
+        (_type == "post" && (title match "${q}*"|| pt::text(content) match "${q}*")) ||
+        (_type == "property" && (name match "${q}*"|| pt::text(description) match "${q}*")) ||
+        (_type == "service" && (title match "${q}*"|| pt::text(description) match "${q}*")) ||
+        (_type == "resource" && (title match "${q}*"|| pt::text(description) match "${q}*"))
+      ] | score(pt::text(description) match "${q}*", boost(title match "${q}*", 3), boost(description match "${q}*", 2))
+        {
+          _id,
+          _type,
+          title,
+          name,
+          content,
+          image{
+            ...,
+            image{
+              asset->{
+                ...,
+                "_ref": _id,
+              },
+            },
+          },
+          description,
+          "slug": slug.current,
+          "shortDescription": pt::text(coalesce(description, content))[0..200]
+        }
+    `,
+    { q: q.trim().toLowerCase() },
+    {
+      next: { tags: ["search", "documents", q] },
     },
   );
 }

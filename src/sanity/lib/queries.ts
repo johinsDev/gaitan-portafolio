@@ -708,3 +708,13 @@ export const queryLastEntries = groq`
     "slug": slug.current,
   }
 `;
+
+// create a query to search by q param in the title and content of the post, property, service, and resource
+// export const searchQuery = groq`
+//   *[
+//     (_type == "post" && (title match $q || content match $q)) ||
+//     (_type == "property" && (title match $q || description match $q)) ||
+//     (_type == "service" && (title match "${q}*"|| description match $q)) ||
+//     (_type == "resource" && (title match $q || description match $q))
+//   ]
+// `;

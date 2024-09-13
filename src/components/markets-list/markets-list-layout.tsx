@@ -37,10 +37,7 @@ export function MarketsListLayout({ data }: Props) {
             market.image?.image && urlForImage(market.image.image)?.url();
 
           return (
-            <TabsContent
-              key={market._key}
-              value={market._key}
-            >
+            <TabsContent key={market._key} value={market._key}>
               <div className="flex flex-col-reverse items-center gap-12 pt-20 lg:flex-row">
                 <div className="w-full lg:w-1/2">
                   <div>
@@ -57,7 +54,10 @@ export function MarketsListLayout({ data }: Props) {
                           urlForImage(item.image.image)?.url();
 
                         return (
-                          <div key={item._key} className="flex gap-4 items-start">
+                          <div
+                            key={item._key}
+                            className="flex gap-4 items-start"
+                          >
                             <div className="relative size-10 rounded-lg flex-shrink-0 overflow-hidden">
                               {imageURL && (
                                 <Image
@@ -70,7 +70,9 @@ export function MarketsListLayout({ data }: Props) {
                             </div>
 
                             <div className="flex flex-col gap-2 flex-1">
-                              <h3 className="text-lg font-bold">{item.title}</h3>
+                              <h3 className="text-lg font-bold">
+                                {item.title}
+                              </h3>
                               <CustomPortableText
                                 value={item.description as any}
                               />
