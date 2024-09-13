@@ -32,7 +32,9 @@ export default function Busqueda() {
             name="q"
             className="h-[50px] lg:h-[75px] rounded-none w-full focus-visible:ring-0 text-lg focus-visible:ring-offset-0"
           />
-          <Button className="rounded-none w-1/5 h-[50px] lg:h-[75px] text-lg min-w-32">Buscar</Button>
+          <Button className="rounded-none w-1/5 h-[50px] lg:h-[75px] text-lg min-w-32">
+            Buscar
+          </Button>
         </form>
       </div>
     </div>

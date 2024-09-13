@@ -119,8 +119,12 @@ const Navbar = (props: Props) => {
             );
           })}
 
-          <Link href="/busqueda">
-            Buscar <Search className="h-6 w-6" />
+          <Link
+            href="/busqueda"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-2"
+          >
+            <span>Buscar</span> <Search className="h-6 w-6" />
           </Link>
         </nav>
       </SheetContent>
