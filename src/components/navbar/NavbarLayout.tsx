@@ -122,9 +122,9 @@ const Navbar = (props: Props) => {
           <Link
             href="/busqueda"
             onClick={() => setOpen(false)}
-            className="flex items-center gap-2"
+            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
-            <span>Buscar</span> <Search className="h-6 w-6" />
+            Buscar
           </Link>
         </nav>
       </SheetContent>
