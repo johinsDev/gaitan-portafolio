@@ -118,6 +118,10 @@ const Navbar = (props: Props) => {
               </Link>
             );
           })}
+
+          <Link href="/busqueda">
+            Buscar <Search className="h-6 w-6" />
+          </Link>
         </nav>
       </SheetContent>
     </Sheet>
