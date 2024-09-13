@@ -3,7 +3,11 @@ import { draftMode } from "next/headers";
 
 import { getSection } from "@/sanity/lib/utils";
 import { loadSingleton } from "@/sanity/loader/loadQuery";
-import { GridSection as GridSectionType, SectionsList, Singletons } from "@/types";
+import {
+  GridSection as GridSectionType,
+  SectionsList,
+  Singletons,
+} from "@/types";
 import { GridSectionLayout } from "./grid-section-layout";
 
 const GridSectionPreview = dynamic(() => import("./grid-section-preview"));
@@ -24,7 +28,9 @@ export async function GridSection({ _key: key, load, slug }: Props) {
   );
 
   if (draftMode().isEnabled) {
-    return <GridSectionPreview initial={data} _key={key} load={load} slug={slug} />;
+    return (
+      <GridSectionPreview initial={data} _key={key} load={load} slug={slug} />
+    );
   }
 
   return <GridSectionLayout data={feature} />;

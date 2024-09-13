@@ -9,7 +9,7 @@ import {
   InvestPagePayload,
   PropertiesSection,
   SectionsList,
-  Singletons
+  Singletons,
 } from "@/types";
 import { QueryResponseInitial } from "@sanity/react-loader";
 import { PropertiesSectionLayout } from "./properties-section-layout";
@@ -19,7 +19,7 @@ type Props = {
   _key: string;
   load?: Singletons;
   slug?: string;
-  investPage: InvestPagePayload
+  investPage: InvestPagePayload;
 };
 
 export default function PropertiesSectionPreview(props: Props) {
@@ -41,5 +41,7 @@ export default function PropertiesSectionPreview(props: Props) {
     props._key,
   );
 
-  return <PropertiesSectionLayout data={feature} investPage={props.investPage} />;
+  return (
+    <PropertiesSectionLayout data={feature} investPage={props.investPage} />
+  );
 }

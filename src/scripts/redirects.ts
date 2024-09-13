@@ -3,6 +3,7 @@ import {
   blogPageQuery,
   coursePageQuery,
   investPageQuery,
+  marketPageQuery,
   queryServicesPage,
   resourcesPageQuery,
 } from "@/sanity/lib/queries";
@@ -30,6 +31,7 @@ const REDIRECTS_LIST = [
   Singletons.COURSE,
   Singletons.BLOG,
   Singletons.SERVICES,
+  Singletons.MARKET,
 ];
 
 const INITIAL_REDIRECTS = {
@@ -39,6 +41,7 @@ const INITIAL_REDIRECTS = {
   [Singletons.COURSE]: "/course",
   [Singletons.BLOG]: "/blog",
   [Singletons.SERVICES]: "/servicios",
+  [Singletons.MARKET]: "/mercados",
 };
 
 function transformEnvironmentPage(page: Singletons) {
@@ -73,6 +76,8 @@ function getQuery(page: Singletons) {
       return blogPageQuery;
     case Singletons.SERVICES:
       return queryServicesPage;
+    case Singletons.MARKET:
+      return marketPageQuery;
     default:
       return null;
   }

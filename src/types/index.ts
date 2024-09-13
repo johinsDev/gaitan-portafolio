@@ -442,6 +442,10 @@ export interface InvestPagePayload extends FullPagePayload {
   _type: Singletons.INVEST;
 }
 
+export interface MarketPagePayload extends FullPagePayload {
+  _type: Singletons.MARKET;
+}
+
 interface ProjectCharacteristics {
   _type: "projectCharacteristics";
   _key: string;
@@ -517,5 +521,6 @@ export interface MarketDocument {
   description?: PortableTextBlock[];
   cta?: Cta;
   displayTitle?: string;
-  grid?: Grid;
+  grid?: Grid[];
+  _key: string;
 }

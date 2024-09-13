@@ -41,8 +41,7 @@ export function Property({ property, investPage }: Props) {
     `/${investPage?.slug ?? "listing"}`,
   );
 
-  const image = urlForImage(property.gallery?.images?.[0])
-    ?.url();
+  const image = urlForImage(property.gallery?.images?.[0])?.url();
 
   if (!link) {
     return null;
@@ -54,13 +53,11 @@ export function Property({ property, investPage }: Props) {
       className="flex flex-col bg-gray-200 rounded-2xl overflow-hidden"
     >
       <div className="relative w-full overflow-hidden aspect-video min-h-56">
-        {
-          property.highlight && (
-            <div className="absolute z-10 bg-white bg-opacity-70 text-sm font-medium px-4 py-1 rounded-full top-3 left-4 border border-white">
-              {property.highlightText}
-            </div>
-          )
-        }
+        {property.highlight && (
+          <div className="absolute z-10 bg-white bg-opacity-70 text-sm font-medium px-4 py-1 rounded-full top-3 left-4 border border-white">
+            {property.highlightText}
+          </div>
+        )}
         {!!image && (
           <Image
             fill
@@ -69,9 +66,7 @@ export function Property({ property, investPage }: Props) {
             className="object-cover w-full aspect-video rounded-t-2xl"
           />
         )}
-
       </div>
-
 
       <div className="p-6 flex flex-col items-start justify-center text-left text-lg lg:text-xl">
         <strong className="text-xl lg:text-2xl">{property.name}</strong>
@@ -81,43 +76,25 @@ export function Property({ property, investPage }: Props) {
         </div>
 
         <div className="flex items-center justify-between gap-2 w-full mb-1 mt-8">
-          <div>
-            Valorización:
-          </div>
-          <strong>
-            {property.capitalGain ?? 0}%*
-          </strong>
+          <div>Valorización:</div>
+          <strong>{property.capitalGain ?? 0}%*</strong>
         </div>
 
         <div className="flex items-center justify-between gap-2 w-full mb-1">
-          <div>
-            Ocupación zona:
-          </div>
-          <strong>
-            {property.occupancy ?? 0}%
-          </strong>
+          <div>Ocupación zona:</div>
+          <strong>{property.occupancy ?? 0}%</strong>
         </div>
 
         <div className="flex items-center justify-between gap-2 w-full">
-          <div>
-            Entrega:
-          </div>
-          <strong>
-            {calcMonths(property.deliveryDate ?? "")} meses
-          </strong>
+          <div>Entrega:</div>
+          <strong>{calcMonths(property.deliveryDate ?? "")} meses</strong>
         </div>
 
-        <div
-          className="w-full h-px bg-primary my-4"
-        />
+        <div className="w-full h-px bg-primary my-4" />
 
         <div className="flex items-center justify-between gap-1 w-full">
-          <div className="flex-shrink-0">
-            Precio desde:
-          </div>
-          <strong className="truncate">
-            {formatPrice(property.price)}
-          </strong>
+          <div className="flex-shrink-0">Precio desde:</div>
+          <strong className="truncate">{formatPrice(property.price)}</strong>
         </div>
       </div>
     </Link>

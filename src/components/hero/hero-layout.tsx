@@ -1,11 +1,16 @@
-'use client';
+"use client";
 
 import { cn } from "@/lib/cn";
 import { urlForImage } from "@/sanity/lib/utils";
 import { Hero } from "@/types";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "../carousel";
+import {
+  Carousel,
+  CarouselApi,
+  CarouselContent,
+  CarouselItem,
+} from "../carousel";
 import { Cta } from "../cta";
 import { CustomPortableText } from "../shared/CustomPortableText";
 
@@ -38,9 +43,13 @@ export function HeroLayout({ hero }: Props) {
       className="full-width"
       style={{ backgroundColor: hero?.bgColor?.hex }}
     >
-      <Carousel className="w-full main_container py-8 lg:py-12" setApi={setApi} opts={{
-        active: hero.slides.length > 1,
-      }}>
+      <Carousel
+        className="w-full main_container py-8 lg:py-12"
+        setApi={setApi}
+        opts={{
+          active: hero.slides.length > 1,
+        }}
+      >
         <CarouselContent>
           {hero?.slides?.map((slide, index) => {
             const image = slide.image?.image;
@@ -50,9 +59,12 @@ export function HeroLayout({ hero }: Props) {
             return (
               <CarouselItem
                 key={index}
-                className={cn("flex items-center flex-col-reverse lg:flex-row gap-12 lg:gap-4", {
-                  'lg:gap-12': hero.slides.length === 1,
-                })}
+                className={cn(
+                  "flex items-center flex-col-reverse lg:flex-row gap-12 lg:gap-4",
+                  {
+                    "lg:gap-12": hero.slides.length === 1,
+                  },
+                )}
               >
                 <div className="flex flex-col w-full items-center text-center lg:text-left lg:items-start lg:w-1/2 xl:w-2/3">
                   <CustomPortableText value={slide.content as any} />
@@ -77,23 +89,24 @@ export function HeroLayout({ hero }: Props) {
           })}
         </CarouselContent>
 
-        {
-          hero.slides.length > 1 && (
-            <div>
-              <div className="flex gap-4 justify-center mt-8 lg:mt-12">
-                {hero?.slides?.map((_, index) => (
-                  <button
-                    onClick={() => api?.scrollTo(index)}
-                    key={index}
-                    className={cn("size-3 lg:size-4 bg-neutral-400 rounded-full focus:outline-none", {
-                      "bg-neutral-600": currentSlide === index
-                    })}
-                  />
-                ))}
-              </div>
+        {hero.slides.length > 1 && (
+          <div>
+            <div className="flex gap-4 justify-center mt-8 lg:mt-12">
+              {hero?.slides?.map((_, index) => (
+                <button
+                  onClick={() => api?.scrollTo(index)}
+                  key={index}
+                  className={cn(
+                    "size-3 lg:size-4 bg-neutral-400 rounded-full focus:outline-none",
+                    {
+                      "bg-neutral-600": currentSlide === index,
+                    },
+                  )}
+                />
+              ))}
             </div>
-          )
-        }
+          </div>
+        )}
       </Carousel>
     </header>
   );

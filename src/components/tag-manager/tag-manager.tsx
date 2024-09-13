@@ -1,5 +1,5 @@
 import { loadSettings } from "@/sanity/loader/loadQuery";
-import { GoogleTagManager } from '@next/third-parties/google';
+import { GoogleTagManager } from "@next/third-parties/google";
 
 export async function TagManager() {
   const { data } = await loadSettings();

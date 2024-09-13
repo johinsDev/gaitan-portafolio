@@ -83,7 +83,13 @@ export default async function ListingDetailPage(props: Props) {
           <div className="flex flex-col gap-4 flex-1 border-b md:border-b-0 md:border-r border-black px-2 py-8 md:py-0 md:px-8">
             <div>
               <div className="">Precio</div>
-              <div className="text-2xl font-bold">{data?.price?.toLocaleString('es-MX', { style: 'currency', currency: 'MXN', minimumFractionDigits: 0 })}</div>
+              <div className="text-2xl font-bold">
+                {data?.price?.toLocaleString("es-MX", {
+                  style: "currency",
+                  currency: "MXN",
+                  minimumFractionDigits: 0,
+                })}
+              </div>
             </div>
 
             <div>
@@ -107,7 +113,13 @@ export default async function ListingDetailPage(props: Props) {
           <div className="flex flex-col gap-4 flex-1 px-2 py-8 md:py-0 md:px-8">
             <div>
               <div className="">Proyección anual</div>
-              <div className="text-2xl font-bold">{data?.price?.toLocaleString('es-MX', { style: 'currency', currency: 'MXN', minimumFractionDigits: 0 })}</div>
+              <div className="text-2xl font-bold">
+                {data?.price?.toLocaleString("es-MX", {
+                  style: "currency",
+                  currency: "MXN",
+                  minimumFractionDigits: 0,
+                })}
+              </div>
             </div>
           </div>
         </div>

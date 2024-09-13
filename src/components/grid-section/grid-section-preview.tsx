@@ -8,7 +8,7 @@ import {
   FullPagePayload,
   GridSection,
   SectionsList,
-  Singletons
+  Singletons,
 } from "@/types";
 import { QueryResponseInitial } from "@sanity/react-loader";
 import { GridSectionLayout } from "./grid-section-layout";

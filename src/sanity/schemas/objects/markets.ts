@@ -43,7 +43,12 @@ export default defineType({
       name: "grid",
       title: "List",
       description: "List",
-      type: "grid",
+      type: "array",
+      of: [
+        {
+          type: "grid",
+        },
+      ],
     }),
   ],
   preview: {

@@ -24,6 +24,17 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "markets",
+      title: "Markets",
+      description: "List of markets",
+      type: "array",
+      of: [
+        {
+          type: "market",
+        },
+      ],
+    }),
+    defineField({
       name: "seo",
       title: "SEO",
       type: "seo",

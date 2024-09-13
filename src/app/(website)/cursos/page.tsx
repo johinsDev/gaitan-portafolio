@@ -15,7 +15,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function Course() {
-
   return (
     <div className="flex flex-col">
       <Suspense fallback={<HeroSkeleton />}>

@@ -301,6 +301,49 @@ export const marketPageQuery = groq`
   }
 `;
 
+export const marketsQuery = groq`
+  *[_type == "marketPage"][0]{
+    ...,
+    markets[]{
+      ...,
+      _id,
+      title,
+      image{
+        ...,
+        image{
+          asset->{
+            ...,
+            "_ref": _id,
+          },
+        },
+      },
+      cta{
+        externalLink,
+        link->{
+          _type,
+          "slug": slug.current,
+          title
+        },
+        title,
+        variant,
+      },
+      displayTitle,
+      grid[]{
+        ...,
+        image{
+          ...,
+          asset->{
+            ...,
+            "_ref": _id,
+          },
+        },
+        title,
+        description,
+      },
+    },
+  }
+`;
+
 export const queryServiceBySlug = groq`
   *[_type == "service" && slug.current == $slug][0] {
     _id,
