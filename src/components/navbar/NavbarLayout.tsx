@@ -5,7 +5,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/sheet";
 import { cn } from "@/lib/cn";
 import { resolveHref, urlForImage } from "@/sanity/lib/utils";
 import { MenuItem, SettingsPayload } from "@/types";
-import { Menu } from "lucide-react";
+import { Menu, Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -93,6 +93,10 @@ const Navbar = (props: Props) => {
               );
             })}
           </ul>
+
+          <Link href="/busqueda">
+            <Search className="h-6 w-6" />
+          </Link>
         </div>
       </nav>
 

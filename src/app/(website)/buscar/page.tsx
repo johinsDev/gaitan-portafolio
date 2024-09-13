@@ -65,13 +65,11 @@ export default async function SearchPage(props: SearchPageProps) {
           const imageURL =
             doc.image?.image && urlForImage(doc.image.image)?.url();
 
-          const link = resolveHref(doc._type, doc.slug)?.replace(
-            "/listing",
-            `/${investPage?.slug ?? "listing"}`,
-          )
+          const link = resolveHref(doc._type, doc.slug)
+            ?.replace("/listing", `/${investPage?.slug ?? "listing"}`)
             ?.replace("/blog", `/${blogPage?.slug ?? "blog"}`)
             ?.replace("/resources", `/${resourcePage?.slug ?? "resource"}`)
-            ?.replace("/service", `/${servicePage?.slug ?? "service"}`)
+            ?.replace("/service", `/${servicePage?.slug ?? "service"}`);
 
           if (!link) {
             return null;
