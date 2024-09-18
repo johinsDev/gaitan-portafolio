@@ -1,4 +1,4 @@
-import { Button } from "@/components/button";
+import ButtonSearch from "@/components/busqueda/button-search";
 import { Input } from "@/components/input";
 import Image from "next/image";
 import { redirect } from "next/navigation";
@@ -32,9 +32,7 @@ export default function Busqueda() {
             name="q"
             className="h-[50px] lg:h-[75px] rounded-none w-full focus-visible:ring-0 text-lg focus-visible:ring-offset-0"
           />
-          <Button className="rounded-none w-1/5 h-[50px] lg:h-[75px] text-lg min-w-32">
-            Buscar
-          </Button>
+          <ButtonSearch />
         </form>
       </div>
     </div>

@@ -22,12 +22,14 @@ export default function ImageBox({
   classesWrapper,
   ...props
 }: ImageBoxProps) {
-  const imageUrl =
-    image && urlForImage(image)?.url();
+  const imageUrl = image && urlForImage(image)?.url();
 
   return (
     <div
-      className={cn(`w-full overflow-hidden relative rounded-[3px] bg-gray-50 `, classesWrapper)}
+      className={cn(
+        `w-full overflow-hidden relative rounded-[3px] bg-gray-50 `,
+        classesWrapper,
+      )}
       data-sanity={props["data-sanity"]}
     >
       {imageUrl && (
