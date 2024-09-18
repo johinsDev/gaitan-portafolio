@@ -30,7 +30,7 @@ function formatPrice(price: number | undefined | null) {
 
   return price.toLocaleString("es-MX", {
     style: "currency",
-    currency: "MXN",
+    currency: "USD",
     minimumFractionDigits: 0,
   });
 }

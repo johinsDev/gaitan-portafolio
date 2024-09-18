@@ -29,8 +29,6 @@ function filterProperties(
 ) {
   const country = params.get("country") || "";
 
-  const state = params.get("state") || "";
-
   const minPrice = params.get("minPrice") || "";
 
   const maxPrice = params.get("maxPrice") || "";
@@ -46,7 +44,7 @@ function filterProperties(
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
 
-      return JSONString.includes(country) && JSONString.includes(state);
+      return JSONString.includes(country);
     })
     .filter((property) => {
       const price = property.price || 0;

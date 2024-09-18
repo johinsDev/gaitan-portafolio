@@ -1,7 +1,7 @@
 import ButtonClearParams from "@/components/button-clear-params";
+import { CountriesFilter } from "@/components/filters/coutry-filter";
 import { DatePickerFilter } from "@/components/filters/date-picker-filter";
 import { PriceFilter } from "@/components/filters/price-filter";
-import InputQueryParam from "@/components/input-query-param";
 import { ListingProperties } from "@/components/listing-properties";
 import { _generateMetadata } from "@/sanity/lib/utils";
 import { loadInvestPage, loadProperties } from "@/sanity/loader/loadQuery";
@@ -28,18 +28,7 @@ export default async function Invest() {
       <section className="flex flex-col gap-8 py-12">
         <div className="flex flex-col items-center lg:flex-row gap-2 md:gap-4">
           <Suspense>
-            <InputQueryParam
-              type="text"
-              placeholder="Pais"
-              className="md:flex-1"
-              name="country"
-            />
-            <InputQueryParam
-              type="text"
-              placeholder="Ciudad o Estado"
-              className="md:flex-1"
-              name="state"
-            />
+            <CountriesFilter />
 
             <PriceFilter />
 

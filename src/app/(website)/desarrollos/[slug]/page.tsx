@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { data: page } = await loadProperty(params.slug);
 
   return _generateMetadata({
-    title: page?.seo?.title || page?.title,
+    title: page?.seo?.title || page?.name,
     description: page?.seo?.description || page?.description,
     image: page?.seo?.image || page?.gallery?.images?.[0],
   });
@@ -76,7 +76,7 @@ export default async function ListingDetailPage(props: Props) {
         {data?.location?.city || data?.location?.state},{" "}
         {data?.location?.country}
       </div>
-      <h1 className="text-sub-title font-bold">{data?.title}</h1>
+      <h1 className="text-sub-title font-bold">{data?.name}</h1>
 
       <section className="flex flex-col lg:flex-row items-stretch gap-4 mt-8">
         <div className="bg-muted-foreground/10 rounded px-4 md:py-8 w-full lg:w-3/5 flex flex-col md:flex-row">
@@ -86,7 +86,7 @@ export default async function ListingDetailPage(props: Props) {
               <div className="text-2xl font-bold">
                 {data?.price?.toLocaleString("es-MX", {
                   style: "currency",
-                  currency: "MXN",
+                  currency: "USD",
                   minimumFractionDigits: 0,
                 })}
               </div>
@@ -116,7 +116,7 @@ export default async function ListingDetailPage(props: Props) {
               <div className="text-2xl font-bold">
                 {data?.price?.toLocaleString("es-MX", {
                   style: "currency",
-                  currency: "MXN",
+                  currency: "USD",
                   minimumFractionDigits: 0,
                 })}
               </div>
