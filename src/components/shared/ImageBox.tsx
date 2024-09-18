@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { cn } from "@/lib/cn";
 import { urlForImage } from "@/sanity/lib/utils";
 
 interface ImageBoxProps {
@@ -22,21 +23,20 @@ export default function ImageBox({
   ...props
 }: ImageBoxProps) {
   const imageUrl =
-    image && urlForImage(image)?.height(height).width(width).fit("crop").url();
+    image && urlForImage(image)?.url();
 
   return (
     <div
-      className={`w-full overflow-hidden rounded-[3px] bg-gray-50 ${classesWrapper}`}
+      className={cn(`w-full overflow-hidden relative rounded-[3px] bg-gray-50 `, classesWrapper)}
       data-sanity={props["data-sanity"]}
     >
       {imageUrl && (
         <Image
-          className="absolute h-full w-full"
           alt={alt}
-          width={width}
-          height={height}
+          fill
           sizes={size}
           src={imageUrl}
+          className="object-cover"
           placeholder={image?.asset?.metadata?.lqip ? "blur" : "empty"}
           blurDataURL={image?.asset?.metadata?.lqip}
         />

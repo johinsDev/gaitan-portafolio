@@ -16,6 +16,8 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function AboutMe() {
   const { data } = await loadAboutPage();
 
+  console.log(data.hero?.slides?.[0]?.content);
+
   return (
     <div className="flex flex-col py-16">
       <h1 className="text-center">{data?.title}</h1>

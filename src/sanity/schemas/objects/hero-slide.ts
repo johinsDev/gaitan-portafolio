@@ -17,6 +17,16 @@ export default defineType({
       of: [
         {
           type: "block",
+          marks: {
+            annotations: [
+              {
+                title: "Inline Icon",
+                name: "inlineicon",
+                type: "image",
+                icon: () => "🖼️",
+              },
+            ],
+          },
         },
       ],
     }),

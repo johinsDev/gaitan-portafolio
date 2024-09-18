@@ -228,7 +228,16 @@ const DEFAULT_QUERY = `
     ...,
     title,
     slides[]{
-      content,
+      content[]{
+        ...,
+        _type == "image" => {
+          ...,
+          asset->{
+            ...,
+            "_ref": _id,
+          },
+        }
+      },
       cta{
         externalLink,
         link->{

@@ -36,11 +36,22 @@ export function CustomPortableText({
       },
     },
     block: {
-      normal: ({ children }) => {
+      normal: ({ children, ...props }) => {
         return <p className={paragraphClasses}>{children}</p>;
       },
     },
     marks: {
+      inlineicon: (data) => {
+        return (
+          <span className="inline-block align-middle">
+            <ImageBox
+              image={data.value}
+              alt={data.value?.alt || "Icon"}
+              classesWrapper="relative w-12 aspect-[1/1]"
+            />
+          </span>
+        );
+      },
       link: ({ children, value }) => {
         return (
           <a
