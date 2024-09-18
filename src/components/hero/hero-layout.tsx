@@ -3,6 +3,7 @@
 import { cn } from "@/lib/cn";
 import { urlForImage } from "@/sanity/lib/utils";
 import { Hero } from "@/types";
+import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import {
@@ -20,20 +21,9 @@ type Props = {
 
 export function HeroLayout({ hero }: Props) {
   const [api, setApi] = useState<CarouselApi | null>(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     if (!api) return;
-
-    const onChange = () => {
-      setCurrentSlide(api.selectedScrollSnap());
-    };
-
-    api.on("select", onChange);
-
-    return () => {
-      api.off("select", onChange);
-    };
   }, [api]);
 
   if (!hero?.slides?.length) return null;
@@ -46,6 +36,13 @@ export function HeroLayout({ hero }: Props) {
       <Carousel
         className="w-full main_container py-8 lg:py-12"
         setApi={setApi}
+        plugins={[
+          Autoplay({
+            playOnInit: true,
+            delay: 3000,
+            active: hero.slides.length > 1,
+          }) as any,
+        ]}
         opts={{
           active: hero.slides.length > 1,
         }}
@@ -88,25 +85,6 @@ export function HeroLayout({ hero }: Props) {
             );
           })}
         </CarouselContent>
-
-        {hero.slides.length > 1 && (
-          <div>
-            <div className="flex gap-4 justify-center mt-8 lg:mt-12">
-              {hero?.slides?.map((_, index) => (
-                <button
-                  onClick={() => api?.scrollTo(index)}
-                  key={index}
-                  className={cn(
-                    "size-3 lg:size-4 bg-neutral-400 rounded-full focus:outline-none",
-                    {
-                      "bg-neutral-600": currentSlide === index,
-                    },
-                  )}
-                />
-              ))}
-            </div>
-          </div>
-        )}
       </Carousel>
     </header>
   );

@@ -14,9 +14,15 @@ export async function generateMetadata(): Promise<Metadata> {
   return _generateMetadata(data.seo);
 }
 
-export default function Resources() {
+export default async function Resources() {
+  const { data } = await loadResourcePage();
+
   return (
     <div className="flex flex-col gap-4 py-16">
+      <h1 className="text-title leading-sub-title font-bold text-center">
+        {data.title}
+      </h1>
+
       <Suspense fallback={<HeroSkeleton />}>
         <Hero load={Singletons.RESOURCES} />
       </Suspense>
