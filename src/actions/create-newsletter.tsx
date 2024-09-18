@@ -1,30 +1,25 @@
-'use server'
+"use server";
 
 import { JWT } from "google-auth-library";
 import {
   GoogleSpreadsheet,
   GoogleSpreadsheetWorksheet,
 } from "google-spreadsheet";
-import * as v from 'valibot'; // 1.2 kB
-
+import * as v from "valibot"; // 1.2 kB
 
 const ContactForm = v.object({
   email: v.pipe(v.string(), v.email(), v.minLength(1), v.maxLength(250)),
   name: v.pipe(v.string(), v.minLength(1), v.maxLength(100)),
 });
 
-const GOOGLE_SHEET_KEY = process.env.GOOGLE_SHEET_KEY!.split(
-  String.raw`\n`
-).join("\n");
+const GOOGLE_SHEET_KEY = process.env
+  .GOOGLE_SHEET_KEY!.split(String.raw`\n`)
+  .join("\n");
 
 const GOOGLE_SHEET_ID = process.env.GOOGLE_SHEET_ID!;
 const GOOGLE_EMAIL = process.env.GOOGLE_EMAIL!;
 
-const HEADERS_ROW = [
-  "Nombre",
-  "Correo",
-  "Fecha",
-];
+const HEADERS_ROW = ["Nombre", "Correo", "Fecha"];
 
 function getServiceAccount() {
   const serviceAccountAuth = new JWT({
@@ -68,22 +63,15 @@ const log = {
   },
 };
 
-
 enum STATUS_LOG {
   success = "success",
   error = "error",
 }
 
-
-async function findContact(
-  sheet: GoogleSpreadsheetWorksheet,
-  email: string,
-) {
+async function findContact(sheet: GoogleSpreadsheetWorksheet, email: string) {
   const rows = await sheet.getRows();
 
-  return rows.find(
-    (row) => row.get(HEADERS_ROW[1]) === email
-  );
+  return rows.find((row) => row.get(HEADERS_ROW[1]) === email);
 }
 
 function mapContact(data: v.InferOutput<typeof ContactForm>) {
@@ -93,7 +81,13 @@ function mapContact(data: v.InferOutput<typeof ContactForm>) {
     [HEADERS_ROW[2]]: new Date().toLocaleDateString(),
   };
 }
-export async function createNewsletter(formData: FormData) {
+export async function createNewsletter(
+  _: {
+    success: boolean;
+    error: any;
+  },
+  formData: FormData,
+) {
   try {
     const name = formData.get("name") as string;
 
@@ -102,7 +96,7 @@ export async function createNewsletter(formData: FormData) {
     const contact = {
       name,
       email,
-    }
+    };
 
     const payload = v.safeParse(ContactForm, contact);
 
@@ -114,8 +108,9 @@ export async function createNewsletter(formData: FormData) {
       });
 
       return {
-        error: payload.issues
-      }
+        success: false,
+        error: payload.issues,
+      };
     }
 
     const sheet = await getOrCreateSheet("Newsletter");
@@ -148,7 +143,7 @@ export async function createNewsletter(formData: FormData) {
 
       return {
         success: true,
-      }
+      };
     }
 
     await sheet.addRow(mapContact(contact));
@@ -161,7 +156,7 @@ export async function createNewsletter(formData: FormData) {
 
     return {
       success: true,
-    }
+    };
   } catch (error) {
     log.ingest({
       event: "error",
@@ -170,7 +165,8 @@ export async function createNewsletter(formData: FormData) {
     });
 
     return {
+      success: false,
       error: error.message,
-    }
+    };
   }
 }
