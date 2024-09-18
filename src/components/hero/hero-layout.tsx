@@ -41,6 +41,9 @@ export function HeroLayout({ hero }: Props) {
             playOnInit: true,
             delay: 3000,
             active: hero.slides.length > 1,
+            stopOnLastSnap: false,
+            stopOnFocusIn: false,
+            stopOnInteraction: false,
           }) as any,
         ]}
         opts={{

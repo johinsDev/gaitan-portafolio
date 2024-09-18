@@ -1,7 +1,6 @@
-"use client";
+import { createNewsletter } from "@/actions/create-newsletter";
 import { cn } from "@/lib/cn";
 import { NewsletterSection } from "@/types";
-import { useState } from "react";
 import { Button } from "../button";
 import { Input } from "../input";
 import { CustomPortableText } from "../shared/CustomPortableText";
@@ -11,7 +10,6 @@ type Props = {
 };
 
 export function NewsletterSectionLayout({ data }: Props) {
-  const [submitted, setSubmitted] = useState(false);
 
   if (!data) return null;
 
@@ -30,18 +28,13 @@ export function NewsletterSectionLayout({ data }: Props) {
       <div className="main_container">
         <div className="h-px w-full bg-gray-300 my-10"></div>
 
-        <div className={cn("text-center", { hidden: !submitted })}>
+        <div className={cn("text-center")}>
           <CustomPortableText value={data.successMessage as any} />
         </div>
 
         <form
-          className={cn("flex flex-col md:flex-row gap-4", {
-            hidden: submitted,
-          })}
-          onSubmit={(e) => {
-            e.preventDefault();
-            setSubmitted(true);
-          }}
+          className={cn("flex flex-col md:flex-row gap-4")}
+          action={createNewsletter}
         >
           <Input
             type="text"
@@ -49,6 +42,7 @@ export function NewsletterSectionLayout({ data }: Props) {
             name="name"
             className="h-16 md:flex-1"
             required
+            maxLength={250}
           />
           <Input
             type="email"
@@ -56,6 +50,7 @@ export function NewsletterSectionLayout({ data }: Props) {
             name="email"
             className="h-16 md:flex-1"
             required
+            maxLength={250}
           />
           <Button type="submit" className="h-16 w-full md:w-1/4">
             {data.submitText ?? "Suscribirme"}
