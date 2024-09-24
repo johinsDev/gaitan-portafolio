@@ -52,8 +52,7 @@ export function StatsLAyout({ data }: Props) {
                   <div className="text-2xl md:text-3xl lg:text-4xl font-bold truncate w-full flex-1">
                     {stat.value}
                   </div>
-                  <div className="h-full w-0.5 bg-foreground lg:hidden" />
-                  <div className="text-lg flex-1">
+                  <div className="text-lg flex-2">
                     {stat.title ?? stat.description}
                   </div>
                 </div>
