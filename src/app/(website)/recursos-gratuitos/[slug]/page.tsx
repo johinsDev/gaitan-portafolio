@@ -1,5 +1,4 @@
-import { Button } from "@/components/button";
-import { Input } from "@/components/input";
+import { DownloadForm } from "@/components/download-form/download-form";
 import { CustomPortableText } from "@/components/shared/CustomPortableText";
 import { _generateMetadata, urlForImage } from "@/sanity/lib/utils";
 import { generateStaticSlugs } from "@/sanity/loader/generateStaticSlugs";
@@ -66,16 +65,7 @@ export default async function Resource(props: Props) {
             Obtén la herramienta GRATIS
           </div>
 
-          <form className="flex flex-col gap-4 w-full">
-            <Input placeholder="Nombre comleto*" required className="h-14" />
-            <Input
-              placeholder="Email*"
-              required
-              type="email"
-              className="h-14"
-            />
-            <Button className="mt-8">Descargar plantilla</Button>
-          </form>
+          <DownloadForm resourceSlug={resource.data?.slug!} />
         </div>
       </div>
     </div>

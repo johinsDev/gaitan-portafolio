@@ -1,18 +1,29 @@
 "use server";
 
 import { ratelimit } from "@/lib/rate-limit";
+import { loadResource } from "@/sanity/loader/loadQuery";
 import { JWT } from "google-auth-library";
-import {
-  GoogleSpreadsheet,
-  GoogleSpreadsheetWorksheet,
-} from "google-spreadsheet";
+import { GoogleSpreadsheet, GoogleSpreadsheetWorksheet } from "google-spreadsheet";
 import { headers } from "next/headers";
 import * as v from "valibot"; // 1.2 kB
 
-const ContactForm = v.object({
+const DownloadResourceForm = v.object({
   email: v.pipe(v.string(), v.email(), v.minLength(1), v.maxLength(250)),
   name: v.pipe(v.string(), v.minLength(1), v.maxLength(100)),
+  resourceSlug: v.string(),
 });
+
+
+const log = {
+  ingest: async (data: any) => {
+    console.log(data);
+  },
+};
+
+enum STATUS_LOG {
+  success = "success",
+  error = "error",
+}
 
 const GOOGLE_SHEET_KEY = process.env
   .GOOGLE_SHEET_KEY!.split(String.raw`\n`)
@@ -21,7 +32,7 @@ const GOOGLE_SHEET_KEY = process.env
 const GOOGLE_SHEET_ID = process.env.GOOGLE_SHEET_ID!;
 const GOOGLE_EMAIL = process.env.GOOGLE_EMAIL!;
 
-const HEADERS_ROW = ["Nombre", "Correo", "Fecha"];
+const HEADERS_ROW = ["Nombre", "Correo", "Fecha", "Resource"];
 
 function getServiceAccount() {
   const serviceAccountAuth = new JWT({
@@ -59,15 +70,15 @@ async function getOrCreateSheet(sheetName: string) {
   return sheet;
 }
 
-const log = {
-  ingest: async (data: any) => {
-    console.log(data);
-  },
-};
 
-enum STATUS_LOG {
-  success = "success",
-  error = "error",
+
+function mapContact(data: v.InferOutput<typeof DownloadResourceForm>) {
+  return {
+    [HEADERS_ROW[0]]: data.name,
+    [HEADERS_ROW[1]]: data.email,
+    [HEADERS_ROW[3]]: data.resourceSlug,
+    [HEADERS_ROW[2]]: new Date().toLocaleDateString(),
+  };
 }
 
 async function findContact(sheet: GoogleSpreadsheetWorksheet, email: string) {
@@ -76,18 +87,11 @@ async function findContact(sheet: GoogleSpreadsheetWorksheet, email: string) {
   return rows.find((row) => row.get(HEADERS_ROW[1]) === email);
 }
 
-function mapContact(data: v.InferOutput<typeof ContactForm>) {
-  return {
-    [HEADERS_ROW[0]]: data.name,
-    [HEADERS_ROW[1]]: data.email,
-    [HEADERS_ROW[2]]: new Date().toLocaleDateString(),
-  };
-}
-
-export async function createNewsletter(
+export async function downloadResource(
   _: {
     success: boolean;
     error: any;
+    url?: string
   },
   formData: FormData,
 ) {
@@ -117,12 +121,15 @@ export async function createNewsletter(
 
     const email = formData.get("email") as string;
 
+    const resourceSlug = formData.get("resourceSlug") as string;
+
     const contact = {
       name,
       email,
+      resourceSlug
     };
 
-    const payload = v.safeParse(ContactForm, contact);
+    const payload = v.safeParse(DownloadResourceForm, contact);
 
     if (!payload.success) {
       log.ingest({
@@ -137,7 +144,23 @@ export async function createNewsletter(
       };
     }
 
-    const sheet = await getOrCreateSheet("Newsletter");
+    // fetch resource by resourceId sanitized
+    const resource = await loadResource(resourceSlug);
+
+    if (!resource.data) {
+      log.ingest({
+        event: "resource not found",
+        data: contact,
+        status_log: STATUS_LOG.error,
+      });
+
+      return {
+        success: false,
+        error: "Resource not found",
+      };
+    }
+
+    const sheet = await getOrCreateSheet("Resource " + resource.data?.title);
 
     log.ingest({
       event: "sheet get or create",
@@ -167,19 +190,24 @@ export async function createNewsletter(
 
       return {
         success: true,
+        url: resource.data?.resource,
+        error: null,
       };
     }
 
     await sheet.addRow(mapContact(contact));
 
     log.ingest({
-      event: "contact added to sheet",
+      event: "resource downloaded",
       data: contact,
       status_log: STATUS_LOG.success,
     });
 
+
     return {
       success: true,
+      url: resource.data?.resource,
+      error: null,
     };
   } catch (error) {
     log.ingest({
