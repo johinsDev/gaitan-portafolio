@@ -31,7 +31,7 @@ export function DownloadForm(props: DownloadResourceForm) {
 
     console.log('downloaded', state.url);
 
-    router.push('/gracias');
+    router.push('/gracias?resourceSlug=' + props.resourceSlug);
     return () => {
       a.remove();
     }
