@@ -1,10 +1,12 @@
 "use server";
 
+import { ratelimit } from "@/lib/rate-limit";
 import { JWT } from "google-auth-library";
 import {
   GoogleSpreadsheet,
   GoogleSpreadsheetWorksheet,
 } from "google-spreadsheet";
+import { headers } from "next/headers";
 import * as v from "valibot"; // 1.2 kB
 
 const ContactForm = v.object({
@@ -89,6 +91,27 @@ export async function createNewsletter(
   formData: FormData,
 ) {
   try {
+    const ip = headers().get("x-real-ip") || headers().get("x-forwarded-for") || '127.0.0.1';
+    const { success, limit, reset, remaining } =
+      await ratelimit.limit(ip);
+
+    if (!success) {
+      log.ingest({
+        event: "ratelimit",
+        data: {
+          limit,
+          reset,
+          remaining,
+        },
+        status_log: STATUS_LOG.error,
+      });
+
+      return {
+        success: false,
+        error: "Too many requests",
+      };
+    }
+
     const name = formData.get("name") as string;
 
     const email = formData.get("email") as string;
