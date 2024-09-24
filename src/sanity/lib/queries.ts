@@ -127,6 +127,16 @@ const SECTIONS_QUERY = `
         icon,
         title,
         value,
+        icon{
+          ...,
+          image{
+            ...,
+            asset->{
+              ...,
+              "_ref": _id,
+            },
+          },
+        },
       },
     },
     _type == "ctaSection" => {

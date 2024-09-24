@@ -7,13 +7,19 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 type ThankYouPageProps = {
-  searchParams: { resourceSlug: string }
-}
+  searchParams: { resourceSlug: string };
+};
 
 export default async function ThankYouPage(props: ThankYouPageProps) {
   const { data } = await loadResourcePage();
 
-  const { data: resource } = await loadResource(props.searchParams.resourceSlug!);
+  if (!props.searchParams.resourceSlug) {
+    notFound();
+  }
+
+  const { data: resource } = await loadResource(
+    props.searchParams.resourceSlug!,
+  );
 
   if (!resource) {
     notFound();
@@ -46,7 +52,6 @@ export default async function ThankYouPage(props: ThankYouPageProps) {
                 Descargar de nuevo
               </Link>
             </Button>
-
           </div>
           <div className="mt-8 pt-8 border-t">
             <h2 className="text-lg font-semibold mb-4">¿Qué sigue?</h2>
@@ -67,13 +72,11 @@ export default async function ThankYouPage(props: ThankYouPageProps) {
           </div>
           <div className="mt-8">
             <Button className="w-full" asChild>
-              <Link href="/">
-                Volver a la Página Principal
-              </Link>
+              <Link href="/">Volver a la Página Principal</Link>
             </Button>
           </div>
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

@@ -92,9 +92,11 @@ export async function createNewsletter(
   formData: FormData,
 ) {
   try {
-    const ip = headers().get("x-real-ip") || headers().get("x-forwarded-for") || '127.0.0.1';
-    const { success, limit, reset, remaining } =
-      await ratelimit.limit(ip);
+    const ip =
+      headers().get("x-real-ip") ||
+      headers().get("x-forwarded-for") ||
+      "127.0.0.1";
+    const { success, limit, reset, remaining } = await ratelimit.limit(ip);
 
     if (!success) {
       log.ingest({

@@ -3,7 +3,10 @@
 import { ratelimit } from "@/lib/rate-limit";
 import { loadResource } from "@/sanity/loader/loadQuery";
 import { JWT } from "google-auth-library";
-import { GoogleSpreadsheet, GoogleSpreadsheetWorksheet } from "google-spreadsheet";
+import {
+  GoogleSpreadsheet,
+  GoogleSpreadsheetWorksheet,
+} from "google-spreadsheet";
 import { headers } from "next/headers";
 import * as v from "valibot"; // 1.2 kB
 
@@ -12,7 +15,6 @@ const DownloadResourceForm = v.object({
   name: v.pipe(v.string(), v.minLength(1), v.maxLength(100)),
   resourceSlug: v.string(),
 });
-
 
 const log = {
   ingest: async (data: any) => {
@@ -70,8 +72,6 @@ async function getOrCreateSheet(sheetName: string) {
   return sheet;
 }
 
-
-
 function mapContact(data: v.InferOutput<typeof DownloadResourceForm>) {
   return {
     [HEADERS_ROW[0]]: data.name,
@@ -91,14 +91,16 @@ export async function downloadResource(
   _: {
     success: boolean;
     error: any;
-    url?: string
+    url?: string;
   },
   formData: FormData,
 ) {
   try {
-    const ip = headers().get("x-real-ip") || headers().get("x-forwarded-for") || '127.0.0.1';
-    const { success, limit, reset, remaining } =
-      await ratelimit.limit(ip);
+    const ip =
+      headers().get("x-real-ip") ||
+      headers().get("x-forwarded-for") ||
+      "127.0.0.1";
+    const { success, limit, reset, remaining } = await ratelimit.limit(ip);
 
     if (!success) {
       log.ingest({
@@ -126,7 +128,7 @@ export async function downloadResource(
     const contact = {
       name,
       email,
-      resourceSlug
+      resourceSlug,
     };
 
     const payload = v.safeParse(DownloadResourceForm, contact);
@@ -202,7 +204,6 @@ export async function downloadResource(
       data: contact,
       status_log: STATUS_LOG.success,
     });
-
 
     return {
       success: true,
