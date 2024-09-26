@@ -8,7 +8,7 @@ import {
   FullPagePayload,
   MansorySection,
   SectionsList,
-  Singletons
+  Singletons,
 } from "@/types";
 import { QueryResponseInitial } from "@sanity/react-loader";
 import { MansorySectionLayout } from "./mansory-section-layout";

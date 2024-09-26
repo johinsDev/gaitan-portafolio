@@ -10,7 +10,9 @@ import {
 } from "@/types";
 import { MansorySectionLayout } from "./mansory-section-layout";
 
-const MansorySectionPreview = dynamic(() => import("./mansory-section-preview"));
+const MansorySectionPreview = dynamic(
+  () => import("./mansory-section-preview"),
+);
 
 type Props = {
   _key: string;
@@ -28,7 +30,14 @@ export async function MansorySection({ _key: key, load, slug }: Props) {
   );
 
   if (draftMode().isEnabled) {
-    return <MansorySectionPreview initial={data} _key={key} load={load} slug={slug} />;
+    return (
+      <MansorySectionPreview
+        initial={data}
+        _key={key}
+        load={load}
+        slug={slug}
+      />
+    );
   }
 
   return <MansorySectionLayout data={feature} />;

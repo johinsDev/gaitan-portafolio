@@ -66,8 +66,8 @@ export function HeroLayout({ hero }: Props) {
                 className={cn(
                   "flex items-center flex-col-reverse lg:flex-row gap-12 lg:gap-4",
                   {
-                    'lg:flex-row-reverse': !isLeft,
-                    'lg:flex-row': isLeft,
+                    "lg:flex-row-reverse": !isLeft,
+                    "lg:flex-row": isLeft,
                   },
                 )}
               >
@@ -76,22 +76,24 @@ export function HeroLayout({ hero }: Props) {
 
                   {/* divider */}
 
-                  {!!slide.stats?.length && (<div className="w-full">
-                    <hr className="w-full h-0.5 bg-primary mt-8 mb-12" />
+                  {!!slide.stats?.length && (
+                    <div className="w-full">
+                      <hr className="w-full h-0.5 bg-primary mt-8 mb-12" />
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 gap-y-12">
-                      {slide.stats?.map((stat) => (
-                        <div key={stat._key}>
-                          <h2 className="text-4xl font-bold mb-4">{stat.title}</h2>
-                          <p className="text-lg text-gray-600">
-                            {stat.description}
-                          </p>
-                        </div>
-                      ))}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 gap-y-12">
+                        {slide.stats?.map((stat) => (
+                          <div key={stat._key}>
+                            <h2 className="text-4xl font-bold mb-4">
+                              {stat.title}
+                            </h2>
+                            <p className="text-lg text-gray-600">
+                              {stat.description}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
                   )}
-
 
                   {slide.cta && <Cta className="mt-12 w-fit" {...slide.cta} />}
                 </div>
