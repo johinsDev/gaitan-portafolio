@@ -65,6 +65,8 @@ export function MansorySectionLayout({ data }: Props) {
                   alt={item.alt ?? ""}
                   fill
                   className="object-cover"
+                  placeholder={item.image?.asset.metadata.lqip ? 'blur' : 'empty'}
+                  blurDataURL={item.image?.asset.metadata.lqip}
                 />
               </div>
             )
