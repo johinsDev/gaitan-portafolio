@@ -238,6 +238,12 @@ const DEFAULT_QUERY = `
     ...,
     title,
     slides[]{
+      ...,
+      stats[]{
+        ...,
+        description,
+        title,
+      },
       content[]{
         ...,
         _type == "image" => {

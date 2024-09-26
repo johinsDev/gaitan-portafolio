@@ -26,6 +26,8 @@ export function HeroLayout({ hero }: Props) {
     if (!api) return;
   }, [api]);
 
+  console.log(hero);
+
   if (!hero?.slides?.length) return null;
 
   return (
@@ -56,33 +58,58 @@ export function HeroLayout({ hero }: Props) {
 
             const imageURL = image && urlForImage(image)?.url();
 
+            const isLeft = slide.position === "left";
+
             return (
               <CarouselItem
                 key={index}
                 className={cn(
                   "flex items-center flex-col-reverse lg:flex-row gap-12 lg:gap-4",
                   {
-                    "lg:gap-12": hero.slides.length === 1,
+                    'lg:flex-row-reverse': !isLeft,
+                    'lg:flex-row': isLeft,
                   },
                 )}
               >
-                <div className="flex flex-col w-full items-center text-center lg:text-left lg:items-start lg:w-1/2 xl:w-2/3">
+                <div className="flex flex-col w-full items-center text-center lg:text-left lg:items-start lg:w-1/2">
                   <CustomPortableText value={slide.content as any} />
+
+                  {/* divider */}
+
+                  {!!slide.stats?.length && (<div className="w-full">
+                    <hr className="w-full h-0.5 bg-primary mt-8 mb-12" />
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 gap-y-12">
+                      {slide.stats?.map((stat) => (
+                        <div key={stat._key}>
+                          <h2 className="text-4xl font-bold mb-4">{stat.title}</h2>
+                          <p className="text-lg text-gray-600">
+                            {stat.description}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  )}
+
 
                   {slide.cta && <Cta className="mt-12 w-fit" {...slide.cta} />}
                 </div>
 
-                <div className="relative w-full lg:w-1/2 xl:w-1/3 aspect-square max-h-80 lg:aspect-square overflow-hidden rounded-lg lg:max-h-none">
-                  {!!imageURL && (
-                    <Image
-                      src={imageURL}
-                      alt="hero"
-                      fill
-                      className="object-contain rounded-lg"
-                      priority
-                      blurDataURL={image.asset.metadata.lqip}
-                    />
-                  )}
+                <div className="relative w-full lg:w-1/2 aspect-square max-h-80 h-full overflow-hidden rounded-lg lg:max-h-none">
+                  <div className="relative h-full aspect-[3/4] mx-auto">
+                    {!!imageURL && (
+                      <Image
+                        src={imageURL}
+                        alt="hero"
+                        fill
+                        className="object-cover rounded-lg"
+                        priority
+                        quality={100}
+                        blurDataURL={image.asset.metadata.lqip}
+                      />
+                    )}
+                  </div>
                 </div>
               </CarouselItem>
             );

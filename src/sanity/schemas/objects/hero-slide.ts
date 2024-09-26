@@ -35,6 +35,40 @@ export default defineType({
       title: "Call to action",
       type: "cta",
     }),
+    defineField({
+      name: "position",
+      title: "Position of the content",
+      type: "string",
+      initialValue: "left",
+      options: {
+        list: [
+          { title: "Left", value: "left" },
+          { title: "Right", value: "right" },
+        ],
+      },
+    }),
+    defineField({
+      name: "stats",
+      title: "Stats",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({
+              name: "title",
+              title: "Title",
+              type: "string",
+            }),
+            defineField({
+              name: "description",
+              title: "Description",
+              type: "string",
+            }),
+          ],
+        },
+      ],
+    }),
   ],
   preview: {
     select: {

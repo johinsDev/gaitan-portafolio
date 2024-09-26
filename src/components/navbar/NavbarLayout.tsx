@@ -54,14 +54,13 @@ const Navbar = (props: Props) => {
               </p>
 
               {!!logo && (
-                <div className="w-28 aspect-video relative">
+                <div className="w-auto h-24 aspect-video lg:aspect-[16/6] relative">
                   <Image
                     src={logo}
                     fill
                     alt={settings?.logo?.alt ?? "Logo"}
                     className="object-contain"
-                    placeholder="blur"
-                    blurDataURL={settings?.logo?.image?.asset?.metadata?.lqip}
+                    priority
                   />
                 </div>
               )}

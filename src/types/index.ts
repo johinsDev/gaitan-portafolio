@@ -51,6 +51,8 @@ export interface Stat {
   icon?: CustomImage;
   title?: string;
   value?: string;
+  _key: string;
+  _id: string;
 }
 
 export interface StatsSection {
@@ -111,6 +113,8 @@ export interface HeroSlide {
   image?: CustomImage;
   cta?: Cta;
   _key: string;
+  position?: PositionImageList;
+  stats?: Stat[];
 }
 export interface Hero {
   slides: HeroSlide[];
