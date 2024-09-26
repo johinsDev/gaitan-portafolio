@@ -119,6 +119,16 @@ export async function downloadResource(
       };
     }
 
+    log.ingest({
+      event: "ratelimit",
+      data: {
+        limit,
+        reset,
+        remaining,
+      },
+      status_log: STATUS_LOG.success,
+    });
+
     const name = formData.get("name") as string;
 
     const email = formData.get("email") as string;
@@ -146,6 +156,12 @@ export async function downloadResource(
       };
     }
 
+    log.ingest({
+      event: "validation success",
+      data: contact,
+      status_log: STATUS_LOG.success,
+    });
+
     // fetch resource by resourceId sanitized
     const resource = await loadResource(resourceSlug);
 
@@ -161,6 +177,12 @@ export async function downloadResource(
         error: "Resource not found",
       };
     }
+
+    log.ingest({
+      event: "resource found",
+      data: resource.data,
+      status_log: STATUS_LOG.success,
+    });
 
     const sheet = await getOrCreateSheet("Resource " + resource.data?.title);
 
