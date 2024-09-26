@@ -26,8 +26,6 @@ export function HeroLayout({ hero }: Props) {
     if (!api) return;
   }, [api]);
 
-  console.log(hero);
-
   if (!hero?.slides?.length) return null;
 
   return (

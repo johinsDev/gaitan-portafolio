@@ -66,9 +66,9 @@ export function MansorySectionLayout({ data }: Props) {
                   fill
                   className="object-cover"
                   placeholder={
-                    item.image?.asset.metadata.lqip ? "blur" : "empty"
+                    item.image?.asset?.metadata?.lqip ? "blur" : "empty"
                   }
-                  blurDataURL={item.image?.asset.metadata.lqip}
+                  blurDataURL={item.image?.asset?.metadata?.lqip}
                 />
               </div>
             );

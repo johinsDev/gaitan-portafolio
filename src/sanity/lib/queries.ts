@@ -19,9 +19,12 @@ const SECTIONS_QUERY = `
       title,
       gallery[]{
         ...,
-        asset->{
+        image{
           ...,
-          "_ref": _id,
+          asset->{
+            ...,
+            "_ref": _id,
+          },
         },
       },
       description,
