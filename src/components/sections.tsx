@@ -9,6 +9,7 @@ import { AlliedsSection } from "./allieds-section";
 import { GridSection } from "./grid-section";
 import { KnowMoreSection } from "./know-more-section";
 import { LastEntriesSection } from "./last-entries";
+import { MansorySection } from "./mansory-section";
 import { NewsletterSection } from "./newsletter-section";
 import { PortableTextSectionComponent } from "./portable-text-section";
 import { PropertiesSection } from "./properties-section";
@@ -27,6 +28,15 @@ export async function Sections({ load = Singletons.HOME, slug }: SectionProps) {
     <>
       {data?.data?.sections?.map((section) => {
         switch (section._type) {
+          case SectionsList.MANSORY_SECTION:
+            return (
+              <MansorySection
+                key={section._key}
+                _key={section._key}
+                load={load}
+                slug={slug}
+              />
+            );
           case SectionsList.PROPERTIES_SECTION:
             return (
               <PropertiesSection

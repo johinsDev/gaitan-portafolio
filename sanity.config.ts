@@ -35,6 +35,7 @@ import image from "@/sanity/schemas/objects/image";
 import kindOfDepartment from "@/sanity/schemas/objects/kind-of-department";
 import knowMore from "@/sanity/schemas/objects/know-more";
 import lastEntriesSection from "@/sanity/schemas/objects/last-entries-section";
+import mansorySection from "@/sanity/schemas/objects/mansory-section";
 import markets from "@/sanity/schemas/objects/markets";
 import milestone from "@/sanity/schemas/objects/milestone";
 import newsletterSection from "@/sanity/schemas/objects/newsletter-section";
@@ -91,6 +92,7 @@ export default defineConfig({
       property,
       service,
       // Objects
+      mansorySection,
       propertiesSection,
       markets,
       grid,

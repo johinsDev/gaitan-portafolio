@@ -21,6 +21,7 @@ export enum SectionsList {
   LAST_ENTRIES_SECTION = "lastEntriesSection",
   GRID_SECTION = "gridSection",
   PROPERTIES_SECTION = "propertiesSection",
+  MANSORY_SECTION = "mansorySection",
 }
 
 export interface Seo {
@@ -53,6 +54,14 @@ export interface Stat {
   value?: string;
   _key: string;
   _id: string;
+}
+
+export interface MansorySection {
+  title?: string;
+  description?: PortableTextBlock[];
+  _type: SectionsList.MANSORY_SECTION;
+  gallery?: CustomImage[];
+  _key: string;
 }
 
 export interface StatsSection {
@@ -164,7 +173,8 @@ export type Sections =
   | ServicesSection
   | LastEntriesSection
   | GridSection
-  | PropertiesSection;
+  | PropertiesSection
+  | MansorySection;
 
 export enum Singletons {
   ABOUT = "about",

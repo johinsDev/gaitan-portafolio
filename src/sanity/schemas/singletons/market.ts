@@ -92,6 +92,9 @@ export default defineType({
         defineArrayMember({
           type: "propertiesSection",
         }),
+        defineArrayMember({
+          type: "mansorySection",
+        }),
       ],
     }),
   ],
