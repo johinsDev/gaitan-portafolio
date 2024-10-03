@@ -168,6 +168,9 @@ export default defineType({
             {
               type: "services",
             },
+            {
+              type: "marketPage",
+            },
           ],
         },
       ],

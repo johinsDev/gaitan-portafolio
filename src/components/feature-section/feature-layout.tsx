@@ -13,7 +13,7 @@ type Props = {
 export function FeatureSectionLayout({ data }: Props) {
   const image = data?.image?.image;
 
-  const imageUrl = image && urlForImage(image)?.width(444).height(250).url();
+  const imageUrl = image && urlForImage(image)?.url();
 
   const position = data?.position;
 

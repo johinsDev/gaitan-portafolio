@@ -24,6 +24,7 @@ const Navbar = (props: Props) => {
 
   const menuItems = settings?.menuItems || ([] as MenuItem[]);
 
+
   const logo = !!settings?.logo?.image?.asset
     ? urlForImage(settings.logo.image)?.url()
     : "";
